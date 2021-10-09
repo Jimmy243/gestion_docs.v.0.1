@@ -2,22 +2,21 @@ const vue = new Vue({
     el:"#dapp",
     data(){
         return {
-            tab: []
+          tab: []
         }
     },
     computed: {
-        getDepartment(){
-            return this.tab;
-        }
     },
     mounted(){
-        $.ajax({
-            type:"GET",
-            url:'/department/get',
-            success: function(donnees){
-                this.tab = donnees;
-                console.log(this.tab);
-            }
-        })
+      $.ajax({
+          type:"GET",
+          url:'/department/get',
+          success: this.getData
+      })
+    },
+    methods:{
+      getData(data){
+        this.tab = data;
+      }
     }
 })

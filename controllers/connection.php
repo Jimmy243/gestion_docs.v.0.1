@@ -6,7 +6,8 @@ function Connecter(){
     return $db; 
 }
 catch( PDOException $Exception ) {
-    throw new MyDatabaseException( $Exception->getMessage( ) , $Exception->getCode( ) );
+    // throw new MyDatabaseException( $Exception->getMessage( ) , $Exception->getCode( ) );
+    die($Exception->getMessage());
 }
     
 }

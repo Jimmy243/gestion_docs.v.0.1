@@ -6,15 +6,17 @@ $router = new AltoRouter();
 $router->map('GET','/',function(){
     require "controllers/home.php";
 },'home');
-$router->map('GET','/department',function(){
-    require "views/department/department.php";
-},'department');
+
 
 // Params
 // $router->map('GET','/department/[i:IdD]',function($IdD){
 //    echo $IdD;
 // });
 
+
+$router->map('GET','/department',function(){
+  require "views/department/department.php";
+},'department');
 //route get datas
 $router->map('GET','/department/get',function(){
     require "controllers/department/getDepartment.php";
