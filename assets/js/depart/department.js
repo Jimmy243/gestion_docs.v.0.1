@@ -11,13 +11,16 @@ const vue = new Vue({
         }
     },
     mounted(){
-        $.ajax({
-            type:"GET",
-            url:'/department/get',
-            success: function(donnees){
-                this.tab = donnees;
-                console.log(this.tab);
-            }
-        })
+        $.post( "/department/get", data => {
+            this.tab = data;
+          });
+        // $.ajax({
+        //     type:"GET",
+        //     url:'/department/get',
+        //     success: function(donnees){
+        //         this.tab = donnees;
+        //         console.log(this.tab);
+        //     }
+        // })
     }
 })
