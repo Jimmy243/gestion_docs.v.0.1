@@ -38,11 +38,11 @@
               <tbody  id="dapp" >
                 <tr v-for="(item,id) in tab" :key="item.id">
                   <td >{{id+1}}</td>  
-                  <td >{{item}}</td>  
+                  <td >{{item.NameD}}</td>  
                   <td >active</td>  
                   <td class="text-right">
-                  <button type="button" class="btn btn-primary">edit</button>
-                  <button type="button" class="btn btn-danger" v-on:click="send">delete</button>
+                  <button type="button" class="btn btn-primary" v-on:click="getIdBForEdeting(id)">edit</button>
+                  <button type="button" class="btn btn-danger" v-on:click="deleteDepartment(id)">delete</button>
                   </td>  
                 </tr>
               </tbody>

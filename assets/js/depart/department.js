@@ -3,7 +3,9 @@ const vue = new Vue({
     data(){
         return {
           tab: [],
-          name: 'amisi',
+          setNameD: '',
+          editNameD: '',
+          editIdD: 0
         }
     },
     computed: {
@@ -21,21 +23,64 @@ const vue = new Vue({
       },
       getData(data){
         this.tab = data;
+        console.log(data);
       },
-      send(){
-          $.ajax({
-            type: "POST",
-            url: "/department/set",
-            data: JSON.stringify({NameD:this.name}),
-            contentType: 'application/json',
-            dataType: "JSON",
-            success: this.returnData,
-            error: function(req, err){ console.log('message: ' + err); }
-          });
+      setDepartment(){
+        $.ajax({
+          type: "POST",
+          url: "/department/set",
+          data: JSON.stringify({NameD:this.setNameD}),
+          contentType: 'application/json',
+          dataType: "JSON",
+          success: this.setDepartmentResult,
+          error: function(req, err){ console.log('message: ' + err); }
+        });
       },
-      returnData(response){
+      setDepartmentResult(response){
         console.log(response);
-        // this.tab.push()
+        this.reloadData()
+      },
+      editDepartment(){
+        if(!this.editNameD || !this.editIdD)
+        return;
+
+        $.ajax({
+          type: "POST",
+          url: "/department/edit",
+          data: JSON.stringify({NameD:this.editNameD,IdD:this.editIdD}),
+          contentType: 'application/json',
+          dataType: "JSON",
+          success: this.editDepartmentResult,
+          error: function(req, err){ console.log('message: ' + err) }
+        });
+      },
+      editDepartmentResult(response){
+        console.log(response);
+        this.reloadData()
+      },
+      getIdBForEdeting(id){
+        const depart = this.tab.find( (element,index) => index === id)
+        this.editNameD = depart && depart.NameD
+        this.editIdD = depart && depart.IdD
+
+        console.log(depart);
+        this.editDepartment();
+      },
+      deleteDepartment(id){ 
+        const depart = this.tab.find( (element,index) => index === id)
+        $.ajax({
+          type: "POST",
+          url: "/department/delete",
+          data: JSON.stringify({IdD:depart.IdD}),
+          contentType: 'application/json',
+          dataType: "JSON",
+          success: this.deleteDepartmentResult,
+          error: function(req, err){ console.log('message: ' + err) }
+        });
+      },
+      deleteDepartmentResult(response){
+        console.log(response);
+        this.reloadData()
       }
     },
 })

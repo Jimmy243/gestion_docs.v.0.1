@@ -18,14 +18,22 @@ $router->map('GET','/',function(){
 $router->map('GET','/department',function(){
   require "views/department/department.php";
 },'department');
-//route get department
+// get department
 $router->map('GET','/department/get',function(){
     require "controllers/department/getDepartment.php";
-},'department/get');
+},'department_get');
 // set department
 $router->map('POST','/department/set',function(){
   require "controllers/department/setDepartment.php";
-},'department/set');
+},'department_set');
+// edit department
+$router->map('POST','/department/edit',function(){
+  require "controllers/department/editDepartment.php";
+},'department_edit');
+// delete department
+$router->map('POST','/department/delete',function(){
+  require "controllers/department/deleteDepartment.php";
+},'department_delete');
 
 
 
