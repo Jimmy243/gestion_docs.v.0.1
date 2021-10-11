@@ -1,7 +1,7 @@
 <?php
 function Connecter(){
     try {
-    $db = new PDO("mysql:host=localhost;dbname=gestion_docs","root","");
+    $db = new PDO("mysql:host=localhost;dbname=gestion_docs","ec-son","ec-son");
     $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);  
     return $db; 
 }

@@ -1,5 +1,5 @@
 const vue = new Vue({
-    el:"#dapp",
+    el:"#app",
     data(){
         return {
           tab: [],
@@ -22,7 +22,7 @@ const vue = new Vue({
         })
       },
       getData(data){
-        this.tab = data;
+        this.tab = data.Erreur?[]:data
         console.log(data);
       },
       setDepartment(){
@@ -37,6 +37,7 @@ const vue = new Vue({
         });
       },
       setDepartmentResult(response){
+        $('#ajoutDepart').modal('hide')
         console.log(response);
         this.reloadData()
       },

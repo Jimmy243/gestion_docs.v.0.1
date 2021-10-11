@@ -1,5 +1,6 @@
 {
     "require": {
-        "altorouter/altorouter": "^2.0"
+        "altorouter/altorouter": "^2.0",
+        "firebase/php-jwt": "^5.4"
     }
 }

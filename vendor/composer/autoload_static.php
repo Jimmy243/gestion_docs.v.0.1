@@ -6,6 +6,20 @@ namespace Composer\Autoload;
 
 class ComposerStaticInit315a54ec435bc0a6bc1a5f69b4a016c9
 {
+    public static $prefixLengthsPsr4 = array (
+        'F' => 
+        array (
+            'Firebase\\JWT\\' => 13,
+        ),
+    );
+
+    public static $prefixDirsPsr4 = array (
+        'Firebase\\JWT\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/firebase/php-jwt/src',
+        ),
+    );
+
     public static $classMap = array (
         'AltoRouter' => __DIR__ . '/..' . '/altorouter/altorouter/AltoRouter.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
@@ -14,6 +28,8 @@ class ComposerStaticInit315a54ec435bc0a6bc1a5f69b4a016c9
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
+            $loader->prefixLengthsPsr4 = ComposerStaticInit315a54ec435bc0a6bc1a5f69b4a016c9::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit315a54ec435bc0a6bc1a5f69b4a016c9::$prefixDirsPsr4;
             $loader->classMap = ComposerStaticInit315a54ec435bc0a6bc1a5f69b4a016c9::$classMap;
 
         }, null, ClassLoader::class);
