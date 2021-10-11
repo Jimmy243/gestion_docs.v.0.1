@@ -1,24 +1,39 @@
 <?php
 // permet d'appeler les routes auto...
+@ini_set('display_errors', 'on');
 require 'vendor/autoload.php'; 
 
 $router = new AltoRouter();
 $router->map('GET','/',function(){
     require "controllers/home.php";
 },'home');
-$router->map('GET','/department',function(){
-    require "views/department/department.php";
-},'department');
+
 
 // Params
 // $router->map('GET','/department/[i:IdD]',function($IdD){
 //    echo $IdD;
 // });
 
-//route get datas
+
+$router->map('GET','/department',function(){
+  require "views/department/department.php";
+},'department');
+// get department
 $router->map('GET','/department/get',function(){
     require "controllers/department/getDepartment.php";
-},'department/get');
+},'department_get');
+// set department
+$router->map('POST','/department/set',function(){
+  require "controllers/department/setDepartment.php";
+},'department_set');
+// edit department
+$router->map('POST','/department/edit',function(){
+  require "controllers/department/editDepartment.php";
+},'department_edit');
+// delete department
+$router->map('POST','/department/delete',function(){
+  require "controllers/department/deleteDepartment.php";
+},'department_delete');
 
 
 

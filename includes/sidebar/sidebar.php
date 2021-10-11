@@ -10,7 +10,7 @@
                             <a href="index.php?page=personnel"><i class="fa fa-user-md"></i> <span>Personnels</span></a>
                         </li>
                         <li>
-                            <a href="index.php?page=departement"><i class="fa fa-wheelchair"></i> <span>Département</span></a>
+                            <a href="/department"><i class="fa fa-wheelchair"></i> <span>Département</span></a>
                         </li>
                         <li>
                             <a href="appointments.html"><i class="fa fa-calendar"></i> <span>Docs & Factures</span></a>
