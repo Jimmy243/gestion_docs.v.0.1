@@ -42,7 +42,7 @@
                   <td >active</td>  
                   <td class="text-right">
                   <button type="button" class="btn btn-primary">edit</button>
-                  <button type="button" class="btn btn-danger">delete</button>
+                  <button type="button" class="btn btn-danger" v-on:click="send">delete</button>
                   </td>  
                 </tr>
               </tbody>

@@ -1,5 +1,6 @@
 <?php
 // permet d'appeler les routes auto...
+@ini_set('display_errors', 'on');
 require 'vendor/autoload.php'; 
 
 $router = new AltoRouter();
@@ -17,10 +18,14 @@ $router->map('GET','/',function(){
 $router->map('GET','/department',function(){
   require "views/department/department.php";
 },'department');
-//route get datas
+//route get department
 $router->map('GET','/department/get',function(){
     require "controllers/department/getDepartment.php";
 },'department/get');
+// set department
+$router->map('POST','/department/set',function(){
+  require "controllers/department/setDepartment.php";
+},'department/set');
 
 
 

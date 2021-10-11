@@ -2,7 +2,6 @@
 include dirname(__DIR__).DIRECTORY_SEPARATOR."connection.php";
 
 function getDepartment(){
-  @ini_set('display_errors', 'on');
     header('Content-Type:application/json');
     $db = Connecter();
     $sql = "SELECT department.NameD as NameD FROM department";
