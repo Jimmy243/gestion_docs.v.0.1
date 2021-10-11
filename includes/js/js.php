@@ -7,4 +7,3 @@
 <script src="assets/js/chart.js" defer></script>
 <script src="assets/js/app.js" defer></script>
 <script src="assets/js/vue.min.js" defer></script>
-<script src="assets/js/depart/department.js" defer></script>

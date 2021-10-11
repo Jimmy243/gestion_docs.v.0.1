@@ -4,7 +4,7 @@
                     <ul>
                         <!-- <li class="menu-title">Main</li> -->
                         <li class="active">
-                            <a href="index.php?page=home"><i class="fa fa-dashboard"></i> <span>Tableau de board</span></a>
+                            <a href=""><i class="fa fa-dashboard"></i> <span>Tableau de board</span></a>
                         </li>
 						<li>
                             <a href="index.php?page=personnel"><i class="fa fa-user-md"></i> <span>Personnels</span></a>

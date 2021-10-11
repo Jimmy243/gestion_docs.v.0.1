@@ -20,7 +20,7 @@ $router->map('GET','/department',function(){
 },'department');
 // get department
 $router->map('GET','/department/get',function(){
-    require "controllers/department/getDepartment.php";
+  require "controllers/department/getDepartment.php";
 },'department_get');
 // set department
 $router->map('POST','/department/set',function(){
@@ -35,16 +35,35 @@ $router->map('POST','/department/delete',function(){
   require "controllers/department/deleteDepartment.php";
 },'department_delete');
 
+// echo '<br>';
+// use Firebase\JWT\JWT;
+// $payload = [
+//   "id" => 2,
+//   "role" => " ADMIN",
+//   "iat" => time(),
+//   "exp" => time()+(60*5),
+// ];
+// $private_key = 'amisi';
+// $token = JWT::encode($payload, $private_key, "HS256");
+// echo $token;
+// echo "</br></br>";
 
+// $jwt = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Miwicm9sZSI6IiBBRE1JTiIsImlhdCI6MTYzMzk2NjE2NCwiZXhwIjoxNjMzOTY2NDY0fQ.-iIgp3Lj2t8cnF9r7IQ80nQ2BceHV-L46vSl94jSY60";
+// $decoded = JWT::decode($jwt, $private_key, array('HS256'));
+// echo "<pre>";
+// echo "Decode:\n" . print_r((array) $decoded, true) . "\n";
+// echo "</pre>";
 
-$match = $router->match();
+// phpinfo();
 
-if( is_array($match) && is_callable( $match['target'] ) ) {
+  $match = $router->match();
 
-	call_user_func_array( $match['target'], $match['params'] ); 
-} else {
-	// no route was matched
-    echo 403;
-	header( $_SERVER["SERVER_PROTOCOL"] . ' 404 Not Found');
-}
+  if( is_array($match) && is_callable( $match['target'] ) ) {
+
+    call_user_func_array( $match['target'], $match['params'] ); 
+  } else {
+    // no route was matched
+      echo 403;
+    header( $_SERVER["SERVER_PROTOCOL"] . ' 404 Not Found');
+  }
 ?>
