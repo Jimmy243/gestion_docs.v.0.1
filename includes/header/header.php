@@ -19,7 +19,7 @@
                                     <a href="activities.html">
                                         <div class="media">
 											<span class="avatar">
-												<img alt="John Doe" src="assets/img/user.jpg" class="img-fluid">
+												<img alt="John Doe" src="/assets/img/doctor-thumb-05.jpg" class="img-fluid">
 											</span>
 											<div class="media-body">
 												<p class="noti-details"><span class="noti-title">John Doe</span> added new task <span class="noti-title">Patient appointment booking</span></p>
@@ -85,7 +85,7 @@
                 <li class="nav-item dropdown has-arrow">
                     <a href="#" class="dropdown-toggle nav-link user-link" data-toggle="dropdown">
                         <span class="user-img">
-							<img class="rounded-circle" src="assets/img/user.jpg" width="24" alt="Admin">
+							<img class="rounded-circle" src="/assets/img/doctor-thumb-05.jpg" width="24" alt="Admin">
 							<span class="status online"></span>
 						</span>
 						<span>Admin</span>

@@ -14,6 +14,11 @@ $router->map('GET','/',function(){
 //    echo $IdD;
 // });
 
+/** LOGIN */
+$router->map('GET','/login',function(){
+  require "views/login.php";
+},'login');
+
 /** DEPARTMENT ROUTE */
 $router->map('GET','/department',function(){
   require "views/department/department.php";
@@ -43,12 +48,21 @@ $router->map('GET','/personnel',function(){
 $router->map('GET','/personnel/get',function(){
   require "controllers/personnel/getPersonnel.php";
 },'personnel_get');
+// get One personnel
+$router->map('GET','/personnel/get/[i:id]',function($id){
+  require "controllers/personnel/getOnePersonnel.php";
+  getOnePersonnel($id);
+},'personnel_get_one');
 // set personnel
 $router->map('POST','/personnel/set',function(){
   require "controllers/personnel/setPersonnel.php";
 },'personnel_set');
-// 
-
+// edit personnel
+$router->map('GET','/personnel/edit/[i:id]',function($id){
+  require "views/personnel/editPersonnel.php";
+  echo "<script> var idPersonnel=$id </script>";
+  echo '</body></html>';
+},'personnel_edit');
 
 
 // echo '<br>';
@@ -71,7 +85,7 @@ $router->map('POST','/personnel/set',function(){
 // echo "</pre>";
 
 // phpinfo();
-  @ini_set('display_errors', 'on');
+
   $match = $router->match();
 
   if( is_array($match) && is_callable( $match['target'] ) ) {
@@ -82,4 +96,3 @@ $router->map('POST','/personnel/set',function(){
       echo 403;
     header( $_SERVER["SERVER_PROTOCOL"] . ' 404 Not Found');
   }
-?>

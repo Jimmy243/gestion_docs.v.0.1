@@ -12,9 +12,6 @@ function getPersonnel(){
     }
    if(count($tab)>0){
       echo json_encode($tab);
-   }else{
-   echo  json_encode(["error" => "Il n'y a pas de personnel "]);
-      
-   }
+   }else echo  json_encode(["error" => "Il n'y a pas de personnel "]);
 }
 getPersonnel();

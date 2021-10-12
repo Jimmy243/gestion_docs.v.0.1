@@ -70,6 +70,21 @@ const vue = new Vue({
         this.editDepartment();
       },
       deleteDepartment(id){ 
+
+        Swal.fire({
+          title: 'Are you sure?',
+          text: "You won't be able to revert this!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, delete it!'
+        }).then( result => this.isAccepts(result.isConfirmed,id))
+
+      },
+      isAccepts(result,id){
+        console.log(result);
+        if(!result) return
         const depart = this.tabDepartment.find( (element,index) => index === id)
         $.ajax({
           type: "POST",
@@ -83,6 +98,15 @@ const vue = new Vue({
       },
       deleteDepartmentResult(response){
         console.log(response);
+        if(response.error){
+
+        }else{
+          Swal.fire(
+            'Deleted!',
+            'Your file has been deleted.',
+            'success'
+          )
+        }
         this.reloadData()
       }
     },
