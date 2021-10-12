@@ -37,7 +37,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr v-for="(item,id) in tab" :key="item.id">
+                <tr v-for="(item,id) in tabDepartment" :key="item.id">
                   <td >{{id+1}}</td>  
                   <td >{{item.NameD}}</td>  
                   <td class="text-right">
@@ -130,6 +130,7 @@
 
 <?php require "includes/js/js.php";?>
 <script src="assets/js/depart/department.js" defer></script>
+<script src="assets/js/sweetAlert.js" defer></script>
 
 </body>
 </html>

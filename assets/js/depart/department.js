@@ -2,10 +2,11 @@ const vue = new Vue({
     el:"#app",
     data(){
         return {
-          tab: [],
+          tabDepartment: [],
           setNameD: '',
           editNameD: '',
-          editIdD: 0
+          editIdD: 0,
+
         }
     },
     computed: {
@@ -15,15 +16,16 @@ const vue = new Vue({
     },
     methods:{
       reloadData(){
-          $.ajax({
-            type:"GET",
-            url:'/department/get',
-            success: this.getData
-          })
-       
+        $.ajax({
+          type:"GET",
+          url:'/department/get',
+          dataType: "JSON",
+          success: this.getData,
+          error: function(req, err){ console.log('message: ' + err); }
+        })
       },
-      getData(data){       
-        this.tab = data.Erreur?[]:data
+      getData(data){
+        this.tabDepartment = data.error?[]:data
         console.log(data);
 
       },
@@ -65,7 +67,7 @@ const vue = new Vue({
         this.reloadData()
       },
       getIdBForEdeting(id){
-        const depart = this.tab.find( (element,index) => index === id)
+        const depart = this.tabDepartment.find( (element,index) => index === id)
         this.editNameD = depart && depart.NameD
         this.editIdD = depart && depart.IdD
 
@@ -73,7 +75,24 @@ const vue = new Vue({
         // this.editDepartment();
       },
       deleteDepartment(id){ 
-        const depart = this.tab.find( (element,index) => index === id)
+  
+        Swal.fire({
+          title: 'Are you sure?',
+          text: "You won't be able to revert this!",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, delete it!'
+        }).then((result) => this.isAccepts(result.isConfirmed,id))
+
+       
+
+        
+      },
+      isAccepts(result,id){
+        if(!result) return 
+        const depart = this.tabDepartment.find( (element,index) => index === id)
         $.ajax({
           type: "POST",
           url: "/department/delete",
@@ -85,8 +104,15 @@ const vue = new Vue({
         });
       },
       deleteDepartmentResult(response){
-        // var confirms = confirm("Etes-vous sur ?");
-        // if(confirms);
+       if(response.error){
+
+       }else{
+        Swal.fire(
+          'Deleted!',
+          'Your file has been deleted.',
+          'success'
+        )
+       }
         console.log(response);
         this.reloadData()
       }

@@ -14,7 +14,7 @@ $router->map('GET','/',function(){
 //    echo $IdD;
 // });
 
-
+/** DEPARTMENT ROUTE */
 $router->map('GET','/department',function(){
   require "views/department/department.php";
 },'department');
@@ -35,19 +35,22 @@ $router->map('POST','/department/delete',function(){
   require "controllers/department/deleteDepartment.php";
 },'department_delete');
 
-
-
+/** PERSONNEL ROUTE */
 $router->map('GET','/personnel',function(){
   require "views/personnel/personnel.php";
 },'personnel');
+// get personnel
+$router->map('GET','/personnel/get',function(){
+  require "controllers/personnel/getPersonnel.php";
+},'personnel_get');
+// set personnel
+$router->map('POST','/personnel/set',function(){
+  require "controllers/personnel/setPersonnel.php";
+},'personnel_set');
+// 
 
-$router->map('GET','/reception',function(){
-  require "views/reception/reception.php";
-},'reception');
 
-$router->map('GET','/factures',function(){
-  require "views/reception/facture.php";
-},'factures');
+
 // echo '<br>';
 // use Firebase\JWT\JWT;
 // $payload = [
@@ -68,7 +71,7 @@ $router->map('GET','/factures',function(){
 // echo "</pre>";
 
 // phpinfo();
-
+  @ini_set('display_errors', 'on');
   $match = $router->match();
 
   if( is_array($match) && is_callable( $match['target'] ) ) {
