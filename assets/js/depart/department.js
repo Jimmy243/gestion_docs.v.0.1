@@ -2,7 +2,7 @@ const vue = new Vue({
     el:"#app",
     data(){
         return {
-          tab: [],
+          tabDepartment: [],
           setNameD: '',
           editNameD: '',
           editIdD: 0
@@ -18,11 +18,13 @@ const vue = new Vue({
         $.ajax({
           type:"GET",
           url:'/department/get',
-          success: this.getData
+          dataType: "JSON",
+          success: this.getData,
+          error: function(req, err){ console.log('message: ' + err); }
         })
       },
       getData(data){
-        this.tab = data.Erreur?[]:data
+        this.tabDepartment = data.error?[]:data
         console.log(data);
       },
       setDepartment(){
@@ -60,7 +62,7 @@ const vue = new Vue({
         this.reloadData()
       },
       getIdBForEdeting(id){
-        const depart = this.tab.find( (element,index) => index === id)
+        const depart = this.tabDepartment.find( (element,index) => index === id)
         this.editNameD = depart && depart.NameD
         this.editIdD = depart && depart.IdD
 
@@ -68,7 +70,7 @@ const vue = new Vue({
         this.editDepartment();
       },
       deleteDepartment(id){ 
-        const depart = this.tab.find( (element,index) => index === id)
+        const depart = this.tabDepartment.find( (element,index) => index === id)
         $.ajax({
           type: "POST",
           url: "/department/delete",

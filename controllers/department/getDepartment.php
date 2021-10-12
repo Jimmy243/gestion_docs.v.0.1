@@ -2,7 +2,6 @@
 include dirname(__DIR__).DIRECTORY_SEPARATOR."connection.php";
 
 function getDepartment(){
-    @ini_set('display_errors', 'on');
     header('Content-Type:application/json');
     $db = Connecter();
     $sql = "SELECT NameD, IdD FROM department";
@@ -17,7 +16,7 @@ function getDepartment(){
    if(count($tab)>0){
       echo json_encode($tab);
    }else{
-   echo  json_encode(["Erreur" => "Il n'y a pas de donnees "]);
+   echo  json_encode(["error" => "Il n'y a pas de donnees "]);
       
    }
 }
