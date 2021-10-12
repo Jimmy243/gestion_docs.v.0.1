@@ -41,7 +41,9 @@
                   <td >{{id+1}}</td>  
                   <td >{{item.NameD}}</td>  
                   <td class="text-right">
-                  <button type="button" class="btn btn-primary edit" 
+                  <button type="button" class="btn btn-primary edit"
+                  data-toggle="modal" data-target="#editDepart"
+                  v-on:click="getIdBForEdeting(id)" 
                   >edit</button>
                   <button type="button" class="btn btn-danger" 
                   v-on:click="deleteDepartment(id)">
@@ -104,10 +106,10 @@
           <form method="POST">
              <div class="form-group">
               <label for="NameD">Nom de departement</label>
-              <input v-model="setNameD" class="form-control">
+              <input v-model="editNameD" class="form-control">
              </div><br/>
              <div>
-             <button type="button" class="btn btn-info" v-on:click="setDepartment()">
+             <button type="button" class="btn btn-info" v-on:click="editDepartment()">
                Enregistrer
             </button>
              </div>

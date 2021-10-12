@@ -43,9 +43,8 @@ const vue = new Vue({
         console.log(response);
         this.reloadData()
       },
-      editDepartment(){
-        $(".edit").click(function(){
-        $('#editDepart').modal('show');
+      editDepartment(){ 
+        console.log(200);
         if(!this.editNameD || !this.editIdD)
         return;
  
@@ -57,7 +56,7 @@ const vue = new Vue({
           dataType: "JSON",
           success: this.editDepartmentResult,
           error: function(req, err){ console.log('message: ' + err) }
-        });
+      
       });
 
       },
@@ -71,7 +70,7 @@ const vue = new Vue({
         this.editIdD = depart && depart.IdD
 
         console.log(depart);
-        this.editDepartment();
+        // this.editDepartment();
       },
       deleteDepartment(id){ 
         const depart = this.tab.find( (element,index) => index === id)
