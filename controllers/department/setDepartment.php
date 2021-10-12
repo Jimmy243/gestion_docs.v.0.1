@@ -6,7 +6,7 @@ function setDepartment(){
   $data = json_decode(file_get_contents('php://input'),true);
   if(empty($data['NameD'])){
     $tab = [
-      "error" => "Veuillez entrer le nom du departement."
+      "erreur" => "Veuillez entrer le nom de departement."
     ];
     echo json_encode($tab);
     exit;

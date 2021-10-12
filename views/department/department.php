@@ -41,8 +41,11 @@
                   <td >{{id+1}}</td>  
                   <td >{{item.NameD}}</td>  
                   <td class="text-right">
-                  <button type="button" class="btn btn-primary" v-on:click="getIdBForEdeting(id)">edit</button>
-                  <button type="button" class="btn btn-danger" v-on:click="deleteDepartment(id)">delete</button>
+                  <button type="button" class="btn btn-primary edit" 
+                  >edit</button>
+                  <button type="button" class="btn btn-danger" 
+                  v-on:click="deleteDepartment(id)">
+                  delete</button>
                   </td>  
                 </tr>
               </tbody>
@@ -71,7 +74,11 @@
              <div class="form-group">
               <label for="NameD">Nom de departement</label>
               <input v-model="setNameD" class="form-control">
-             <button type="button" class="btn btn-primary" v-on:click="setDepartment()">Save changes</button>
+             </div><br/>
+             <div>
+             <button type="button" class="btn btn-info" v-on:click="setDepartment()">
+               Enregistrer
+            </button>
              </div>
           </form>
         </p>
@@ -82,6 +89,39 @@
     </div>
   </div>
 </div>
+<!-- Editer departement -->
+<div class="modal" tabindex="-1" role="dialog" id="editDepart">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><center>Editer un departement </center></h5>
+        <button type="button" cla ss="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>
+          <form method="POST">
+             <div class="form-group">
+              <label for="NameD">Nom de departement</label>
+              <input v-model="setNameD" class="form-control">
+             </div><br/>
+             <div>
+             <button type="button" class="btn btn-info" v-on:click="setDepartment()">
+               Enregistrer
+            </button>
+             </div>
+          </form>
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 
   </div>
 

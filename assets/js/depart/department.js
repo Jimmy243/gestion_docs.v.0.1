@@ -15,15 +15,17 @@ const vue = new Vue({
     },
     methods:{
       reloadData(){
-        $.ajax({
-          type:"GET",
-          url:'/department/get',
-          success: this.getData
-        })
+          $.ajax({
+            type:"GET",
+            url:'/department/get',
+            success: this.getData
+          })
+       
       },
-      getData(data){
+      getData(data){       
         this.tab = data.Erreur?[]:data
         console.log(data);
+
       },
       setDepartment(){
         $.ajax({
@@ -42,9 +44,11 @@ const vue = new Vue({
         this.reloadData()
       },
       editDepartment(){
+        $(".edit").click(function(){
+        $('#editDepart').modal('show');
         if(!this.editNameD || !this.editIdD)
         return;
-
+ 
         $.ajax({
           type: "POST",
           url: "/department/edit",
@@ -54,6 +58,8 @@ const vue = new Vue({
           success: this.editDepartmentResult,
           error: function(req, err){ console.log('message: ' + err) }
         });
+      });
+
       },
       editDepartmentResult(response){
         console.log(response);
@@ -80,6 +86,8 @@ const vue = new Vue({
         });
       },
       deleteDepartmentResult(response){
+        // var confirms = confirm("Etes-vous sur ?");
+        // if(confirms);
         console.log(response);
         this.reloadData()
       }

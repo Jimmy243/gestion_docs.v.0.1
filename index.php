@@ -35,6 +35,19 @@ $router->map('POST','/department/delete',function(){
   require "controllers/department/deleteDepartment.php";
 },'department_delete');
 
+
+
+$router->map('GET','/personnel',function(){
+  require "views/personnel/personnel.php";
+},'personnel');
+
+$router->map('GET','/reception',function(){
+  require "views/reception/reception.php";
+},'reception');
+
+$router->map('GET','/factures',function(){
+  require "views/reception/facture.php";
+},'factures');
 // echo '<br>';
 // use Firebase\JWT\JWT;
 // $payload = [

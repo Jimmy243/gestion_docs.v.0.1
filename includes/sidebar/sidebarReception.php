@@ -4,23 +4,23 @@
                     <ul>
                         <!-- <li class="menu-title">Main</li> -->
                         <li class="active">
-                            <a href=""><i class="fa fa-dashboard"></i> <span>Tableau de board</span></a>
+                            <a href="/reception"><i class="fa fa-dashboard"></i> <span>Tableau de board</span></a>
                         </li>
 						<li>
-                            <a href="personnel"><i class="fa fa-user-md"></i> <span>Personnels</span></a>
+                            <a href="/personnels"><i class="fa fa-user-md"></i> <span>Personnels</span></a>
                         </li>
                         <li>
-                            <a href="/department"><i class="fa fa-wheelchair"></i> <span>Département</span></a>
+                            <a href="/factures"><i class="fa fa-wheelchair"></i> <span>Factures</span></a>
                         </li>
                         <li>
-                            <a href="appointments.html"><i class="fa fa-calendar"></i> <span>Docs & Factures</span></a>
+                            <a href="/documents"><i class="fa fa-calendar"></i> <span>Documents</span></a>
                         </li>
                         <li>
-                            <a href="schedule.html"><i class="fa fa-calendar-check-o"></i> <span>Performances</span></a>
+                            <a href="/appointment"><i class="fa fa-calendar-check-o"></i> <span>Gestion de rendez-vous</span></a>
                         </li>
-                        <li>
+                        <!-- <li>
                             <a href="departments.html"><i class="fa fa-hospital-o"></i> <span>Departments</span></a>
-                        </li>
+                        </li> -->
 						
                     </ul>
                 </div>
