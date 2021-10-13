@@ -12,13 +12,13 @@
           <a href="/department"><i class="fa fa-wheelchair"></i> <span>Département</span></a>
         </li>
         <li>
-          <a href="appointments.html"><i class="fa fa-calendar"></i> <span>Docs & Factures</span></a>
+          <a href=""><i class="fa fa-calendar"></i> <span>Docs & Factures</span></a>
         </li>
         <li>
-          <a href="schedule.html"><i class="fa fa-calendar-check-o"></i> <span>Performances</span></a>
+          <a href=""><i class="fa fa-calendar-check-o"></i> <span>Performances</span></a>
         </li>
         <li>
-          <a href="departments.html"><i class="fa fa-hospital-o"></i> <span>Departments</span></a>
+          <a href=""><i class="fa fa-hospital-o"></i> <span>Departments</span></a>
         </li>
       </ul>
     </div>

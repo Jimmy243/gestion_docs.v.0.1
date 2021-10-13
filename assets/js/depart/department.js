@@ -5,7 +5,8 @@ const vue = new Vue({
           tabDepartment: [],
           setNameD: '',
           editNameD: '',
-          editIdD: 0
+          editIdD: 0,
+
         }
     },
     computed: {
@@ -26,6 +27,7 @@ const vue = new Vue({
       getData(data){
         this.tabDepartment = data.error?[]:data
         console.log(data);
+
       },
       setDepartment(){
         $.ajax({
@@ -43,10 +45,11 @@ const vue = new Vue({
         console.log(response);
         this.reloadData()
       },
-      editDepartment(){
+      editDepartment(){ 
+        console.log(200);
         if(!this.editNameD || !this.editIdD)
         return;
-
+ 
         $.ajax({
           type: "POST",
           url: "/department/edit",
@@ -55,7 +58,9 @@ const vue = new Vue({
           dataType: "JSON",
           success: this.editDepartmentResult,
           error: function(req, err){ console.log('message: ' + err) }
-        });
+      
+      });
+
       },
       editDepartmentResult(response){
         console.log(response);
@@ -67,10 +72,11 @@ const vue = new Vue({
         this.editIdD = depart && depart.IdD
 
         console.log(depart);
-        this.editDepartment();
+        // this.editDepartment();
       },
       deleteDepartment(id){ 
 
+  
         Swal.fire({
           title: 'Are you sure?',
           text: "You won't be able to revert this!",
@@ -79,12 +85,14 @@ const vue = new Vue({
           confirmButtonColor: '#3085d6',
           cancelButtonColor: '#d33',
           confirmButtonText: 'Yes, delete it!'
-        }).then( result => this.isAccepts(result.isConfirmed,id))
+        }).then((result) => this.isAccepts(result.isConfirmed,id))
 
+       
+
+        
       },
       isAccepts(result,id){
-        console.log(result);
-        if(!result) return
+        if(!result) return 
         const depart = this.tabDepartment.find( (element,index) => index === id)
         $.ajax({
           type: "POST",
@@ -97,6 +105,15 @@ const vue = new Vue({
         });
       },
       deleteDepartmentResult(response){
+       if(response.error){
+
+       }else{
+        Swal.fire(
+          'Deleted!',
+          'Your file has been deleted.',
+          'success'
+        )
+       }
         console.log(response);
         if(response.error){
 
