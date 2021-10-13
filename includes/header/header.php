@@ -1,3 +1,41 @@
+<?php
+  include dirname(dirname(__DIR__)).DIRECTORY_SEPARATOR."controllers".DIRECTORY_SEPARATOR."auth".DIRECTORY_SEPARATOR."verifyToken.php";
+  if(!empty($_COOKIE['gestion_doc']))
+  {
+    $token = $_COOKIE['gestion_doc'];
+    $payload = verifyToken($token);
+    if(!empty($url))
+    {
+      // Admin et Receptioniste
+      $tab = ["department","personnel"];
+      if(in_array($url,$tab))
+      {
+        if($payload['role'] != "Admin" AND $payload['role'] != "Receptioniste")
+          header("location: /profile");
+      }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  }else{
+    header("location: /login");
+  }
+?>
 <div class="header">
 			<div class="header-left">
 				<a href="index.html" class="logo">
@@ -91,16 +129,16 @@
 						<span>Admin</span>
                     </a>
 					<div class="dropdown-menu">
-						<a class="dropdown-item" href="profile.html">Mon profile</a>
-						<a class="dropdown-item" href="login.html">Se deconnecter</a>
+						<a class="dropdown-item" href="/profile">Mon profile</a>
+						<a class="dropdown-item" href="/logout">Se deconnecter</a>
 					</div>
                 </li>
             </ul>
             <div class="dropdown mobile-user-menu float-right">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
                 <div class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item" href="profile.html">Mon profile</a>
-                    <a class="dropdown-item" href="login.html">Se deconnecter</a>
+                    <a class="dropdown-item" href="/profile">Mon profile</a>
+                    <a class="dropdown-item" href="/logout">Se deconnecter</a>
                 </div>
             </div>
         </div>

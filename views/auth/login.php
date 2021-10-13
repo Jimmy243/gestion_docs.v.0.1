@@ -41,7 +41,7 @@
   </div>
   <?php include "includes/js/js.php"; ?>
 
-  <script src="/assets/js/login/login.js" defer></script>
+  <script src="/assets/js/auth/login.js" defer></script>
 </body>
 
 

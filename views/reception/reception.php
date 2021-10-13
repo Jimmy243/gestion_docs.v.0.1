@@ -7,10 +7,10 @@
 <body>
     <div class="main-wrapper">
         <!-- Header -->
-         <?php require "includes/header/headerReception.php"; ?>
+         <?php require "includes/header/header.php"; ?>
         <!-- End -->
         <!-- Sidebar -->
-        <?php require "includes/sidebar/sidebarReception.php"; ?>
+        <?php require "includes/sidebar/sidebar.php"; ?>
       <!--   Section Slider -->
 
         <div class="page-wrapper">

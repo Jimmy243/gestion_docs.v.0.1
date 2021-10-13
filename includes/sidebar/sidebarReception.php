@@ -7,10 +7,10 @@
                             <a href="/reception"><i class="fa fa-dashboard"></i> <span>Tableau de board</span></a>
                         </li>
 						<li>
-                            <a href="/personnels"><i class="fa fa-user-md"></i> <span>Personnels</span></a>
+                            <a href="/personnel"><i class="fa fa-user-md"></i> <span>Personnels</span></a>
                         </li>
                         <li>
-                            <a href="/factures"><i class="fa fa-wheelchair"></i> <span>Factures</span></a>
+                            <a href="/facture"><i class="fa fa-wheelchair"></i> <span>Factures</span></a>
                         </li>
                         <li>
                             <a href="/documents"><i class="fa fa-calendar"></i> <span>Documents</span></a>

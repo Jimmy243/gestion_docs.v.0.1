@@ -71,36 +71,35 @@
           </div>
           <!--  -->
           <div class="card-box">
-            <h3 class="card-title">Pl</h3>
+            <h3 class="card-title">Plusi informations sur le personnel</h3>
             <div class="row">
               <div class="col-md-12">
                 <div class="form-group form-focus">
-                  <!-- <label class="focus-label">Adresse</label> -->
+                  <label class="focus-label">Adresse</label>
                   <input type="text" class="form-control floating" />
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group form-focus">
-                  <!-- <label class="focus-label">Province</label> -->
+                  <label class="focus-label">Province</label>
                   <input type="text" class="form-control floating"  />
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group form-focus">
-                  <!-- <label class="focus-label">Email</label> -->
+                  <label class="focus-label">Email</label>
                   <input type="text" class="form-control floating" />
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group form-focus">
-                  <!-- 
-<label class="focus-label">Personnel</label> -->
+                  <label class="focus-label">Personnel</label>
                   <input type="text" class="form-control floating" />
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-group form-focus">
-                  <!-- <label class="label">Mobile</label> -->
+                  <label class="focus-label">Mobile</label>
                   <input type="text" class="form-control floating" />
                 </div>
               </div>

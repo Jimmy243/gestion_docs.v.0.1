@@ -8,6 +8,10 @@ $router->map('GET','/',function(){
     require "controllers/home.php";
 },'home');
 
+$router->map('GET','/home',function(){
+  require "controllers/home.php";
+},'_home');
+
 
 // Params
 // $router->map('GET','/department/[i:IdD]',function($IdD){
@@ -16,12 +20,22 @@ $router->map('GET','/',function(){
 
 /** LOGIN */
 $router->map('GET','/login',function(){
-  require "views/login.php";
+  require "views/auth/login.php";
 },'login');
+
+$router->map('GET','/logout',function(){
+  require "controllers/auth/logout.php";
+},'logout');
+
+$router->map('POST','/login/set',function(){
+  require "controllers/auth/login.php";
+},'login_set');
 
 /** DEPARTMENT ROUTE */
 $router->map('GET','/department',function(){
+  $url = "department";
   require "views/department/department.php";
+  // authentication($payload);
 },'department');
 // get department
 $router->map('GET','/department/get',function(){
@@ -42,6 +56,7 @@ $router->map('POST','/department/delete',function(){
 
 /** PERSONNEL ROUTE */
 $router->map('GET','/personnel',function(){
+  $url= "personnel";
   require "views/personnel/personnel.php";
 },'personnel');
 // get personnel
@@ -63,6 +78,21 @@ $router->map('GET','/personnel/edit/[i:id]',function($id){
   echo "<script> var idPersonnel=$id </script>";
   echo '</body></html>';
 },'personnel_edit');
+
+/** RECEPTION ROUTE */
+$router->map('GET','/reception',function(){
+  require "views/reception/reception.php";
+},'reception');
+
+/** FACTURE ROUTE */
+$router->map('GET','/facture',function(){
+  require "views/reception/facture.php";
+},'facture');
+
+// profile
+$router->map('GET','/profile',function(){
+  require "views/personnel/profile.php";
+},'profile');
 
 
 // echo '<br>';
@@ -96,3 +126,9 @@ $router->map('GET','/personnel/edit/[i:id]',function($id){
       echo 403;
     header( $_SERVER["SERVER_PROTOCOL"] . ' 404 Not Found');
   }
+
+  // function authentication($payload)
+  // {
+  //   if($payload['role'] !== "Admin" OR $payload['role'] !== "Receptioniste")
+  //     header("location: /profile");
+  // }

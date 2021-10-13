@@ -10,6 +10,7 @@
   <div class="main-wrapper">
   <!-- Header -->
   <?php require"includes/header/header.php"; ?>
+
   <!-- End -->
   <!-- Sidebar -->
   <?php require"includes/sidebar/sidebar.php"; ?>
@@ -20,10 +21,13 @@
       <div class="col-sm-5 col-5">
         <h4 class="page-title">Departments</h4>
       </div>
+      <!-- Admin only -->
+      <?php if($payload['role'] === "Admin") { ?>
       <div class="col-sm-7 col-7 text-right m-b-30">
         <a href="add-department.html" class="btn btn-primary btn-rounded" 
-        data-toggle="modal" data-target="#ajoutDepart"><i class="fa fa-plus"></i> Add Department</a>
+        data-toggle="modal" data-target="#ajoutDepart"><i class="fa fa-plus"></i> Ajout Department</a>
       </div>
+      <?php } ?>
     </div>
     <div class="row">
       <div class="col-md-12">
@@ -34,13 +38,18 @@
                 <tr>
                   <th>#</th>
                   <th>Department Name</th>
+                  <!-- Admin only -->
+                  <?php if($payload['role'] === "Admin") { ?>
                   <th  class="text-right">Action</th>
+                  <?php } ?>
                 </tr>
               </thead>
               <tbody>
                 <tr v-for="(item,id) in tabDepartment" :key="item.id">
                   <td >{{id+1}}</td>  
                   <td >{{item.NameD}}</td>  
+                  <!-- Admin only -->
+                  <?php if($payload['role'] === "Admin") { ?>
                   <td class="text-right">
                   <button type="button" class="btn btn-primary edit"
                   data-toggle="modal" data-target="#editDepart"
@@ -50,6 +59,7 @@
                   v-on:click="deleteDepartment(id)">
                   delete</button>
                   </td>  
+                  <?php } ?>
                 </tr>
               </tbody>
             </table>

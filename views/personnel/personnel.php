@@ -21,6 +21,8 @@
             <div class="col-sm-4 col-3">
               <h4 class="page-title">PERSONNEL(ELLE)S</h4>
             </div>
+            <!-- Admin only -->
+            <?php if($payload['role'] === "Admin") { ?>
             <div class="col-sm-8 col-9 text-right m-b-20">
               <button type="button" @click="getDepartment" class="btn btn-primary btn-rounded float-right" data-toggle="modal" data-target="#ajoutPersonnel" v-on:click="getDepartment">
                 <i class="fa fa-plus"></i>
@@ -55,8 +57,7 @@
               </div>
             </div>
           </div>
-
-
+          <?php } ?>
 
           <div class="row">
             <div class="col-md-12">
@@ -69,14 +70,18 @@
                         <div class="doctor-img">
                           <a class="avatar" href="#"><img alt="" v-bind:src="item.Images"></a>
                         </div>
+                        <!-- Admin only -->
+                        <?php if($payload['role'] === "Admin") { ?>
                         <div class="dropdown profile-action">
                           <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
                           <div class="dropdown-menu dropdown-menu-right">
                             <a class="dropdown-item" :href="'/personnel/edit/'+item.Id"><i class="fa fa-pencil m-r-5"></i> Editer</a>
-                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_doctor"><i class="fa fa-trash-o m-r-5"></i> Supprimer</a>
+                            <a class="dropdown-item" :href="'/personnel/delete/'+item.Id" data-toggle="modal" data-target="#delete_doctor"><i class="fa fa-trash-o m-r-5"></i> Supprimer</a>
+                            <a class="dropdown-item" :href="/personnel/+item.Id" data-toggle="modal" data-target="#view_pers"><i class="fa fa-trash-o m-r-5"></i> Voir</a>
                           </div>
                         </div>
-                        <h4 class="doctor-name text-ellipsis"><a href="#" class="profile">{{item.Fullname}}</a></h4>
+                        <?php } ?>
+                        <h4 class="doctor-name text-ellipsis">{{item.Fullname}}</h4>
                         <div class="doc-prof">{{item.Functions}}</div>
                         <div class="user-country">
                           <i class="fa fa-map-marker"></i>

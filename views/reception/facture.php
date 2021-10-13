@@ -7,10 +7,10 @@
 <body>
     <div class="main-wrapper">
         <!-- Header -->
-         <?php include"includes/header/headerReception.php"; ?>
+         <?php include"includes/header/header.php"; ?>
         <!-- End -->
         <!-- Sidebar -->
-        <?php include"includes/sidebar/sidebarReception.php"; ?>
+        <?php include"includes/sidebar/sidebar.php"; ?>
       <!--   Section Slider -->
 
         <div class="page-wrapper">

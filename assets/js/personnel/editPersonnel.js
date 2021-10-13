@@ -16,7 +16,8 @@ const vue = new Vue({
         url: "/personnel/get/"+idPersonnel,
         dataType: "json",
         contentType: "application/json",
-        success: this.getOnePersonnelResult
+        success: this.getOnePersonnelResult,
+        error: function(req, err){ console.log('message: ' + err); }
       });
     },
     getOnePersonnelResult(response){
