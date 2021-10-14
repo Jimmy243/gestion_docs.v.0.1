@@ -2,7 +2,7 @@
 include dirname(__DIR__).DIRECTORY_SEPARATOR."connection.php";
 
 function setDepartment(){ 
-  header('Content-Type:application/json');
+  // header('Content-Type:application/json');
   $data = json_decode(file_get_contents('php://input'),true);
   if(empty($data['NameD'])){
     $tab = [
@@ -13,9 +13,11 @@ function setDepartment(){
   }
   $db = Connecter();
   $NameD = htmlspecialchars(trim($data['NameD']));
-  $sql1 = "SELECT IdD FROM department WHERE NameD='$NameD'";
-  $req1 = $db->query($sql1);
+  $sql1 = "SELECT IdD FROM department WHERE NameD=?";
+  $req1 =$db->prepare($sql1);
+  $req1->execute(array($NameD));
   $data1 = $req1->fetch();
+
   if(!empty($data1)){
     $tab = [
       "error" => "Le Departement que vous venez d'ajouter existe deja."

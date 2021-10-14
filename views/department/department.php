@@ -70,7 +70,7 @@
   </div>
 </div>
 
-            <!-- ajout department -->
+            <!-- ajout department modal -->
 
 <div class="modal" tabindex="-1" role="dialog" id="ajoutDepart">
   <div class="modal-dialog" role="document">
@@ -102,7 +102,9 @@
     </div>
   </div>
 </div>
-<!-- Editer departement -->
+
+<!-- Editer departement modal-->
+
 <div class="modal" tabindex="-1" role="dialog" id="editDepart">
   <div class="modal-dialog" role="document">
     <div class="modal-content">

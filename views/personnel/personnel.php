@@ -62,7 +62,7 @@
           <div class="row">
             <div class="col-md-12">
               <div class="card">
-                <div id="message"></div>
+                <div id="message"></div> 
                 <div class="card-body">
                   <div class="row doctor-grid">
                     <div class="col-md-4 col-sm-4  col-lg-3" v-for="(item,id) in tabPersonnel" :key="item.id">

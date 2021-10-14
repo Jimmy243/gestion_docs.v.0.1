@@ -13,9 +13,11 @@ function setDepartment(){
   }
   $db = Connecter();
   $IdD = htmlspecialchars(trim($data['IdD']));
-  $sql1 = "SELECT IdD FROM department WHERE IdD='$IdD'";
-  $req1 = $db->query($sql1);
+  $sql1 = "SELECT IdD FROM department WHERE IdD=?";
+  $req1 =$db->prepare($sql1);
+  $req1->execute(array($IdD));
   $data1 = $req1->fetch();
+
   if(empty($data1)){
     $tab = [
       "error" => "Le Departement que vous voulez supprimer n'existe pas."
@@ -24,8 +26,7 @@ function setDepartment(){
     exit;
   }
 
-
-  $sql2 = "DELETE FROM department WHERE IdD='$IdD'";
+  $sql2 = "DELETE FROM department WHERE IdD=?";
   $req2 =$db->prepare($sql2);
   $data2 =$req2->execute(array($IdD));
   

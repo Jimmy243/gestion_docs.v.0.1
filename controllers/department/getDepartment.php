@@ -21,6 +21,3 @@ function getDepartment(){
    }
 }
 getDepartment();
-
-
-?>
