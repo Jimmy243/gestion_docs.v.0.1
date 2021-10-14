@@ -76,7 +76,7 @@
               <div class="col-md-12">
                 <div class="form-group form-focus">
                   <label class="focus-label">Adresse</label>
-                  <input type="text" class="form-control floating" />
+                  <input type="text" class="form-control floating" v-model="personnel.Addresss" />
                 </div>
               </div>
               <div class="col-md-6">
@@ -93,7 +93,7 @@
               </div>
               <div class="col-md-6">
                 <div class="form-group form-focus">
-                  <label class="focus-label">Personnel</label>
+                  <label class="focus-label">Fonction</label>
                   <input type="text" class="form-control floating" />
                 </div>
               </div>
@@ -103,6 +103,19 @@
                   <input type="text" class="form-control floating" />
                 </div>
               </div>
+              <div class="col-md-6">
+                <div class="form-group form-focus">
+                  <label class="focus-label">Status</label>
+                  <input type="text" class="form-control floating" />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group form-focus">
+                  <label class="focus-label">Role</label>
+                  <input type="text" class="form-control floating" />
+                </div>
+              </div>
+
             </div>
           </div>
           <div class="text-center m-t-20">
