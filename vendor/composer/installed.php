@@ -1,22 +1,22 @@
 <?php return array(
     'root' => array(
-        'pretty_version' => 'dev-feature/architecture',
-        'version' => 'dev-feature/architecture',
+        'pretty_version' => 'dev-develop',
+        'version' => 'dev-develop',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '53e68837a0be34fb7048d754fa1e9a3c0aaa99ad',
+        'reference' => '011717105d80501e53d71d9776445a6c6a0cb624',
         'name' => '__root__',
         'dev' => true,
     ),
     'versions' => array(
         '__root__' => array(
-            'pretty_version' => 'dev-feature/architecture',
-            'version' => 'dev-feature/architecture',
+            'pretty_version' => 'dev-develop',
+            'version' => 'dev-develop',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '53e68837a0be34fb7048d754fa1e9a3c0aaa99ad',
+            'reference' => '011717105d80501e53d71d9776445a6c6a0cb624',
             'dev_requirement' => false,
         ),
         'altorouter/altorouter' => array(
