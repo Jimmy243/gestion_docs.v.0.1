@@ -1,8 +1,9 @@
 <?php
 include dirname(__DIR__).DIRECTORY_SEPARATOR."connection.php";
+include dirname(__DIR__).DIRECTORY_SEPARATOR."auth".DIRECTORY_SEPARATOR."authentification.php";
 
-function getDepartment(){
-    header('Content-Type:application/json');
+function getDepartment($url){
+  authentification($url);
     $db = Connecter();
     $sql = "SELECT NameD, IdD FROM department";
     $req = $db->query($sql);
@@ -20,4 +21,4 @@ function getDepartment(){
       
    }
 }
-getDepartment();
+getDepartment($url);

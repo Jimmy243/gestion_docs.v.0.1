@@ -21,9 +21,9 @@ function setDepartment(){
   $req = $db->prepare($sql);
   $req->execute(array($email));
   $data = $req->fetch(PDO::FETCH_ASSOC);
-// admin 0e9f233b jule9@gmail.com
-// receptioniste: 0a47adbb sadock@gmail.com
-// user: 05455778 charles@gmail.com 
+// admin  admin@gmail.com
+// receptioniste:  e254c860 jean@gmail.com
+// user: b65be901 jule@gmail.com 
 
   if(!empty($data))
   {

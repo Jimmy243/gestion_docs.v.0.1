@@ -62,7 +62,6 @@ const vue = new Vue({
         console.log(response.error);
       } else {
         this.tabPersonnel = response;
-        console.log(response);
       }
     },
     setPersonnel() {
@@ -104,7 +103,7 @@ const vue = new Vue({
       } else if (response.login) document.location.assign("/login");
       else if (response.auth)
         Swal.fire("Erreur de l'authentification!", response.auth, "error");
-      else if (response.message) {
+      else{
         this.email_login = response.email;
         this.password_login = response.password;
         this.isError = false;
@@ -130,10 +129,9 @@ const vue = new Vue({
       });
     },
     getDepartmentResult(response) {
-      if (response.Erreur) {
-        console.log(response);
-      } else this.tabDepartment = response;
-      console.log(this.tabDepartment);
+      if (response.error || response.auth) console.log(response);
+      else if(response.login) document.location.assign("/login");
+      else this.tabDepartment = response;
     },
   },
 });

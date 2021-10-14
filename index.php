@@ -76,6 +76,11 @@ $router->map('GET','/personnel/edit/[i:id]',function($id,$url){
   echo "<script> var idPersonnel=$id </script>";
   echo '</body></html>';
 },'personnel_edit');
+// set edit personnel
+$router->map('POST','/personnel/edit/[i:id]',function($id,$url){
+  require "controllers/personnel/editPersonnel.php";
+},'personnel_edit_post');
+
 
 /** RECEPTION ROUTE */
 $router->map('GET','/reception',function($url){

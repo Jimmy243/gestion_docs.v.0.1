@@ -1,8 +1,9 @@
 <?php
 include dirname(__DIR__).DIRECTORY_SEPARATOR."connection.php";
+include dirname(__DIR__).DIRECTORY_SEPARATOR."auth".DIRECTORY_SEPARATOR."authentification.php";
 
-function getPersonnel(){
-    header('Content-Type:application/json');
+function getPersonnel($url){
+  authentification($url);
     $db = Connecter();
     $sql = "SELECT Id,Fullname,Functions,DateB,Images,Addresss,NumberM,States,Gander,Mobile,Email,Roles,NameD FROM users LEFT OUTER JOIN department ON users.IdD = department.IdD WHERE users.Statuss='active'";
     $req = $db->query($sql);
@@ -14,4 +15,4 @@ function getPersonnel(){
       echo json_encode($tab);
    }else echo  json_encode(["error" => "Il n'y a pas de personnel "]);
 }
-getPersonnel();
+getPersonnel($url);

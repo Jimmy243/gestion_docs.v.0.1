@@ -18,6 +18,7 @@
       <div class="page-wrapper">
         <div class="content">
           <div class="row">
+            <div class="col-md-12">
             <div class="col-sm-4 col-3">
               <h4 class="page-title">PERSONNEL(ELLE)S</h4>
             </div>
@@ -28,6 +29,7 @@
                 <i class="fa fa-plus"></i>
                 AJOUT PERSONNEL
               </button>
+            </div>
             </div>
           </div>
           <!-- alert for message -->

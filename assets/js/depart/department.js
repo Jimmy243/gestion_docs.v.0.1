@@ -62,7 +62,7 @@ const vue = new Vue({
         },
       });
     },
-    editDepartmentResult(response) { console.log(response);
+    editDepartmentResult(response) { 
       $("#editDepart").modal("hide");
       if (response.error) Swal.fire("Erreur de modification!", response.error, "error");
       else if (response.login) document.location.assign("/login");

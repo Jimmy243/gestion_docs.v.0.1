@@ -1,9 +1,10 @@
 <?php
 include dirname(__DIR__) . DIRECTORY_SEPARATOR . "connection.php";
+include dirname(__DIR__).DIRECTORY_SEPARATOR."auth".DIRECTORY_SEPARATOR."authentification.php";
 
-function editDepartment()
+function editDepartment($url)
 {
-  header('Content-Type:application/json');
+  authentification($url);
   $data = json_decode(file_get_contents('php://input'), true);
 
   // test if NameD exist
@@ -72,4 +73,4 @@ function editDepartment()
   }
 }
 
-editDepartment();
+editDepartment($url);

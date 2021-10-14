@@ -141,10 +141,9 @@
   </div>
 
   <?php require "includes/js/js.php"; ?>
-  <script src="/assets/js/depart/department.js" defer></script>
   <script src="/assets/js/sweetAlert.js" defer></script>
-  <!-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
-<script>
+  <script src="/assets/js/depart/department.js" defer></script>
+
 
 </script>
 

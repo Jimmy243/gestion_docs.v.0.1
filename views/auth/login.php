@@ -10,11 +10,9 @@
     <div class="account-page">
       <div class="account-center">
         <div class="account-box">
-          <form  class="form-signin">
+          <form class="form-signin">
             <div class="account-logo">
-              <!-- <a href="index-2.html"><img src="assets/img/logo-dark.png" alt=""></a> -->
               Gestion ! Docs
-            </div>
             <div class="form-group">
               <label>Email</label>
               <input type="email" v-model="email" autofocus="" class="form-control" required>
@@ -31,7 +29,7 @@
               <label class="form-check-label" for="inlineCheckbox1">Souvenez-vous de moi</label>
             </div>
             <div class="form-group text-center">
-              <button type="button"  class="btn btn-primary account-btn" v-on:click="valider" >Se connecter</button>
+              <button type="button" class="btn btn-primary account-btn" v-on:click="valider">Se connecter</button>
             </div>
 
           </form>
@@ -43,8 +41,4 @@
 
   <script src="/assets/js/auth/login.js" defer></script>
 </body>
-
-
-<!-- login23:12-->
-
 </html>
