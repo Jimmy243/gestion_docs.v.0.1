@@ -1,8 +1,9 @@
 <?php
 include dirname(__DIR__).DIRECTORY_SEPARATOR."connection.php";
+include dirname(__DIR__).DIRECTORY_SEPARATOR."auth".DIRECTORY_SEPARATOR."authentification.php";
 
-function setDepartment(){ 
-  // header('Content-Type:application/json');
+function setDepartment($url){ 
+  authentification($url);
   $db = Connecter();
   $data = json_decode(file_get_contents('php://input'),true);
 
@@ -42,22 +43,24 @@ function setDepartment(){
   $password_encrypt=password_hash($passwordPlaintText,PASSWORD_BCRYPT);
 
   // gestion des images
-  $Images = 'assets/img/doctor-thumb-05.jpg';
+  $Images = 'assets/img/doctor-thumb-05.PNG';
 
   // gestion des ststus-role
   $status = "Active";
   $roles = "User";
 
-  $sql1="SELECT IdD FROM department WHERE IdD='$IdD'";
-  $req1=$db->query($sql1);
+  $sql1 = "SELECT IdD FROM department WHERE IdD=?";
+  $req1 = $db->prepare($sql1);
+  $req1->execute(array($IdD));
   $data1 = $req1->fetch();
   if(empty($data1)) {
     echo json_encode([ "error" => 'Le departement n\'existe pas']);
     exit;
   }
 
-  $sql2="SELECT Email FROM users WHERE Email='$Email'";
-  $req2=$db->query($sql2);
+  $sql2="SELECT Email FROM users WHERE Email=?";
+  $req2 = $db->prepare($sql2);
+  $req2->execute(array($Email));
   $data2 = $req2->fetch();
   if(!empty($data2)) 
   {
@@ -79,4 +82,4 @@ function setDepartment(){
     echo json_encode([ "error" => $th ]);
   }
 }
-setDepartment();
+setDepartment($url);

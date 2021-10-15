@@ -100,7 +100,7 @@
                <div class="col-md-4">
                    <div class="form-group">
                        <label for="DateE">Echeance du traitement document</label>
-                       <input type="number" name="DateE" id="DateE" class="form-control" required>
+                       <input type="date" name="DateE" id="DateE" class="form-control" required>
                    </div>
                </div>
                <div class="col-md-4">

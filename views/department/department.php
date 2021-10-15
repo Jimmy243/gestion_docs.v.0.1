@@ -70,7 +70,7 @@
   </div>
 </div>
 
-            <!-- ajout department -->
+            <!-- ajout department modal -->
 
 <div class="modal" tabindex="-1" role="dialog" id="ajoutDepart">
   <div class="modal-dialog" role="document">
@@ -102,7 +102,9 @@
     </div>
   </div>
 </div>
-<!-- Editer departement -->
+
+<!-- Editer departement modal-->
+
 <div class="modal" tabindex="-1" role="dialog" id="editDepart">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -139,10 +141,9 @@
   </div>
 
   <?php require "includes/js/js.php"; ?>
-  <script src="/assets/js/depart/department.js" defer></script>
   <script src="/assets/js/sweetAlert.js" defer></script>
-  <!-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
-<script>
+  <script src="/assets/js/depart/department.js" defer></script>
+
 
 </script>
 

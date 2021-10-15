@@ -17,51 +17,58 @@
       <div class="content">
         <div class="row">
           <div class="col-sm-12">
-            <h4 class="page-title">Editer Profil</h4>
+            <h4 class="page-title">Editer le profil du personnel</h4>
           </div>
         </div>
-        <form>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert" v-if="!personnel && message_error">
+          <strong>Erreur 401:</strong> {{message_error}}
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form v-else>
           <div class="card-box">
             <h3 class="card-title">Informations du personnel</h3>
             <div class="row">
               <div class="col-md-12">
                 <div class="profile-img-wrap">
-                  <img class="inline-block" src="/assets/img/doctor-thumb-05.jpg" alt="user" />
+                  <img class="inline-block" :src="'/'+personnel.Images" alt="user" />
                   <div class="fileupload btn">
                     <span class="btn-text">editer</span>
-                    <input class="upload" type="file" />
+                    <input class="upload" type="file" accept="image/*" />
                   </div>
                 </div>
                 <div class="profile-basic">
                   <div class="row">
                     <div class="col-md-6">
-                      <div class="form-group form-focus">
-                        <label class="focus-label">Noms</label>
-                        <input type="text" class="form-control floating" v-model="personnel.Fullname"/>
+                      <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="Fullname" placeholder="noms" v-model="personnel.Fullname">
+                        <label for="Fullname">Noms</label>
                       </div>
                     </div>
                     <div class="col-md-6">
-                      <div class="form-group form-focus">
-                        <label class="focus-label">Departement</label>
-                        <input type="text" class="form-control floating" />
+                      <div class="form-floating">
+                        <select class="form-select" id="Department" aria-label="Floating label select example"  v-model="personnel.IdD">
+                          <option disabled selected value="selected"> Selectionner un departement</option>
+                          <option v-for="(item,id) in tabDepartment" :key="item.id" v-bind:value="item.IdD">{{item.NameD}}</option>
+                        </select>
+                        <label for="Department">Departement</label>
                       </div>
                     </div>
                     <div class="col-md-6">
-                      <div class="form-group form-focus">
-                        <label class="focus-label">Date de naissance</label>
-                        <div class="cal-icon">
-                          <input class="form-control floating datetimepicker" type="text" v-model="personnel.DateB" />
-                        </div>
+                      <div class="form-floating mb-3">
+                        <input type="date" class="form-control" id="DateB" placeholder="Date de naissance" v-model="personnel.DateB">
+                        <label for="DateB">Date de naissance</label>
                       </div>
                     </div>
                     <div class="col-md-6">
-                      <div class="form-group form-focus select-focus">
-                        <label class="focus-label">Genre</label>
-                        <select class="select form-control floating" v-model="personnel.Gander">
-                          <option disabled selected="">Selectionner le genre</option>
+                      <div class="form-floating">
+                        <select class="form-select" id="Gander" aria-label="Floating label select example" v-model="personnel.Gander">
+                          <option disabled selected=""></option>
                           <option value="Homme">Homme</option>
                           <option value="Femme">Femme</option>
                         </select>
+                        <label for="Gander">Selectionner le genre</label>
                       </div>
                     </div>
                   </div>
@@ -71,63 +78,67 @@
           </div>
           <!--  -->
           <div class="card-box">
-            <h3 class="card-title">Plusi informations sur le personnel</h3>
+            <h3 class="card-title">Plus d'informations sur le personnel</h3>
             <div class="row">
-              <div class="col-md-12">
-                <div class="form-group form-focus">
-                  <label class="focus-label">Adresse</label>
-                  <input type="text" class="form-control floating" v-model="personnel.Addresss" />
+              <div class="col-md-6">
+                <div class="form-floating mb-3">
+                  <input type="text" class="form-control" id="address" placeholder="Adresse" v-model="personnel.Addresss">
+                  <label for="address">Adresse</label>
                 </div>
               </div>
               <div class="col-md-6">
-                <div class="form-group form-focus">
-                  <label class="focus-label">Province</label>
-                  <input type="text" class="form-control floating"  />
+                <div class="form-floating mb-3">
+                  <input type="text" class="form-control" id="NumberM" placeholder="NumberM" v-model="personnel.NumberM">
+                  <label for="NumberM">Numero Matricule</label>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-floating">
+                  <select class="form-select" id="States" aria-label="Floating label select example" v-model="personnel.States">
+                    <option disabled selected value="selected"> Selectionner une province d'origine</option>
+                    <option v-for="(item,id) in tabPronvinces" :key="item.id" v-bind:value="item">{{item}}</option>
+                  </select>
+                  <label for="States">Province</label>
                 </div>
               </div>
               <div class="col-md-6">
-                <div class="form-group form-focus">
-                  <label class="focus-label">Email</label>
-                  <input type="text" class="form-control floating" />
+                <div class="form-floating mb-3">
+                  <input type="email" class="form-control" id="email" placeholder="email" v-model="personnel.Email">
+                  <label for="email">Email</label>
                 </div>
               </div>
-              <div class="col-md-6">
-                <div class="form-group form-focus">
-                  <label class="focus-label">Fonction</label>
-                  <input type="text" class="form-control floating" />
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group form-focus">
-                  <label class="focus-label">Mobile</label>
-                  <input type="text" class="form-control floating" />
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group form-focus">
-                  <label class="focus-label">Status</label>
-                  <input type="text" class="form-control floating" />
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group form-focus">
-                  <label class="focus-label">Role</label>
-                  <input type="text" class="form-control floating" />
-                </div>
-              </div>
+            </div>
 
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-floating mb-3">
+                  <input type="text" class="form-control" id="Functions" placeholder="fonction" v-model="personnel.Functions">
+                  <label for="Functions">Fonction</label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-floating mb-3">
+                  <input type="text" class="form-control" id="Mobile" placeholder="Mobile" v-model="personnel.Mobile">
+                  <label for="Mobile">Mobile</label>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="text-center m-t-20">
-            <button class="btn btn-primary submit-btn" type="button">
-              Enregistrer
-            </button>
-          </div>
-        </form>
       </div>
+      <div class="text-center m-t-20">
+        <button class="btn btn-primary submit-btn" type="button" v-on:click="valider()">
+          Enregistrer
+        </button>
+        <br><br>
+      </div>
+      </form>
     </div>
+  </div>
   </div>
   <?php include "includes/js/js.php"; ?>
 
+  <script src="/assets/js/sweetAlert.js" defer></script>
   <script src="/assets/js/personnel/editPersonnel.js" defer></script>
-
+  

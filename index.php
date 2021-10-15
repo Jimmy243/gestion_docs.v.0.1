@@ -4,11 +4,11 @@
 require 'vendor/autoload.php'; 
 
 $router = new AltoRouter();
-$router->map('GET','/',function(){
+$router->map('GET','/',function($url){
     require "controllers/home.php";
 },'home');
 
-$router->map('GET','/home',function(){
+$router->map('GET','/home',function($url){
   require "controllers/home.php";
 },'_home');
 
@@ -19,80 +19,101 @@ $router->map('GET','/home',function(){
 // });
 
 /** LOGIN */
-$router->map('GET','/login',function(){
+$router->map('GET','/login',function($url){
   require "views/auth/login.php";
 },'login');
 
-$router->map('GET','/logout',function(){
+$router->map('GET','/logout',function($url){
   require "controllers/auth/logout.php";
 },'logout');
 
-$router->map('POST','/login/set',function(){
+$router->map('POST','/login/set',function($url){
   require "controllers/auth/login.php";
 },'login_set');
 
 /** DEPARTMENT ROUTE */
-$router->map('GET','/department',function(){
+$router->map('GET','/department',function($url){
   $url = "department";
   require "views/department/department.php";
   // authentication($payload);
 },'department');
 // get department
-$router->map('GET','/department/get',function(){
+$router->map('GET','/department/get',function($url){
   require "controllers/department/getDepartment.php";
 },'department_get');
 // set department
-$router->map('POST','/department/set',function(){
+$router->map('POST','/department/set',function($url){
   require "controllers/department/setDepartment.php";
 },'department_set');
 // edit department
-$router->map('POST','/department/edit',function(){
+$router->map('POST','/department/edit',function($url){
   require "controllers/department/editDepartment.php";
 },'department_edit');
 // delete department
-$router->map('POST','/department/delete',function(){
+$router->map('POST','/department/delete',function($url){
   require "controllers/department/deleteDepartment.php";
 },'department_delete');
 
 /** PERSONNEL ROUTE */
-$router->map('GET','/personnel',function(){
-  $url= "personnel";
+$router->map('GET','/personnel',function($url){
   require "views/personnel/personnel.php";
 },'personnel');
 // get personnel
-$router->map('GET','/personnel/get',function(){
+$router->map('GET','/personnel/get',function($url){
   require "controllers/personnel/getPersonnel.php";
 },'personnel_get');
 // get One personnel
-$router->map('GET','/personnel/get/[i:id]',function($id){
+$router->map('GET','/personnel/get/[i:id]',function($id,$url){
   require "controllers/personnel/getOnePersonnel.php";
-  getOnePersonnel($id);
 },'personnel_get_one');
+// -- one personnel
+$router->map('GET','/personnel/[i:id]',function($id,$url){
+  require "views/personnel/getOnePersonnel.php";
+  echo "<script> var idPersonnel=$id </script>";
+  echo '</body></html>';
+},'personnel_one_get');
 // set personnel
-$router->map('POST','/personnel/set',function(){
+$router->map('POST','/personnel/set',function($url){
   require "controllers/personnel/setPersonnel.php";
 },'personnel_set');
 // edit personnel
-$router->map('GET','/personnel/edit/[i:id]',function($id){
+$router->map('GET','/personnel/edit/[i:id]',function($id,$url){
   require "views/personnel/editPersonnel.php";
   echo "<script> var idPersonnel=$id </script>";
   echo '</body></html>';
 },'personnel_edit');
+// set edit personnel
+$router->map('POST','/personnel/edit/[i:id]',function($id,$url){
+  require "controllers/personnel/editPersonnel.php";
+},'personnel_edit_post');
+// delete One personnel
+$router->map('POST','/personnel/delete',function($url){
+  require "controllers/personnel/deletePersonnel.php";
+},'personnel_one_delete');
 
 /** RECEPTION ROUTE */
-$router->map('GET','/reception',function(){
+$router->map('GET','/reception',function($url){
   require "views/reception/reception.php";
 },'reception');
 
 /** FACTURE ROUTE */
-$router->map('GET','/facture',function(){
+$router->map('GET','/facture',function($url){
+  $url = "facture";
   require "views/reception/facture.php";
 },'facture');
 
 // profile
-$router->map('GET','/profile',function(){
+$router->map('GET','/profile',function($url){
   require "views/personnel/profile.php";
 },'profile');
+
+
+// * FACCTURES PERSONNEL router *
+$router->map('GET','/factures',function(){
+  require "views/personnel/factures.php";
+},'factures');
+
+
 
 
 // echo '<br>';
@@ -119,7 +140,7 @@ $router->map('GET','/profile',function(){
   $match = $router->match();
 
   if( is_array($match) && is_callable( $match['target'] ) ) {
-
+    $match['params']['url'] = $match['name'];
     call_user_func_array( $match['target'], $match['params'] ); 
   } else {
     // no route was matched

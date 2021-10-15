@@ -78,8 +78,12 @@
         <!--  -->
         <div class="profile-tabs">
           <ul class="nav nav-tabs nav-tabs-bottom">
-            <li class="nav-item"><a class="nav-link active" href="#about-cont" data-toggle="tab">A propos</a></li>
-            <li class="nav-item"><a class="nav-link" href="#bottom-tab2" data-toggle="tab">Profil</a></li>
+            <?php  if($payload['role']==='User'){ ?> 
+            <li class="nav-item"><a class="nav-link active" href="#about-cont" data-toggle="tab">
+            Performance de mr {{tabPersonnel.Fullname}}
+            </a></li>
+            <?php } ?>
+            <li class="nav-item"><a class="nav-link" href="#bottom-tab2" data-toggle="tab">Listes de rendez-vous</a></li>
             <li class="nav-item"><a class="nav-link" href="#bottom-tab3" data-toggle="tab">Messages</a></li>
           </ul>
 

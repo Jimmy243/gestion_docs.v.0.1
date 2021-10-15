@@ -6,32 +6,20 @@
     $payload = verifyToken($token);
     if(!empty($url))
     {
-      // Admin et Receptioniste
-      $tab = ["department","personnel"];
-      if(in_array($url,$tab))
+      $tab1 = ["department","personnel"]; // Admin et Receptioniste
+      $tab2 = ["facture","appointment"]; // Receptioniste
+      if(in_array($url,$tab1))
       {
         if($payload['role'] != "Admin" AND $payload['role'] != "Receptioniste")
           header("location: /profile");
+      }else{
+        if(in_array($url,$tab2))
+        {
+          if($payload['role'] != "Receptioniste")
+            header("location: /profile");
+        }
       }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   }else{
     header("location: /login");
   }
