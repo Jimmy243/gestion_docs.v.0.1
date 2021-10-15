@@ -89,14 +89,19 @@ $router->map('GET','/reception',function($url){
 
 /** FACTURE ROUTE */
 $router->map('GET','/facture',function($url){
-  $url = "facture";
   require "views/reception/facture.php";
 },'facture');
+// set facture
+$router->map('POST','/facture/set',function($url){
+  require "controllers/reception/setFacture.php";
+},'facture_set');
 
 // profile
 $router->map('GET','/profile',function($url){
   require "views/personnel/profile.php";
 },'profile');
+
+
 
 
 // echo '<br>';
