@@ -87,9 +87,10 @@ $router->map('POST','/personnel/edit/[i:id]',function($id,$url){
   require "controllers/personnel/editPersonnel.php";
 },'personnel_edit_post');
 // delete One personnel
-$router->map('POST','/personnel/delete',function($url){
+$router->map('POST','/personnel/delete/[i:id]',function($id,$url){
   require "controllers/personnel/deletePersonnel.php";
 },'personnel_one_delete');
+
 
 /** RECEPTION ROUTE */
 $router->map('GET','/reception',function($url){
@@ -98,9 +99,12 @@ $router->map('GET','/reception',function($url){
 
 /** FACTURE ROUTE */
 $router->map('GET','/facture',function($url){
-  $url = "facture";
   require "views/reception/facture.php";
 },'facture');
+// set facture
+$router->map('POST','/facture/set',function($url){
+  require "controllers/reception/setFacture.php";
+},'facture_set');
 
 // profile
 $router->map('GET','/profile',function($url){
@@ -108,12 +112,12 @@ $router->map('GET','/profile',function($url){
 },'profile');
 
 
-// * FACCTURES PERSONNEL router *
+
+
+//Facture personnel -- Traitement
 $router->map('GET','/factures',function(){
   require "views/personnel/factures.php";
 },'factures');
-
-
 
 
 // echo '<br>';

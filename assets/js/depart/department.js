@@ -24,8 +24,11 @@ const vue = new Vue({
         },
       });
     },
-    getData(data) {
-      this.tabDepartment = data.error ? [] : data;
+    getData(response) {
+      if (response.error) console.log(data.error);
+      else if (response.login) document.location.assign("/login");
+      else if (response.auth) Swal.fire("Erreur de l'authentification!", response.auth, "error");
+      else this.tabDepartment = response
     },
     setDepartment() {
       $.ajax({

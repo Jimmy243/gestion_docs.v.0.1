@@ -5,7 +5,7 @@ include dirname(__DIR__).DIRECTORY_SEPARATOR."auth".DIRECTORY_SEPARATOR."authent
 function getPersonnel($url){
   authentification($url);
     $db = Connecter();
-    $sql = "SELECT Id,Fullname,Functions,DateB,Images,Addresss,NumberM,States,Gander,Mobile,Email,Roles,NameD FROM users LEFT OUTER JOIN department ON users.IdD = department.IdD WHERE users.Statuss='active'";
+    $sql = "SELECT Id,Fullname,Functions,DateB,Images,Addresss,NumberM,States,Gander,Mobile,Email,Roles,NameD,users.IdD FROM users LEFT OUTER JOIN department ON users.IdD = department.IdD WHERE users.Roles!='Admin' AND users.Statuss='active'";
     $req = $db->query($sql);
     $tab = [];
     while($data=$req->fetch(PDO::FETCH_ASSOC)){

@@ -32,7 +32,7 @@
             </div>
            <?php } ?>
             <!-- </div> -->
-          </div>
+        </div>
      <?php if($payload['role'] === "Admin") { ?>
           <!-- alert for message -->
           <div v-show="showAlert">
@@ -69,6 +69,7 @@
                 <div class="card-header">
                   <center>Liste de personnels deja enregistres</center>
                 </div>
+              <div class="card">
                 <div id="message"></div> 
                 <div class="card-body">
                   <div class="row doctor-grid">
@@ -83,7 +84,7 @@
                           <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
                           <div class="dropdown-menu dropdown-menu-right">
                             <a class="dropdown-item" :href="'/personnel/edit/'+item.Id"><i class="fa fa-pencil m-r-5"></i> Editer</a>
-                            <a class="dropdown-item"  v-on:click="deletePersonnel(id)"><i class="fa fa-trash-o m-r-5"></i> Supprimer</a>
+                            <a class="dropdown-item"  href="#" v-on:click="deletePersonnel(item.Id)" ><i class="fa fa-trash-o m-r-5"></i> Supprimer</a>
                             <a class="dropdown-item" :href="'/personnel/'+item.Id"><i class="fa fa-trash-o m-r-5"></i> Voir</a>
                           </div>
                         </div>
@@ -220,6 +221,7 @@
   </div>
 
   <?php include "includes/js/js.php"; ?>
+  <script src="/assets/js/sweetAlert.js" defer></script>
   <script src="assets/js/personnel/personnel.js" defer></script>
 
 </body>

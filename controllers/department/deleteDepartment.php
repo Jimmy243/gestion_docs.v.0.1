@@ -2,7 +2,7 @@
 include dirname(__DIR__).DIRECTORY_SEPARATOR."connection.php";
 include dirname(__DIR__).DIRECTORY_SEPARATOR."auth".DIRECTORY_SEPARATOR."authentification.php";
 
-function setDepartment($url){  
+function setDepartment($url){ 
   authentification($url);
   $data = json_decode(file_get_contents('php://input'),true);
   if(empty($data['IdD'])){

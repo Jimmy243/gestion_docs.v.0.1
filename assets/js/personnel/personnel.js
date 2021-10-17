@@ -135,11 +135,16 @@ const vue = new Vue({
       else this.tabDepartment = response;
     },
     
-     // 
-     deletePersonnel(id){
+    getDepartmentResult(response) {
+      if (response.error || response.auth) console.log(response);
+      else if(response.login) document.location.assign("/login");
+      else this.tabDepartment = response;
+    },
+  
+    deletePersonnel(id){
       Swal.fire({
         title: 'Es-tu sûr?',
-        text: "Vous ne pourrez pas revenir en arrière!",
+        text: "Vous voulez vraiment supprimer ce personnel!",
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
@@ -149,11 +154,11 @@ const vue = new Vue({
     },
     isAccepts(result,id){
       if(!result) return 
-      const pers = this.tabPersonnel.find( (element,index) => index === id)
+      // const pers = this.tabPersonnel.find( (element,index) =>  === id)
       $.ajax({
         type: "POST",
-        url: "/personnel/delete",
-        data: JSON.stringify({Id:pers.Id}),
+        url: `/personnel/delete/${id}`,
+        data: JSON.stringify({Id:id}),
         contentType: 'application/json',
         dataType: "JSON",
         success: this.deletePersonnelResult,
@@ -166,14 +171,16 @@ const vue = new Vue({
         }else{
          Swal.fire(
            'Supprimé!',
-           'Votre fichier a été supprimé.',
+           'Le personnel a été supprimé.',
            'success'
          )
+         this.getPersonnel()
         }
          console.log(response);
-         this.reloadData()
+        
        
     }
 
   },
+
 });
