@@ -43,8 +43,8 @@
         <!-- Pour le personnel -->
         <?php if($payload['role'] === "User"){ ?>
         <li>
-          <a href=""><i class="fa fa-calendar-check-o"></i> <span>Factures</span></a>
-        </li>
+          <a href="/factures"><i class="fa fa-calendar-check-o"></i> <span>Factures</span></a>
+        </li> 
         <li>
           <a href=""><i class="fa fa-calendar-check-o"></i> <span>Documents</span></a>
         </li>

@@ -26,7 +26,7 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <form v-else>
+        <form v-else id="setformp">
           <div class="card-box">
             <h3 class="card-title">Informations du personnel</h3>
             <div class="row">
@@ -35,20 +35,20 @@
                   <img class="inline-block" :src="'/'+personnel.Images" alt="user" />
                   <div class="fileupload btn">
                     <span class="btn-text">editer</span>
-                    <input class="upload" type="file" accept="image/*" />
+                    <input class="upload" type="file" accept="image/*" name="Images"  />
                   </div>
                 </div>
                 <div class="profile-basic">
                   <div class="row">
                     <div class="col-md-6">
                       <div class="form-floating mb-3">
-                        <input type="text" class="form-control" id="Fullname" placeholder="noms" v-model="personnel.Fullname">
+                        <input type="text" class="form-control" id="Fullname" name="Fullname" placeholder="noms" :value="personnel.Fullname">
                         <label for="Fullname">Noms</label>
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-floating">
-                        <select class="form-select" id="Department" aria-label="Floating label select example"  v-model="personnel.IdD">
+                        <select class="form-select" id="Department" aria-label="Floating label select example" name="IdD" :value="personnel.IdD">
                           <option disabled selected value="selected"> Selectionner un departement</option>
                           <option v-for="(item,id) in tabDepartment" :key="item.id" v-bind:value="item.IdD">{{item.NameD}}</option>
                         </select>
@@ -57,13 +57,13 @@
                     </div>
                     <div class="col-md-6">
                       <div class="form-floating mb-3">
-                        <input type="date" class="form-control" id="DateB" placeholder="Date de naissance" v-model="personnel.DateB">
+                        <input type="date" class="form-control" id="DateB" placeholder="Date de naissance" name="DateB" :value="personnel.DateB">
                         <label for="DateB">Date de naissance</label>
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-floating">
-                        <select class="form-select" id="Gander" aria-label="Floating label select example" v-model="personnel.Gander">
+                        <select class="form-select" id="Gander" aria-label="Floating label select example" name="Gander" :value="personnel.Gander">
                           <option disabled selected=""></option>
                           <option value="Homme">Homme</option>
                           <option value="Femme">Femme</option>
@@ -82,13 +82,13 @@
             <div class="row">
               <div class="col-md-6">
                 <div class="form-floating mb-3">
-                  <input type="text" class="form-control" id="address" placeholder="Adresse" v-model="personnel.Addresss">
+                  <input type="text" class="form-control" id="address" placeholder="Adresse" name="Addresss" :value="personnel.Addresss">
                   <label for="address">Adresse</label>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-floating mb-3">
-                  <input type="text" class="form-control" id="NumberM" placeholder="NumberM" v-model="personnel.NumberM">
+                  <input type="text" class="form-control" id="NumberM" placeholder="NumberM" name="NumberM" :value="personnel.NumberM">
                   <label for="NumberM">Numero Matricule</label>
                 </div>
               </div>
@@ -96,7 +96,7 @@
             <div class="row">
               <div class="col-md-6">
                 <div class="form-floating">
-                  <select class="form-select" id="States" aria-label="Floating label select example" v-model="personnel.States">
+                  <select class="form-select" id="States" aria-label="Floating label select example" name="States" :value="personnel.States">
                     <option disabled selected value="selected"> Selectionner une province d'origine</option>
                     <option v-for="(item,id) in tabPronvinces" :key="item.id" v-bind:value="item">{{item}}</option>
                   </select>
@@ -105,7 +105,7 @@
               </div>
               <div class="col-md-6">
                 <div class="form-floating mb-3">
-                  <input type="email" class="form-control" id="email" placeholder="email" v-model="personnel.Email">
+                  <input type="email" class="form-control" id="email" placeholder="email" name="Email" :value="personnel.Email">
                   <label for="email">Email</label>
                 </div>
               </div>
@@ -114,13 +114,13 @@
             <div class="row">
               <div class="col-md-6">
                 <div class="form-floating mb-3">
-                  <input type="text" class="form-control" id="Functions" placeholder="fonction" v-model="personnel.Functions">
+                  <input type="text" class="form-control" id="Functions" placeholder="fonction" name="Functions" :value="personnel.Functions">
                   <label for="Functions">Fonction</label>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="form-floating mb-3">
-                  <input type="text" class="form-control" id="Mobile" placeholder="Mobile" v-model="personnel.Mobile">
+                  <input type="text" class="form-control" id="Mobile" placeholder="Mobile" name="Mobile" :value="personnel.Mobile">
                   <label for="Mobile">Mobile</label>
                 </div>
               </div>

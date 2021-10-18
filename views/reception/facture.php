@@ -47,7 +47,7 @@
                     <div class="col-md-4">
                       <div class="form-group">
                         <label for="Functions">Reference</label>
-                        <input type="text" name="Reference" id="Reference" class="form-control" require>
+                        <input type="number" name="Reference" id="Reference" class="form-control" require>
                       </div>
                     </div>
                     <div class="col-md-4">
@@ -88,34 +88,24 @@
 
                   </div>
                   <!--  -->
-
-                  <!--  -->
                   <div class="row">
-                    <div class="col-md-4">
+                    <!-- <div class="col-md-4">
                       <div class="form-group">
                         <label for="Mobile">Date d'envoie</label>
                         <input type="date" name="DateEnreg" id="DateEnreg" class="form-control" required>
                       </div>
-                    </div>
-                    <div class="col-md-4">
-                      <div class="form-group">
-                        <label for="DateE">Echeance du traitement document</label>
-                        <input type="date" name="DateE" id="DateE" class="form-control" required>
-                      </div>
-                    </div>
+                    </div> -->
                     <div class="col-md-4">
                       <div class="form-group">
                         <label for="DateE">Facture</label>
                         <input type="file" name="Facture" id="Facture" class="form-control" required accept="image/jpeg,.png,.pdf,.doc,.docx">
                       </div>
                     </div>
-
-
                   </div>
                   <!--  -->
                   <div class="col-md-4">
                     <br />
-                    <button type="button" id="submit" class="btn btn-info btn-block" v-on:click="valider">
+                    <button type="button" id="submit" class="btn btn-info btn-block" v-on:click="valider()">
                       Envoyer
                     </button>
                   </div>

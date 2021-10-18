@@ -2,16 +2,16 @@ const vue = new Vue({
   el: "#app",
   data() {
     return {
-      Fullname: "",
-      Functions: "",
-      DateB: "",
-      Addresss: "",
-      NumberM: "",
-      States: 0,
-      Gander: "Homme",
-      Mobile: "",
-      Email: "",
-      IdD: "selected",
+      // Fullname: "",
+      // Functions: "",
+      // DateB: "",
+      // Addresss: "",
+      // NumberM: "",
+      // States: 0,
+      // Gander: "Homme",
+      // Mobile: "",
+      // Email: "",
+      // IdD: "selected",
       tabDepartment: [],
       tabPersonnel: [],
       tabPronvinces: [
@@ -34,14 +34,14 @@ const vue = new Vue({
         "Rutana",
         "Ruyigi",
       ],
-      message_error: [],
-      password_login: "",
-      email_login: "",
-      isError: false,
-      showAlert: false,
+      // message_error: [],
+      // password_login: "",
+      // email_login: "",
+      // isError: false,
+      // showAlert: false,
     };
   },
-  mounted() {
+  mounted() { 
     this.getPersonnel();
   },
   methods: {
@@ -64,58 +64,35 @@ const vue = new Vue({
         this.tabPersonnel = response;
       }
     },
-    setPersonnel() {
-      const personnel = {
-        Fullname: this.Fullname,
-        Functions: this.Functions,
-        DateB: this.DateB,
-        Addresss: this.Addresss,
-        States: this.tabPronvinces.find(
-          (province, index) => index === this.States
-        ),
-        Gander: this.Gander,
-        Mobile: this.Mobile,
-        Email: this.Email,
-        IdD: this.IdD === "selected" ? "" : this.IdD,
-        NumberM: this.NumberM,
-      };
-      console.log(personnel);
+    setPersonnel() { 
+      const formData = new FormData(document.getElementById('setformp'))
       $.ajax({
         type: "POST",
         url: "/personnel/set",
-        data: JSON.stringify(personnel),
-        dataType: "JSON",
-        contentType: "application/json",
+        data: formData,
+        contentType : false,
+        processData : false,
         success: this.setPersonnelResult,
         error: function (req, err) {
           console.log("message: " + err);
         },
       });
     },
-    setPersonnelResult(response) {
-      this.message_error = [];
+    setPersonnelResult(response) { 
+      let error = ""
       if (response.error) {
-        this.message_error = Array.isArray(response.error)
-          ? response.error
-          : [response.error];
-        this.isError = true;
-        $("#errorAlert").alert("show");
+        if(!Array.isArray(response.error)) error = response.error
+        else error = response.error[0]
+        Swal.fire("Erreur d'enregistrement!", error, "error");
       } else if (response.login) document.location.assign("/login");
       else if (response.auth)
         Swal.fire("Erreur de l'authentification!", response.auth, "error");
-      else{
-        this.email_login = response.email;
-        this.password_login = response.password;
-        this.isError = false;
+      else{ 
+        Swal.fire("Enregistrement reussi!",`Les informations de connexion: <br>email: <span style="font-weight: bold;">${response.password}</span><br>password: <span style="font-weight: bold;">${response.email}</span>`, "success");
         this.getPersonnel();
-        $("#successAlert").alert("show");
+        document.getElementById('setformp').reset()
       }
-      console.log(response);
       $("#ajoutPersonnel").modal("hide");
-      this.showAlert = true;
-    },
-    closeAlert() {
-      this.showAlert = false;
     },
     getDepartment() {
       $.ajax({
@@ -133,5 +110,52 @@ const vue = new Vue({
       else if(response.login) document.location.assign("/login");
       else this.tabDepartment = response;
     },
+    
+    getDepartmentResult(response) {
+      if (response.error || response.auth) console.log(response);
+      else if(response.login) document.location.assign("/login");
+      else this.tabDepartment = response;
+    },
+  
+    deletePersonnel(id){
+      Swal.fire({
+        title: 'Es-tu sûr?',
+        text: "Vous voulez vraiment supprimer ce personnel!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Oui, supprimez-le!'
+      }).then((result) => this.isAccepts(result.isConfirmed,id))
+    },
+    isAccepts(result,id){
+      if(!result) return 
+      $.ajax({
+        type: "POST",
+        url: `/personnel/delete/${id}`,
+        data: JSON.stringify({Id:id}),
+        contentType: 'application/json',
+        dataType: "JSON",
+        success: this.deletePersonnelResult,
+        error: function(req, err){ console.log('message: ' + err) }
+      });
+    },
+    deletePersonnelResult(response){
+        if(response.error){
+ 
+        }else{
+         Swal.fire(
+           'Supprimé!',
+           'Le personnel a été supprimé.',
+           'success'
+         )
+         this.getPersonnel()
+        }
+         console.log(response);
+        
+       
+    }
+
   },
+
 });

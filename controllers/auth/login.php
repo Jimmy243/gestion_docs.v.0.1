@@ -2,7 +2,6 @@
 include dirname(__DIR__).DIRECTORY_SEPARATOR."connection.php";
 include __DIR__.DIRECTORY_SEPARATOR."signToken.php";
 
-
 function setDepartment(){ 
   header('Content-Type:application/json');
   $data = json_decode(file_get_contents('php://input'),true);
@@ -22,7 +21,9 @@ function setDepartment(){
   $req->execute(array($email));
   $data = $req->fetch(PDO::FETCH_ASSOC);
 // admin  admin@gmail.com
-// receptioniste:  e254c860 jean@gmail.com
+// receptioniste:  b5fecd20 jean@gmail.com
+// user: b65be901 jule@gmail.com 
+
 // user: b65be901 jule@gmail.com   
 // base64_decode()
   if(!empty($data))

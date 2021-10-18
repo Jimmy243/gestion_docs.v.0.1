@@ -42,9 +42,10 @@ const vue = new Vue({
         error: function(req, err){ console.log('message: ' + err); }
       });
     },
-    getOnePersonnelResult(response){ console.log(response);
-      if (response.error || response.auth) this.message_error = response.error
+    getOnePersonnelResult(response){ 
+      if (response.error) Swal.fire("Erreur de la recuperation de donnees de ce personnel!", error, "error");
       else if(response.login) document.location.assign("/login");
+      else if(response.auth) Swal.fire("Erreur de l'authentification!", response.auth, "error");
       else {
         this.personnel = response;
         if(!this.personnel.NameD) this.personnel.IdD = 'selected'
@@ -66,24 +67,34 @@ const vue = new Vue({
       else if(response.login) document.location.assign("/login");
       else this.tabDepartment = response;
     },
-    valider(){ console.log(JSON.stringify(this.personnel));
+    valider(){
+      const formData = new FormData(document.getElementById('setformp'))
+      // formData.forEach((value,key) => console.log(`${key} : ${value}`));
       $.ajax({
         type: "POST",
         url: `/personnel/edit/${this.personnel.Id}`,
-        data: JSON.stringify(this.personnel),
-        dataType: "JSON",
-        contentType: "application/json",
+        data: formData,
+        contentType : false,
+        processData : false,
         success: this.validerResult,
         error: function (req, err) {
           console.log("message: " + err);
         },
       }); 
     },
-    validerResult(response){ console.log(response);
-      if (response.error) Swal.fire("Erreur de modification!", response.error, "error");
+    validerResult(response){ 
+      let error = ""
+      if (response.error){
+        if(!Array.isArray(response.error)) error = response.error
+        else error = response.error[0]
+        Swal.fire("Erreur de modification!", error, "error");
+      }
       else if (response.login) document.location.assign("/login");
       else if (response.auth) Swal.fire("Erreur de l'authentification!", response.auth, "error");
-      else if (response.message) Swal.fire("Modification reussi!", response.message, "success");
+      else if (response.message){
+        this.getOnePersonnel()
+        Swal.fire("Modification reussi!", response.message, "success");
+      } 
     }
   }
 })

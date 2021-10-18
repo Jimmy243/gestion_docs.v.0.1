@@ -22,9 +22,9 @@
           </div>
           <?php if($payload['role'] === "Admin"){ ?>
           <div class="col-sm-5 col-6 text-right m-b-30">
-            <a href="#" class="btn btn-primary btn-rounded"><i class="fa fa-plus"></i> Editer Profil</a>
+            <a :href="'/personnel/edit/'+personnel.Id" class="btn btn-primary btn-rounded"><i class="fa fa-plus"></i> Editer Profil</a>
           </div>
-          <?php } ?> 
+          <?php } ?>   
         </div>
         <div class="card-box profile-header">
           <div class="row">
@@ -32,16 +32,16 @@
               <div class="profile-view">
                 <div class="profile-img-wrap">
                   <div class="profile-img">
-                    <a href="#"><img class="avatar" src="assets/img/doctor-03.jpg" alt=""></a>
+                    <a href="#"><img class="avatar" :src="personnel.Images" alt=""></a>
                   </div>
                 </div>
                 <div class="profile-basic">
                   <div class="row">
                     <div class="col-md-5">
                       <div class="profile-info-left">
-                        <h3 class="user-name m-t-0 mb-0">{{tabPersonnel.Fullname}}</h3>
-                        <small class="text-muted">{{tabPersonnel.NameD}}</small>
-                        <div class="staff-id">Personnel ID : {{tabPersonnel.NumberM}}</div>
+                        <h3 class="user-name m-t-0 mb-0">{{personnel.Fullname}}</h3>
+                        <small class="text-muted">{{personnel.NameD}}</small>
+                        <div class="staff-id">Personnel ID : {{personnel.NumberM}}</div>
                         <div class="staff-msg"><a href="#" class="btn btn-primary">Envoyer Message</a></div>
                       </div>
                     </div>
@@ -49,23 +49,23 @@
                       <ul class="personal-info">
                         <li>
                           <span class="title">Phone:</span>
-                          <span class="text"><a href="#">{{tabPersonnel.Mobile}}</a></span>
+                          <span class="text"><a href="#">{{personnel.Mobile}}</a></span>
                         </li>
                         <li>
                           <span class="title">Email:</span>
-                          <span class="text"><a href="#">{{tabPersonnel.Email}}</a></span>
+                          <span class="text"><a href="#">{{personnel.Email}}</a></span>
                         </li>
                         <li>
                           <span class="title">Date de naissancce:</span>
-                          <span class="text">{{tabPersonnel.DateB}}</span>
+                          <span class="text">{{personnel.DateB}}</span>
                         </li>
                         <li>
                           <span class="title">Adresse:</span>
-                          <span class="text">714 Bujumbura  {{tabPersonnel.Addresss}}</span>
+                          <span class="text">714 Bujumbura  {{personnel.Addresss}}</span>
                         </li>
                         <li>
                           <span class="title">Genre:</span>
-                          <span class="text">{{tabPersonnel.Gander}}</span>
+                          <span class="text">{{personnel.Gander}}</span>
                         </li>
                       </ul>
                     </div>
@@ -78,8 +78,12 @@
         <!--  -->
         <div class="profile-tabs">
           <ul class="nav nav-tabs nav-tabs-bottom">
-            <li class="nav-item"><a class="nav-link active" href="#about-cont" data-toggle="tab">A propos</a></li>
-            <li class="nav-item"><a class="nav-link" href="#bottom-tab2" data-toggle="tab">Profil</a></li>
+            <?php  if($payload['role']==='User'){ ?> 
+            <li class="nav-item"><a class="nav-link active" href="#about-cont" data-toggle="tab">
+            Performance de mr {{personnel.Fullname}}
+            </a></li>
+            <?php } ?>
+            <li class="nav-item"><a class="nav-link" href="#bottom-tab2" data-toggle="tab">Listes de rendez-vous</a></li>
             <li class="nav-item"><a class="nav-link" href="#bottom-tab3" data-toggle="tab">Messages</a></li>
           </ul>
 

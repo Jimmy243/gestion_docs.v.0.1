@@ -66,6 +66,12 @@ $router->map('GET','/personnel/get',function($url){
 $router->map('GET','/personnel/get/[i:id]',function($id,$url){
   require "controllers/personnel/getOnePersonnel.php";
 },'personnel_get_one');
+// -- one personnel
+$router->map('GET','/personnel/[i:id]',function($id,$url){
+  require "views/personnel/getOnePersonnel.php";
+  echo "<script> var idPersonnel=$id </script>";
+  echo '</body></html>';
+},'personnel_one_get');
 // set personnel
 $router->map('POST','/personnel/set',function($url){
   require "controllers/personnel/setPersonnel.php";
@@ -80,6 +86,10 @@ $router->map('GET','/personnel/edit/[i:id]',function($id,$url){
 $router->map('POST','/personnel/edit/[i:id]',function($id,$url){
   require "controllers/personnel/editPersonnel.php";
 },'personnel_edit_post');
+// delete One personnel
+$router->map('POST','/personnel/delete/[i:id]',function($id,$url){
+  require "controllers/personnel/deletePersonnel.php";
+},'personnel_one_delete');
 
 
 /** RECEPTION ROUTE */
@@ -103,6 +113,11 @@ $router->map('GET','/profile',function($url){
 
 
 
+
+//Facture personnel -- Traitement
+$router->map('GET','/factures',function($url){
+  require "views/personnel/factures.php";
+},'factures');
 
 
 // echo '<br>';
