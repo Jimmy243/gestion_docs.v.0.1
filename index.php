@@ -115,10 +115,14 @@ $router->map('GET','/profile',function($url){
 
 
 //Facture personnel -- Traitement
-$router->map('GET','/factures',function(){
+$router->map('GET','/factures',function($url){
   require "views/personnel/factures.php";
 },'factures');
 
+// Get Facture for personnel use
+$router->map('GET','/factures_traitement/get',function($url){
+  require "controllers/personnel/factures.php";
+},'factures-get');
 
 // echo '<br>';
 // use Firebase\JWT\JWT;

@@ -97,28 +97,23 @@
                         <input type="date" name="DateEnreg" id="DateEnreg" class="form-control" required>
                       </div>
                     </div>
-                    <div class="col-md-4">
-                      <div class="form-group">
-                        <label for="DateE">Echeance du traitement de Facture</label>
-                        <input type="date" name="DateE" id="DateE" class="form-control" required>
-                      </div>
-                    </div>
+                    
                     <div class="col-md-4">
                       <div class="form-group">
                         <label for="DateE">Facture</label>
                         <input type="file" name="Facture" id="Facture" class="form-control" required accept="image/jpeg,.png,.pdf,.doc,.docx">
                       </div>
                     </div>
-
-
-                  </div>
-                  <!--  -->
-                  <div class="col-md-4">
-                    <br />
+                    <div class="col-md-4">
+                    <br /><br />
                     <button type="button" id="submit" class="btn btn-info btn-block" v-on:click="valider()">
                       Envoyer
                     </button>
+                   </div>
+
                   </div>
+                  <!--  -->
+                  
 
                 </form>
 
@@ -134,8 +129,9 @@
     </div>
   </div>
   <?php require "includes/js/js.php"; ?>
+  <script src="/assets/js/sweetAlert.js" defer></script>
   <script src="/assets/js/reception/facture.js" defer></script>
-
+ 
 </body>
 
 </html>

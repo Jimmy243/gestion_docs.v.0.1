@@ -4,7 +4,7 @@
 <script src="/assets/js/bootstrap.min.js" defer></script>
 
 <?php 
-if($url === "personnel_edit") echo '<script src="/assets/js/bootstrap5.min.js" defer></script>';
+if($url === "personnel_edit" && $url === "login") echo '<script src="/assets/js/bootstrap5.min.js" defer></script>';
 
 ?>
 <script src="/assets/js/jquery.slimscroll.js" defer></script>

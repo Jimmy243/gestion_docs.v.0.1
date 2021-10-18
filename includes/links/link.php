@@ -7,5 +7,5 @@
 <link rel="stylesheet" type="text/css" href="/assets/css/font-awesome.min.css">
 <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
 <?php 
-if($url === "personnel_edit") echo '<link rel="stylesheet" type="text/css" href="/assets/css/bootstrap5.min.css">';
+if($url === "personnel_edit" AND $url === "login") echo '<link rel="stylesheet" type="text/css" href="/assets/css/bootstrap5.min.css">';
 ?>

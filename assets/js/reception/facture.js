@@ -31,7 +31,7 @@ const vue = new Vue({
         error: function (req, err) {
           console.log("message: " + err);
         },
-      });
+      }); 
     },
     getData(response) {
       if (response.error) console.log(data.error);
@@ -74,7 +74,20 @@ const vue = new Vue({
       formData.forEach((value,key) => console.log(`${key} : ${value}`))
     },
     validerResult(response){
-      console.log(response);
+      let error = ""
+      if(response.error){
+      if(!Array.isArray(response.error))
+        error = response.error
+      else error = response.error[0]
+      Swal.fire("Erreur d'envoie !",error,"error");
+      }else if(response.login){
+
+      }else if(response.auth){
+
+      }else{
+        Swal.fire("Le facture a ete envoye avec succes !");
+        document.getElementById('setformf').reset();
+      }
     }
   }
 })

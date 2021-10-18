@@ -11,7 +11,8 @@ function authentification($url)
 
     $tab1 = ["personnel_get", "department_get"]; // Admin et Receptionniste
     // $tab2 = ["facture","appointment"]; // Receptionniste
-    $tab3 = ["department_set", "department_edit", "department_delete", "personnel_get_one", "personnel_set", "personnel_edit", "personnel_edit_post","personnel_one_delete"];
+    $tab3 = ["department_set", "department_edit", "department_delete", "personnel_set", "personnel_edit", "personnel_edit_post","personnel_one_delete"];
+    $tab4 = ["factures-get"];
 
     if (in_array($url, $tab1)) {
       if ($payload['role'] != "Admin" and $payload['role'] != "Receptioniste") {
@@ -27,6 +28,13 @@ function authentification($url)
         ]);
         exit;
       }
+    } else if(in_array($url,$tab4)){
+           if ($payload['role'] != "User"){
+              echo json_encode([
+                'auth' => 'Vous n\'avez pas le droit d\'effectuer cette action'
+              ]);
+              exit;
+           }
     } else {
       // if(in_array($url,$tab2))
       // {
@@ -34,6 +42,7 @@ function authentification($url)
       //     header("location: /profile");
       // }
     }
+     return  $payload;
   } else {
     // echo json_encode([
     //   'login' =>  'true'
