@@ -22,7 +22,7 @@ function setDepartment(){
   $data = $req->fetch(PDO::FETCH_ASSOC);
 // admin  admin@gmail.com
 // receptioniste:  b5fecd20 jean@gmail.com
-// user: b65be901 jule@gmail.com  
+// user: b65be901 jule@gmail.com   
 // base64_decode()
   if(!empty($data))
   {
