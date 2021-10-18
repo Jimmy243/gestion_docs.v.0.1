@@ -75,20 +75,17 @@
                              </div>
                           </div>
                     
-                          <div class="col-md-8">
+                        <div class="col-md-8">
                           <div class="form-group">
-                        <label for="Ref">Motif du facture</label>
-                        <textarea id="" cols="30" rows="4" required class="form-control">
-                           
-                        </textarea>
-                      </div>
+                            <label for="Ref">Motif du facture</label>
+                            <textarea id="" cols="30" rows="4" required class="form-control" v-model="Motif"></textarea>
                           </div>
+                       </div>
                        </div>  
-          
                       
                       
                       <div class="form-group">
-                        <button class="btn btn-info" v-on:click="setFactureTrait()">
+                        <button class="btn btn-info" v-on:click="setFactureTrait(facture.IdF)">
                             Envoyer
                         </button>
                       </div>
