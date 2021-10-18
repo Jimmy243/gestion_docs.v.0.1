@@ -143,8 +143,6 @@
   <?php require "includes/js/js.php"; ?>
   <script src="/assets/js/sweetAlert.js" defer></script>
   <script src="/assets/js/depart/department.js" defer></script>
-
-
 </script>
 
 </body>

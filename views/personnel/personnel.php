@@ -31,38 +31,7 @@
               </button>
             </div>
            <?php } ?>
-            <!-- </div> -->
         </div>
-     <?php if($payload['role'] === "Admin") { ?>
-          <!-- alert for message -->
-          <div v-show="showAlert">
-            <div v-if="!isError">
-              <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <strong>Succes</strong> Le personnel est enregistre avec succes.<br />
-                Les donnees de connexion :
-                <ul>
-                  <li>Email {{email_login}}</li>
-                  <li>Mot de passe {{password_login}}</li>
-                </ul>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close" v-on:click.stop="closeAlert">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-            </div>
-            <div v-else>
-              <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <strong>Erreur 401:</strong>
-                <ul class="list-unstyled">
-                  <li v-for="(error,id) in message_error" :key="error.id">{{error}}</li>
-                </ul>
-                <button type="button" class="close" data-dismiss="alert" aria-label="Close" v-on:click.stop="closeAlert">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-            </div>
-          </div>
-          <?php } ?>
-
           <div class="row">
             <div class="col-md-12">
               <div class="card card-transparent">
@@ -121,19 +90,19 @@
                     <div class="col-md-4">
                       <div class="form-group">
                         <label for="fullname">Noms</label>
-                        <input type="text" v-model="Fullname" id="Fullname" class="form-control" required>
+                        <input type="text" name="Fullname" id="Fullname" class="form-control" required>
                       </div>
                     </div>
                     <div class="col-md-4">
                       <div class="form-group">
                         <label for="Functions">Fonction</label>
-                        <input type="text" v-model="Functions" id="Functions" class="form-control" required>
+                        <input type="text" name="Functions" id="Functions" class="form-control" required>
                       </div>
                     </div>
                     <div class="col-md-4">
                       <div class="form-group">
                         <label>Departement</label>
-                        <select v-model="IdD" id="IdD" class="form-control" required>
+                        <select name="IdD" id="IdD" class="form-control" required>
                           <option disabled selected value="selected"> Selectionner un departement</option>
                           <option v-for="(item,id) in tabDepartment" :key="item.id" v-bind:value="item.IdD">{{item.NameD}}</option>
                         </select>
@@ -145,7 +114,7 @@
                     <div class="col-md-4">
                       <div class="form-group">
                         <label for="DateB">Date de naissance</label>
-                        <input type="date" v-model="DateB" id="DateB" class="form-control" required>
+                        <input type="date" name="DateB" id="DateB" class="form-control" required>
                       </div>
                     </div>
                     <div class="col-md-4">
@@ -157,7 +126,7 @@
                     <div class="col-md-4">
                       <div class="form-group">
                         <label for="Address">Adresse</label>
-                        <input type="text" v-model="Addresss" id="Addresss" class="form-control" required>
+                        <input type="text" name="Addresss" id="Addresss" class="form-control" required>
                       </div>
                     </div>
                   </div>
@@ -166,21 +135,21 @@
                     <div class="col-md-4">
                       <div class="form-group">
                         <label for="NumberM">Numero Matricule</label>
-                        <input type="text" v-model="NumberM" id="NumberM" class="form-control" required>
+                        <input type="text" name="NumberM" id="NumberM" class="form-control" required>
                       </div>
                     </div>
                     <div class="col-md-4">
                       <div class="form-group">
                         <label for="fullname">Province</label>
-                        <select v-model="States" id="States" class="form-control">
-                          <option v-for="(item,id) in tabPronvinces" :key="item.id" v-bind:value="id">{{item}}</option>
+                        <select name="States" id="States" class="form-control">
+                          <option v-for="(item,id) in tabPronvinces" :key="item.id" v-bind:value="item">{{item}}</option>
                         </select>
                       </div>
                     </div>
                     <div class="col-md-4">
                       <div class="form-group">
                         <label for="Gander">Genre</label>
-                        <select v-model="Gander" id="Gander" class="form-control" required>
+                        <select name="Gander" id="Gander" class="form-control" required>
                           <option disabled selected="">Selectionner le genre</option>
                           <option value="Homme">Homme</option>
                           <option value="Femme">Femme</option>
@@ -193,13 +162,13 @@
                     <div class="col-md-4">
                       <div class="form-group">
                         <label for="Mobile">Mobile</label>
-                        <input type="tel" v-model="Mobile" id="Mobile" class="form-control" maxlength="8">
+                        <input type="tel" name="Mobile" id="Mobile" class="form-control" maxlength="8">
                       </div>
                     </div>
                     <div class="col-md-4">
                       <div class="form-group">
                         <label for="fullname">E-mail</label>
-                        <input type="email" v-model="Email" id="Email" class="form-control" required>
+                        <input type="email" name="Email" id="Email" class="form-control" required>
                       </div>
                     </div>
                     <div class="col-md-4">
@@ -221,9 +190,8 @@
   </div>
 
   <?php include "includes/js/js.php"; ?>
-  <script src="/assets/js/sweetAlert.js" defer></script>
+  <script type="text/javascript" src="/assets/js/sweetAlert.js" defer></script>
   <script src="assets/js/personnel/personnel.js" defer></script>
-
 </body>
 
 </html>

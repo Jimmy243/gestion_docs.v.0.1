@@ -60,18 +60,15 @@ const vue = new Vue({
     },
     valider(){
       const formData = new FormData(document.getElementById('setformf'))
-
       $.ajax({
         type: "POST",
         url: "/facture/set",
         data: formData,
         contentType : false,
         processData : false,
-        // dataType:"JSON",
         success: this.validerResult,
         error: (req,err) => console.log(err)
       });
-      formData.forEach((value,key) => console.log(`${key} : ${value}`))
     },
     validerResult(response){
       let error = ""

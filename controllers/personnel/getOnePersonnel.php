@@ -3,7 +3,13 @@ include dirname(__DIR__).DIRECTORY_SEPARATOR."connection.php";
 include dirname(__DIR__).DIRECTORY_SEPARATOR."auth".DIRECTORY_SEPARATOR."authentification.php";
 
 function getOnePersonnel($id,$url){ 
-  authentification($url);
+  $payload = authentification($url);
+    if ($payload['role'] != "Admin") {
+      if($id != $payload['id'])
+      {
+        $id = $payload['id'];
+      }
+    }
 
   $db = Connecter();
   $sql = "SELECT Id,Fullname,Functions,DateB,Images,Addresss,NumberM,States,Gander,Mobile,Email,Statuss,Roles,NameD,users.IdD FROM users LEFT OUTER JOIN department ON users.IdD = department.IdD WHERE users.Statuss='active' AND users.Id = ?";

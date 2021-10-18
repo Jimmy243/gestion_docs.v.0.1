@@ -2,13 +2,13 @@ const vue = new Vue({
   el: '#app',
   data(){
     return {
-      tabPersonnel: ''
+      personnel: ''
     }
   },
   mounted(){
     this.getPersonnel()
   },
-  methods:{ //personelId
+  methods:{ 
     getPersonnel(){
       $.ajax({
         type: "GET",
@@ -19,17 +19,13 @@ const vue = new Vue({
         error: function(req, err){ console.log('message: ' + err); }
       });
     },
-    getPersonnelResult(response){
-      if(response.error){
-        document.location.assign('/login')
-      }else if (response.login) document.location.assign('/login')
+    getPersonnelResult(response){ console.log(response);
+      if(response.error) document.location.assign('/login')
+      else if (response.login) document.location.assign('/login')
       else if (response.auth){
 
       }
-      else {
-        this.tabPersonnel = response
-        console.log(this.tabPersonnel);
-      }
+      else this.personnel = response
     }
   }
 })

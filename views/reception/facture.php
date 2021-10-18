@@ -88,24 +88,23 @@
 
                   </div>
                   <!--  -->
-
-                  <!--  -->
                   <div class="row">
-                    <div class="col-md-4">
+                    <!-- <div class="col-md-4">
                       <div class="form-group">
                         <label for="Mobile">Date d'envoie</label>
                         <input type="date" name="DateEnreg" id="DateEnreg" class="form-control" required>
                       </div>
-                    </div>
-                    
+                    </div> -->
                     <div class="col-md-4">
                       <div class="form-group">
                         <label for="DateE">Facture</label>
                         <input type="file" name="Facture" id="Facture" class="form-control" required accept="image/jpeg,.png,.pdf,.doc,.docx">
                       </div>
                     </div>
-                    <div class="col-md-4">
-                    <br /><br />
+                  </div>
+                  <!--  -->
+                  <div class="col-md-4">
+                    <br />
                     <button type="button" id="submit" class="btn btn-info btn-block" v-on:click="valider()">
                       Envoyer
                     </button>
