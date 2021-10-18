@@ -108,7 +108,11 @@
                     <button type="button" id="submit" class="btn btn-info btn-block" v-on:click="valider()">
                       Envoyer
                     </button>
+                   </div>
+
                   </div>
+                  <!--  -->
+                  
 
                 </form>
 
@@ -124,8 +128,9 @@
     </div>
   </div>
   <?php require "includes/js/js.php"; ?>
+  <script src="/assets/js/sweetAlert.js" defer></script>
   <script src="/assets/js/reception/facture.js" defer></script>
-
+ 
 </body>
 
 </html>

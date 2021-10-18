@@ -44,6 +44,8 @@ function setDepartment($url){
   $MontantF=htmlspecialchars(trim(($_POST['MontantF'])));
   $Id=htmlspecialchars(trim(($_POST['Id'])));
   $Devise=htmlentities(trim(($_POST['Devise'])));
+  $DateEnreg=htmlspecialchars(trim($_POST['DateEnreg']));
+  $MontantF=htmlspecialchars(trim(($_POST['MontantF'])));
 
   // test if department existe
   $sql1 = "SELECT IdD FROM department WHERE IdD=?";
