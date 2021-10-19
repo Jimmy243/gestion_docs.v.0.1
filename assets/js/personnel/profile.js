@@ -19,8 +19,8 @@ const vue = new Vue({
         error: function(req, err){ console.log('message: ' + err); }
       });
     },
-    getPersonnelResult(response){ console.log(response);
-      if(response.error) document.location.assign('/login')
+    getPersonnelResult(response){
+      if(response.error) onsole.log(response);
       else if (response.login) document.location.assign('/login')
       else if (response.auth){
 
