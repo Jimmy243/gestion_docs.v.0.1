@@ -28,18 +28,18 @@
           <!-- Tableau collapse -->
           <div class="profile-tabs">
             <ul class="nav nav-tabs nav-tabs-bottom">
-              <li class="nav-item"><a class="nav-link " href="#about-cont" data-toggle="tab">Les Factures en cours de traitement </a></li>
-              <li class="nav-item"><a class="nav-link active" href="#bottom-tab2" data-toggle="tab">Les Factures non traités <span class="badge badge-pill bg-danger float-right" style="color:white">{{tabFacture.notTreated.length}}</span></a></li>
-              <li class="nav-item"><a class="nav-link" href="#bottom-tab3" data-toggle="tab">Les Factures déja traités <span class="badge badge-pill bg-success float-right" style="color:white">{{tabFacture.treated.length}}</span></a></li>
+              <li class="nav-item"><a class="nav-link " href="#about-cont" data-toggle="tab" id="tab1">Les Factures en cours de traitement </a></li>
+              <li class="nav-item"><a class="nav-link active" href="#bottom-tab2" data-toggle="tab" id="tab2">Les Factures non traités <span class="badge badge-pill bg-danger float-right" style="color:white">{{tabFacture.notTreated.length}}</span></a></li>
+              <li class="nav-item"><a class="nav-link" href="#bottom-tab3" data-toggle="tab" id="tab3">Les Factures déja traités <span class="badge badge-pill bg-success float-right" style="color:white">{{tabFacture.treated.length}}</span></a></li>
             </ul>
 
             <div class="tab-content">
               <div class="tab-pane" id="about-cont">
                 <div class="container">
                   <div class="card">
-                    <div class="card-header">Envoie le facture traité</div>
+                    <div class="card-header" v-if="facture">Envoie le facture traité</div>
                     <div class="card-body">
-                      <div class="container">
+                      <div class="container" v-if="facture">
                         <div class="row">
                           <div class="col-md-8">
                             <form class="form">
@@ -82,7 +82,7 @@
                           <!--  -->
                         </div>
                         <!--  -->
-                        <form method="POST" class="form">
+                        <form class="form">
                           <div class="form-group">
                             <div class="form-group">
                               <label for="Ref">Motif du facture</label>
@@ -90,12 +90,15 @@
                             </div>
                           </div>
                           <div class="form-group">
-                            <button class="btn btn-info" v-on:click.stop="setFactureTrait(facture.IdF)">
+                            <button class="btn btn-info" type="button" v-on:click="setFactureTrait(facture.IdF)">
                               Envoyer
                             </button>
                           </div>
                         </form>
-                        <!--  -->
+                      </div>
+                      <div class="container" v-else>
+                        <p v-if="tabFacture.notTreated.length > 0">Veuillez selectionner une facture pour la traiter</p>
+                        <p v-else>A present vous n'avez pas de factures a traiter</p>
                       </div>
                     </div>
                   </div>
@@ -146,7 +149,7 @@
                         </td>
                         <td>
                           <center>
-                            <button class="btn btn-info" title="traitement de Facture" v-on:click="setTraitement(item.IdF)" href="#about-cont" data-toggle="tab">
+                            <button class="btn btn-info" title="traitement de Facture" v-on:click="setTraitement(item.IdF)">
                               cliquer</button>
                           </center>
                         </td>
