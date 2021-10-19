@@ -2,16 +2,6 @@ const vue = new Vue({
   el: "#app",
   data() {
     return {
-      // Fullname: "",
-      // Functions: "",
-      // DateB: "",
-      // Addresss: "",
-      // NumberM: "",
-      // States: 0,
-      // Gander: "Homme",
-      // Mobile: "",
-      // Email: "",
-      // IdD: "selected",
       tabDepartment: [],
       tabPersonnel: [],
       tabPronvinces: [
@@ -34,11 +24,6 @@ const vue = new Vue({
         "Rutana",
         "Ruyigi",
       ],
-      // message_error: [],
-      // password_login: "",
-      // email_login: "",
-      // isError: false,
-      // showAlert: false,
     };
   },
   mounted() { 
@@ -50,14 +35,13 @@ const vue = new Vue({
         type: "GET",
         url: "/personnel/get",
         contentType: "application/json",
-        dataType: "JSON",
         success: this.getPersonnelResult,
         error: function (req, err) {
           console.log("message: " + err);
         },
       });
     },
-    getPersonnelResult(response) {
+    getPersonnelResult(response) { console.log(response);
       if (response.error) {
         console.log(response.error);
       } else {
@@ -98,7 +82,6 @@ const vue = new Vue({
       $.ajax({
         type: "GET",
         url: "/department/get",
-        dataType: "JSON",
         success: this.getDepartmentResult,
         error: function (req, err) {
           console.log("message: " + err);

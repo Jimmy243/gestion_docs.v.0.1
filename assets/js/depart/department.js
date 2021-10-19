@@ -17,7 +17,6 @@ const vue = new Vue({
       $.ajax({
         type: "GET",
         url: "/department/get",
-        dataType: "JSON",
         success: this.getData,
         error: function (req, err) {
           console.log("message: " + err);
@@ -36,7 +35,6 @@ const vue = new Vue({
         url: "/department/set",
         data: JSON.stringify({ NameD: this.setNameD }),
         contentType: "application/json",
-        dataType: "JSON",
         success: this.setDepartmentResult,
         error: function (req, err) {
           console.log("message: " + err);
@@ -58,7 +56,6 @@ const vue = new Vue({
         url: "/department/edit",
         data: JSON.stringify({ NameD: this.editNameD, IdD: this.editIdD }),
         contentType: "application/json",
-        dataType: "JSON",
         success: this.editDepartmentResult,
         error: function (req, err) {
           console.log("message: " + err);
@@ -98,7 +95,6 @@ const vue = new Vue({
         url: "/department/delete",
         data: JSON.stringify({ IdD: depart.IdD }),
         contentType: "application/json",
-        dataType: "JSON",
         success: this.deleteDepartmentResult,
         error: function (req, err) {
           console.log("message: " + err);

@@ -69,7 +69,6 @@ const vue = new Vue({
     },
     valider(){
       const formData = new FormData(document.getElementById('setformp'))
-      // formData.forEach((value,key) => console.log(`${key} : ${value}`));
       $.ajax({
         type: "POST",
         url: `/personnel/edit/${this.personnel.Id}`,
@@ -94,6 +93,7 @@ const vue = new Vue({
       else if (response.message){
         this.getOnePersonnel()
         Swal.fire("Modification reussi!", response.message, "success");
+        document.getElementById('setformp').reset();
       } 
     }
   }

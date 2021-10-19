@@ -77,11 +77,9 @@ const vue = new Vue({
         error = response.error
       else error = response.error[0]
       Swal.fire("Erreur d'envoie !",error,"error");
-      }else if(response.login){
-
-      }else if(response.auth){
-
-      }else{
+      }else if(response.login) document.location.assign("/login")
+      else if(response.auth) Swal.fire("Erreur de l'authentification!", response.auth, "error");
+      else{
         Swal.fire("Le facture a ete envoye avec succes !");
         document.getElementById('setformf').reset();
       }
