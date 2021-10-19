@@ -3,7 +3,7 @@ include __DIR__ . DIRECTORY_SEPARATOR . "verifyToken.php";
 
 function authentification($url) 
 {
-  // header('Content-Type:application/json');
+  header('Content-Type:application/json');
   if (!empty($_COOKIE['gestion_doc'])) {
     $token = $_COOKIE['gestion_doc'];
     $payload = verifyToken($token);

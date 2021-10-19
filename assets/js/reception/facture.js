@@ -71,7 +71,6 @@ const vue = new Vue({
       });
     },
     validerResult(response){ console.log(response)
-      console.log(666);
       let error = ""
       if(response.error){
       if(!Array.isArray(response.error))
