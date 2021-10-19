@@ -83,7 +83,7 @@ if(!empty($_FILES["Images"])){
   {
     $ext = ["gif","jpg","jpeg","png"];
     $doc = pathinfo($_FILES['Images']['name']);
-    if(!in_array($doc['extension'],$ext)) {
+    if(!in_array(strtolower($doc['extension']),$ext)) {
       echo json_encode(["error" => 'Veuillez inserer la bonne photo qui est soit gif,jpg,jpeg,png']);
       exit;
     }
