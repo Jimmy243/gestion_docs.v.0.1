@@ -1,7 +1,7 @@
 <?php
 include __DIR__ . DIRECTORY_SEPARATOR . "verifyToken.php";
 
-function authentification($url)
+function authentification($url) 
 {
   header('Content-Type:application/json');
   if (!empty($_COOKIE['gestion_doc'])) {

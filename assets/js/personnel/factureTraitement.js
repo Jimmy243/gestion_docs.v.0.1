@@ -3,7 +3,9 @@ const vue = new Vue({
     data(){
         return {
             tabFacture:[],
-            facture:"" 
+            facture:"",
+            IdF:"",
+            Motif:"",
         }
     },
     mounted(){
@@ -33,10 +35,34 @@ const vue = new Vue({
         setTraitement(id){
             this.facture = this.tabFacture.find(element=>element.IdF==id)   
         },
-        setFactureTrait(){
-           
+    //    setFacture_traitee
 
-          
-        }
+    setFactureTrait(IdF) {
+        const facture_traitee = {
+          IdF:this.IdF,
+          Motif: this.Motif,
+        };
+        // console.log(facture_traitee);
+        $.ajax({
+          type: "POST",
+          url: "/facture_traitee/set",
+          data: JSON.stringify(facture_traitee),
+        //   dataType: "JSON",
+          contentType: "application/json",
+          success: this.setFactureTraitResult,
+          error: function (req, err) {
+            console.log("message: " + err);
+          },
+        });
+      },
+      setFactureTraitResult(response){
+          if(response.error){
+           console.log(response.error)
+          }else{
+           console.log(response)
+          }
+
+      } 
+
     }
 })

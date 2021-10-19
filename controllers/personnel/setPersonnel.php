@@ -55,7 +55,7 @@ function setDepartment($url){
     exit;
   }
 
-  $sql2="SELECT Email FROM users WHERE Email=?";
+  $sql2="SELECT Email FROM users WHERE Email=?"; 
   $req2 = $db->prepare($sql2);
   $req2->execute(array($Email));
   $data2 = $req2->fetch();

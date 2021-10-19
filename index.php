@@ -123,6 +123,11 @@ $router->map('GET','/factures',function($url){
 $router->map('GET','/factures_traitement/get',function($url){
   require "controllers/personnel/factures.php";
 },'factures-get');
+//Factures_traitement set
+$router->map('POST','/traitement_facture/set',function($url){
+  require "controllers/personnel/facture_t.php";
+},'factures_t_set');
+
 
 // echo '<br>';
 // use Firebase\JWT\JWT;

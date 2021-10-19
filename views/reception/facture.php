@@ -96,9 +96,9 @@
                         <input type="file" name="Facture" id="Facture" class="form-control" required accept="image/jpeg,.png,.pdf,.doc,.docx">
                       </div>
                     </div>
-                  </div>
-                  <!--  -->
+                    <!--  -->
                   <div class="col-md-4">
+                    <br />
                     <br />
                     <button type="button" id="submit" class="btn btn-info btn-block" v-on:click="valider()">
                       Envoyer
@@ -107,6 +107,8 @@
 
                   </div>
                   <!--  -->
+                  </div>
+                  
                   
 
                 </form>
