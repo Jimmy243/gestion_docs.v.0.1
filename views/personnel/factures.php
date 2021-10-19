@@ -29,7 +29,7 @@
         <div class="profile-tabs">
           <ul class="nav nav-tabs nav-tabs-bottom">
             <li class="nav-item"><a class="nav-link " href="#about-cont" data-toggle="tab">Les Factures en cours de traitement </a></li>
-            <li class="nav-item"><a class="nav-link active" href="#bottom-tab2" data-toggle="tab">Les Factures non traités <span class="badge badge-pill bg-info float-right"
+            <li class="nav-item"><a class="nav-link active" href="#bottom-tab2" data-toggle="tab">Les Factures non traités <span class="badge badge-pill bg-danger float-right"
             style="color:white">{{tabFacture.length}}</span></a></li>
             <li class="nav-item"><a class="nav-link" href="#bottom-tab3" data-toggle="tab">Les Factures déja traités</a></li>
           </ul>
@@ -41,52 +41,64 @@
                   <div class="card-header">Envoie le facture traité</div>
                   <div class="card-body">
                     <div class="container">
-                    <form method="POST" class="form"  >
+                    <div class="row">
+                      <div class="col-md-8">
+                      <form class="form"  >
                        <div class="row">
-                          <div class="col-md-4">
+                          <div class="col-md-6">
                             <div class="form-group">
                             <label for="Ref">La reférence de facture</label>
                             <input type="text" class="form-control" v-bind:value="facture.Reference">
                             </div>
                           </div>
-                          <div class="col-md-4">
+                          <div class="col-md-6">
                              <div class="form-group">
                                 <label for="NameR">Nom du depositaire</label>
                                 <input type="text" v-bind:value="facture.NameR" class="form-control">
                              </div>
                           </div>
-                          <div class="col-md-4">
+                          </div>
+                          <div class="row">
+                          <div class="col-md-6">
                              <div class="form-group">
                                 <label for="">Devise</label>
                                 <input type="text" v-bind:value="facture.Devise" class="form-control">
                              </div>
                           </div>
-                       </div>
-                       <div class="row">
-                          <div class="col-md-4">
+                          <div class="col-md-6">
                              <div class="form-group">
                                 <label for="">Montant</label>
                                 <input type="text" v-bind:value="facture.MontantF" class="form-control">
                              </div>
                           </div>
-                    
-                        <div class="col-md-8">
-                          <div class="form-group">
-                            <label for="Ref">Motif du facture</label>
-                            <textarea id="" cols="30" rows="4" required class="form-control" v-model="Motif"></textarea>
-                          </div>
-                       </div>
                        </div>  
-                      
-                      
-                      <div class="form-group">
-                        <button class="btn btn-info" v-on:click="setFactureTrait(facture.IdF)">
-                            Envoyer
-                        </button>
+                    </form>
                       </div>
+                      <!-- Modal image  -->
+                      <div class="col-md-4">
+                      
+                      <img id="myImg" src="assets/img/jj.JPG"
+                       data-toggle="modal" data-target="#myModal"
+                       style="width:100%;max-width:300px">
+
+                      </div>
+                      <!--  -->
                     </div>
-                    <div class="tab-pane" id="bottom-tab3">
-                      Tableau 3
+                    <!--  -->
+                    <form method="POST" class="form">
+                      <div class="form-group">
+                      <div class="form-group">
+                      <label for="Ref">Motif du facture</label>
+                      <textarea id="" cols="30" rows="4" required class="form-control" v-model="Motif"></textarea>
+                      </div>
+                      </div>
+                      <div class="form-group">
+                      <button class="btn btn-info" v-on:click="setFactureTrait(facture.IdF)">
+                       Envoyer
+                      </button>
+                      </div>
+                    </form>
+                    <!--  -->
                     </div>
                   </div>
                 </div>
@@ -124,7 +136,28 @@
                   </tbody>
                 </table>
 
-              <!--  -->
+              </div>
+            </div>
+            <div class="tab-pane" id="bottom-tab3">
+              
+            <div class="responsive">
+                <table class="table table-striped">
+                  <thead>
+                  <tr>
+                     <th><center>#</center></th>
+                     <th><center>Nom du depositaire</center></th>
+                     <th><center>Reférence</center></th>
+                     <th><center>Montant</center></th>
+                     <th><center>Devise</center></th>
+                     <th><center>Date de traitement</center></th>
+                   </tr>
+                  </thead>
+                  <tbody>
+
+                  </tbody> 
+                  </table>
+                  </div>
+               
             </div>
           </div>
         </div>
@@ -133,10 +166,23 @@
       </div>
 
     </div>
+</div>
+<!-- The Modal -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+    <img id="myImg" src="assets/img/jj.JPG"
+    style="width:100%;max-width:100%">  
+    </div>
   </div>
-  </div>
-  <?php require "includes/js/js.php"; ?>
-  <script src="assets/js/personnel/factureTraitement.js" defer></script>
+</div>
+
+
+
+
+
+   <?php require "includes/js/js.php"; ?>
+   <script src="assets/js/personnel/factureTraitement.js" defer></script>
 </body>
 
 </html>
