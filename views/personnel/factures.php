@@ -33,14 +33,14 @@
         <!-- Tableau collapse -->
         <div class="profile-tabs">
           <ul class="nav nav-tabs nav-tabs-bottom">
-            <li class="nav-item"><a class="nav-link active" href="#about-cont" data-toggle="tab">Les Factures en cours de traitement </a></li>
-            <li class="nav-item"><a class="nav-link" href="#bottom-tab2" data-toggle="tab">Les Factures non traités <span class="badge badge-pill bg-info float-right"
+            <li class="nav-item"><a class="nav-link " href="#about-cont" data-toggle="tab">Les Factures en cours de traitement </a></li>
+            <li class="nav-item"><a class="nav-link active" href="#bottom-tab2" data-toggle="tab">Les Factures non traités <span class="badge badge-pill bg-info float-right"
             style="color:white">{{tabFacture.length}}</span></a></li>
             <li class="nav-item"><a class="nav-link" href="#bottom-tab3" data-toggle="tab">Les Factures déja traités</a></li>
           </ul>
 
           <div class="tab-content">
-            <div class="tab-pane show active" id="about-cont">
+            <div class="tab-pane" id="about-cont">
               <div class="container">
                 <div class="card">
                   <div class="card-header">Envoie le facture traité</div>
@@ -96,7 +96,7 @@
               </div>
             </div>
             <!-- {{tabFacture}} -->
-            <div class="tab-pane" id="bottom-tab2">
+            <div class="tab-pane show active" id="bottom-tab2">
               <div class="responsive">
                 <table class="table table-striped">
                   <thead>

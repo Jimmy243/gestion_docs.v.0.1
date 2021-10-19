@@ -70,7 +70,8 @@ const vue = new Vue({
         error: (req,err) => console.log(err)
       });
     },
-    validerResult(response){
+    validerResult(response){ console.log(response)
+      console.log(666);
       let error = ""
       if(response.error){
       if(!Array.isArray(response.error))

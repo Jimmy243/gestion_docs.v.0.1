@@ -48,7 +48,7 @@
                     </div>
                     <div class="col-md-6">
                       <div class="form-floating">
-                        <select class="form-select" id="Department" aria-label="Floating label select example" name="IdD" :value="personnel.IdD">
+                        <select class="form-control" id="Department" aria-label="Floating label select example" name="IdD" :value="personnel.IdD">
                           <option disabled selected value="selected"> Selectionner un departement</option>
                           <option v-for="(item,id) in tabDepartment" :key="item.id" v-bind:value="item.IdD">{{item.NameD}}</option>
                         </select>
@@ -63,7 +63,7 @@
                     </div>
                     <div class="col-md-6">
                       <div class="form-floating">
-                        <select class="form-select" id="Gander" aria-label="Floating label select example" name="Gander" :value="personnel.Gander">
+                        <select class="form-control" id="Gander" aria-label="Floating label select example" name="Gander" :value="personnel.Gander">
                           <option disabled selected=""></option>
                           <option value="Homme">Homme</option>
                           <option value="Femme">Femme</option>
@@ -96,7 +96,7 @@
             <div class="row">
               <div class="col-md-6">
                 <div class="form-floating">
-                  <select class="form-select" id="States" aria-label="Floating label select example" name="States" :value="personnel.States">
+                  <select class="form-control" id="States" aria-label="Floating label select example" name="States" :value="personnel.States">
                     <option disabled selected value="selected"> Selectionner une province d'origine</option>
                     <option v-for="(item,id) in tabPronvinces" :key="item.id" v-bind:value="item">{{item}}</option>
                   </select>
