@@ -22,7 +22,10 @@
           <!-- Admin only -->
           <?php if($payload['role'] === "Admin"){ ?>
         <li>
-          <a href=""><i class="fa fa-calendar"></i> <span>Docs & Factures</span></a>
+          <a href=""><i class="fa fa-calendar"></i> <span>Documents</span></a>
+        </li>
+        <li>
+          <a href="/invoice"><i class="fa fa-calendar"></i> <span>Factures</span></a>
         </li>
         <li>
           <a href=""><i class="fa fa-calendar-check-o"></i> <span>Performances</span></a>

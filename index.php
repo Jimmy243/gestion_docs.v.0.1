@@ -129,6 +129,10 @@ $router->map('POST','/traitement_facture/set',function($url){
   //require "controllers/personnel/facture_t.php";
 },'factures_t_set');
 
+//Invoice admin
+$router->map('GET','/invoice',function(){
+  require "views/admin/invoice.php";
+},'invoice');
 
 // echo '<br>';
 // use Firebase\JWT\JWT;
