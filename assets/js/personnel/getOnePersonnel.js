@@ -2,7 +2,15 @@ const vue = new Vue({
     el: '#app',
     data(){
       return {
-        tabPersonnel: ''
+        personnel: '',
+        tabDepartment: []
+      }
+    },
+    computed: {
+      getInfoUser(){
+        if(this.personnel.Gander == "Homme") return `Monsieur ${this.personnel.Fullname}`
+        else if (this.personnel.Gander == "Femme") return `Madame ${this.personnel.Fullname}`
+        else return this.personnel.Fullname
       }
     },
     mounted(){
@@ -24,8 +32,8 @@ const vue = new Vue({
         if (response.error || response.auth) this.message_error = response.error
         else if(response.login) document.location.assign("/login");
         else {
-          this.tabPersonnel = response;
-          if(!this.tabPersonnel.NameD) this.tabPersonnel.IdD = 'selected'
+          this.personnel = response;
+          if(!this.personnel.NameD) this.personnel.IdD = 'selected'
         }
       },
       getDepartment() {

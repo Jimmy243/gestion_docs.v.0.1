@@ -89,12 +89,7 @@
                   </div>
                   <!--  -->
                   <div class="row">
-                    <!-- <div class="col-md-4">
-                      <div class="form-group">
-                        <label for="Mobile">Date d'envoie</label>
-                        <input type="date" name="DateEnreg" id="DateEnreg" class="form-control" required>
-                      </div>
-                    </div> -->
+
                     <div class="col-md-4">
                       <div class="form-group">
                         <label for="DateE">Facture</label>

@@ -32,7 +32,7 @@
               <div class="profile-view">
                 <div class="profile-img-wrap">
                   <div class="profile-img">
-                    <a href="#"><img class="avatar" :src="personnel.Images" alt=""></a>
+                    <a href="#"><img class="avatar" :src="'/'+personnel.Images" alt=""></a>
                   </div>
                 </div>
                 <div class="profile-basic">

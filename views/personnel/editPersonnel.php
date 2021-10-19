@@ -17,7 +17,7 @@
       <div class="content">
         <div class="row">
           <div class="col-sm-12">
-            <h4 class="page-title">Editer le profil du personnel</h4>
+            <h4 class="page-title">Edition du profil de {{personnel.Fullname}}</h4>
           </div>
         </div>
         <div class="alert alert-danger alert-dismissible fade show" role="alert" v-if="!personnel && message_error">

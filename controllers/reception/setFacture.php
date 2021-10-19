@@ -8,23 +8,38 @@ function setDepartment($url){
 
   if(empty($_POST['NameR'])) array_push($tabErrors,'Completer le nom du deposant.');
   if(empty($_POST['Reference'])) array_push($tabErrors,'Veuillez indiquer la reference du document.');
-  if(empty($_POST['MontantF'])) array_push($tabErrors,'Veuillez indiquer le montant du facture.');
   if(empty($_POST['IdD'])) array_push($tabErrors,'Veuillez selectionner le departement.');
   if(empty($_POST['Id'])) array_push($tabErrors,'Veuillez selectionner le personnel.');
   if(empty($_POST['Devise'])) array_push($tabErrors,'Completer selectionner la device.');
+  if(empty($_POST['MontantF'])) array_push($tabErrors,'Veuillez indiquer le montant du facture.');
 
-  if(!in_array($_POST['Devise'],["FBU","USD"])) array_push($tabErrors,'Veuillez selectionner une bonne device "FBU" ou "USD".');
-  if(empty($_FILES["Facture"]) || $_FILES["Facture"]['error'] != 0) {
-    if($_FILES["Facture"]['error'] == 1 || $_FILES["Facture"]['error'] == 2) 
-      array_push($tabErrors,'Le document que vous choisissez a une grande taille.');
-    else array_push($tabErrors,'Veuillez inserer le document.');
-  }
 
   if(count($tabErrors) > 0){ 
     echo json_encode([
       "error" => $tabErrors
     ]);
     exit;
+  }
+
+  if(!in_array($_POST['Devise'],["FBU","USD"])) 
+  {
+    $tab = [ "error" => 'Veuillez selectionner une bonne device "FBU" ou "USD".' ];
+    echo json_encode($tab);
+    exit;
+  }
+  
+  if(empty($_FILES["Facture"]) || $_FILES["Facture"]['error'] != 0) {
+    if($_FILES["Facture"]['error'] == 1 || $_FILES["Facture"]['error'] == 2)
+    {
+      $tab = [ "error" => 'Le document que vous choisissez a une grande taille.' ];
+      echo json_encode($tab);
+      exit;
+    } else 
+    {
+      $tab = [ "error" => 'Veuillez inserer le document.' ];
+      echo json_encode($tab);
+      exit;
+    }
   }
 
   $ext = ["doc","docx","pdf","jpg","jpeg","png"];
@@ -36,7 +51,6 @@ function setDepartment($url){
     exit;
   }
 
-
   // recuperation de donnees
   $NameR=htmlspecialchars(trim($_POST['NameR']));
   $Reference=htmlspecialchars(trim($_POST['Reference']));
@@ -44,7 +58,6 @@ function setDepartment($url){
   $MontantF=htmlspecialchars(trim(($_POST['MontantF'])));
   $Id=htmlspecialchars(trim(($_POST['Id'])));
   $Devise=htmlentities(trim(($_POST['Devise'])));
-  $DateEnreg=htmlspecialchars(trim($_POST['DateEnreg']));
   $MontantF=htmlspecialchars(trim(($_POST['MontantF'])));
 
   // test if department existe

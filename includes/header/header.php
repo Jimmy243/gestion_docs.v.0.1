@@ -3,22 +3,22 @@ include dirname(dirname(__DIR__)) . DIRECTORY_SEPARATOR . "controllers" . DIRECT
 if (!empty($_COOKIE['gestion_doc'])) {
   $token = $_COOKIE['gestion_doc'];
   $payload = verifyToken($token);
-  if (!empty($url)) {
-    $tab1 = ["department", "personnel"]; // Admin et Receptioniste
-    $tab2 = ["facture", "appointment"]; // Receptioniste
-    if (in_array($url, $tab1)) {
-      if ($payload['role'] != "Admin" and $payload['role'] != "Receptioniste")
-        header("location: /profile");
-    } else {
-      if (in_array($url, $tab2)) {
-        if ($payload['role'] != "Receptioniste")
+  if(!empty($payload)){
+    if (!empty($url)) {
+      $tab1 = ["department", "personnel"]; // Admin et Receptioniste
+      $tab2 = ["facture", "appointment"]; // Receptioniste
+      if (in_array($url, $tab1)) {
+        if ($payload['role'] != "Admin" and $payload['role'] != "Receptioniste")
           header("location: /profile");
+      } else {
+        if (in_array($url, $tab2)) {
+          if ($payload['role'] != "Receptioniste")
+            header("location: /profile");
+        }
       }
     }
-  }
-} else {
-  header("location: /login");
-}
+  } else  header("location: /login");
+} else header("location: /login");
 ?>
 <div class="header">
   <div class="header-left">
