@@ -44,7 +44,7 @@ function setDepartment($url){
 
   $ext = ["doc","docx","pdf","jpg","jpeg","png"];
   $doc = pathinfo($_FILES['Facture']['name']);
-  if(!in_array($doc['extension'],$ext)) 
+  if(!in_array(strtolower($doc['extension']),$ext)) 
   {
     $tab = [ "error" => "Veuillez inserer le document word ou pdf." ];
     echo json_encode($tab);
@@ -99,7 +99,7 @@ function setDepartment($url){
   $req4->execute(array($Reference));
   $data4 = $req4->fetch();
   if(!empty($data4)) {
-    echo json_encode([ "error" => 'Cette facture existe deja']);
+    echo json_encode([ "error" => 'Une autre facture de cette reference exite deja.']);
     exit;
   }
 
