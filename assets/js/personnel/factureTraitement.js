@@ -3,7 +3,7 @@ const vue = new Vue({
     data(){
         return {
             tabFacture:[],
-            facture:""
+            facture:"" 
         }
     },
     mounted(){
