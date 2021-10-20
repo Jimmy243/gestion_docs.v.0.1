@@ -29,8 +29,8 @@ const vue = new Vue({
       if (response.error) {
         console.log(response.error);
       } else {
-        this.tabFacture.treated = response.treated;
-        this.tabFacture.notTreated = response.notTreated;
+        this.tabFacture.treated = response.invoice.treated;
+        this.tabFacture.notTreated = response.invoice.notTreated;
       }
     },
     setTraitement(id) { $('#tab1').tab('show')
@@ -57,7 +57,7 @@ const vue = new Vue({
         },
       });
     },
-    setFactureTraitResult(response) {
+    setFactureTraitResult(response) { console.log(response);
       if (response.error)
         Swal.fire("Erreur de traitement!", response.error, "error");
       else if (response.login) document.location.assign("/login");
