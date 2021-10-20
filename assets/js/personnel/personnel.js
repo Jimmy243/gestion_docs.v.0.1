@@ -72,7 +72,7 @@ const vue = new Vue({
       else if (response.auth)
         Swal.fire("Erreur de l'authentification!", response.auth, "error");
       else{ 
-        Swal.fire("Enregistrement reussi!",`Les informations de connexion: <br>email: <span style="font-weight: bold;">${response.password}</span><br>password: <span style="font-weight: bold;">${response.email}</span>`, "success");
+        Swal.fire("Enregistrement reussi!",`Les informations de connexion: <br>email: <span style="font-weight: bold;">${response.email}</span><br>password: <span style="font-weight: bold;">${response.password}</span>`, "success");
         this.getPersonnel();
         document.getElementById('setformp').reset()
       }

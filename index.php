@@ -111,6 +111,11 @@ $router->map('GET','/profile',function($url){
   require "views/personnel/profile.php";
 },'profile');
 
+/** ADMIN ROUTE */
+$router->map('GET','/invoice/get',function($url){
+  require "controllers/admin/invoice.php";
+},'invoice_get');
+
 
 
 

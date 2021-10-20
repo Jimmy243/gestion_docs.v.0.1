@@ -32,7 +32,6 @@
               <li class="nav-item"><a class="nav-link active" href="#bottom-tab2" data-toggle="tab" id="tab2">Les Factures non traités <span class="badge badge-pill bg-danger float-right" style="color:white">{{tabFacture.notTreated.length}}</span></a></li>
               <li class="nav-item"><a class="nav-link" href="#bottom-tab3" data-toggle="tab" id="tab3">Les Factures déja traités <span class="badge badge-pill bg-success float-right" style="color:white">{{tabFacture.treated.length}}</span></a></li>
             </ul>
-
             <div class="tab-content">
               <div class="tab-pane" id="about-cont">
                 <div class="container">
@@ -227,9 +226,6 @@
         </div>
       </div>
     </div>
-
-
-
 
 
     <?php require "includes/js/js.php"; ?>

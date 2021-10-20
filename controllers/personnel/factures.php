@@ -7,7 +7,7 @@ function getFacture($url){
  $Id = $payload['id'];
  $db = Connecter();
  try{
- $sql1 = "SELECT facture.IdF,NameR,Reference,IdD,Id,Devise,MontantF,Facture,facture_traitee.DateT FROM facture LEFT OUTER JOIN  facture_traitee ON facture.IdF = facture_traitee.IdF  WHERE Id=?";
+ $sql1 = "SELECT facture.IdF,NameR,Reference,IdD,Id,Devise,MontantF,Facture,facture_traitee.DateT,DateEnreg FROM facture LEFT OUTER JOIN  facture_traitee ON facture.IdF = facture_traitee.IdF  WHERE Id=?";
  $req1 = $db->prepare($sql1);
  $req1->execute(array($Id));
 
@@ -17,15 +17,24 @@ function getFacture($url){
   }
   $treated = [];
   $notTreated = [];
-  if(count($tab1)>0){
+  // if(count($tab1)>0){
     foreach ($tab1 as $key => $value) {
-      if(empty($value['DateT'])) $notTreated[] = $value;
+      if(empty($value['DateT'])) {
+        $date = new DateTime($value["DateEnreg"]);
+        $dateNow = new DateTime("NOW");
+        $interval = $date->diff($dateNow);
+        $days = $interval->format('%a');
+        if($days < 5) $notTreated[] = $value;
+      }
       else $treated[] = $value;
     }
     echo json_encode(
       [
-        "treated" => $treated,
-        "notTreated" => $notTreated
+        "invoice" => [
+          "treated" => $treated,
+          "notTreated" => $notTreated
+        ],
+        "doc" => []
       ]
     );
 
@@ -43,7 +52,7 @@ function getFacture($url){
     //     "notTreated" => $tab1
     //   ]
     // );
-  }else echo  json_encode(["error" => "Il n'y a pas des factures a traiter "]);
+  // }else echo  json_encode(["error" => "Il n'y a pas des factures a traiter "]);
 }catch(Exception $e){
    echo json_encode($e);
 }
