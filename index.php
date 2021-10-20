@@ -111,14 +111,6 @@ $router->map('GET','/profile',function($url){
   require "views/personnel/profile.php";
 },'profile');
 
-/** ADMIN ROUTE */
-$router->map('GET','/invoice/get',function($url){
-  require "controllers/admin/invoice.php";
-},'invoice_get');
-
-
-
-
 //Facture personnel -- Traitement
 $router->map('GET','/factures',function($url){
   require "views/personnel/factures.php";
@@ -133,7 +125,11 @@ $router->map('POST','/traitement_facture/set',function($url){
   require "controllers/personnel/facture_t.php";
 },'factures_t_set');
 
-//Invoice admin
+/** ADMIN ROUTE */
+$router->map('GET','/invoice/get',function($url){
+  require "controllers/admin/invoice.php";
+},'invoice_get');
+
 $router->map('GET','/invoice',function($url){
   require "views/admin/invoice.php";
 },'invoice');
