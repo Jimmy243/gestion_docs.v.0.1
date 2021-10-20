@@ -5,7 +5,7 @@ require 'vendor/autoload.php';
 
 $router = new AltoRouter();
 $router->map('GET','/',function($url){
-    require "controllers/home.php";
+    require "views/admin/home.php";
 },'home');
 
 $router->map('GET','/home',function($url){
@@ -133,6 +133,10 @@ $router->map('GET','/invoice/get',function($url){
 $router->map('GET','/invoice',function($url){
   require "views/admin/invoice.php";
 },'invoice');
+/** Performance */
+$router->map('GET','/performance',function($url){
+  require "views/admin/performance.php";
+},'performance');
 
 // echo '<br>';
 // use Firebase\JWT\JWT;

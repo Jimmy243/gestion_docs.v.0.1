@@ -109,7 +109,18 @@
               </div>
             </div>
             <div class="tab-pane" id="bottom-tab2">
-              Tableau 2
+              <div class="responsive">
+                  <table class="table table-strited">
+                     <thead>
+                         <th><center>#</center></th>
+                         <th><center>Reference</center></th>
+                         <th><center>Montant</center></th>
+                         <th><center>Date de depot</center></th>
+                         <th><center>Date de traitement</center></th>
+                         <th><center>Performance</center></th>
+                     </thead>
+                  </table>
+              </div>
             </div>
             <div class="tab-pane" id="bottom-tab3">
               Tableau 3

@@ -80,10 +80,17 @@
                                     <td><center>{{id+1}}</center></td>
                                     <td><center>{{item.NameD}}</center></td>
                                     <td><center>{{item.Fullname}}</center></td>
-                                    <td><center>{{item.MontantF}}</center></td>
+                                    <td><center>{{item.MontantF}}FBU</center></td>
                                     <td><center>{{item.DateEnreg}}</center></td>
                                     <td><center>{{item.DateT}}</center></td>
-                                    <td><center>{{item.state}}</center></td>
+                                    <td  v-if="item.state='Traitee'"><center>
+                                      <button class="btn btn-success">
+                                      {{item.state}}</button> 
+                                    </center></td>
+                                    <td  v-else><center>
+                                      <button class="btn btn-danger">
+                                      {{item.state}}</button> 
+                                    </center></td>
                                     </tr>
                                   </tbody>
                                 </table>
