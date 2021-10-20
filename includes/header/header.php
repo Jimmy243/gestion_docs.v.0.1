@@ -41,7 +41,7 @@ if (!empty($_COOKIE['gestion_doc'])) {
               <a href="activities.html">
                 <div class="media">
                   <span class="avatar">
-                    <img alt="John Doe" src="assets/img/user.jpg" class="img-fluid">
+                    <img alt="John Doe" src="/file/images/icon.png" class="img-fluid">
                   </span>
                   <div class="media-body">
                     <p class="noti-details"><span class="noti-title">Prime</span> added new task <span class="noti-title">Patient appointment booking</span></p>
@@ -75,7 +75,7 @@ if (!empty($_COOKIE['gestion_doc'])) {
     <li class="nav-item dropdown has-arrow">
       <a href="#" class="dropdown-toggle nav-link user-link" data-toggle="dropdown">
         <span class="user-img">
-          <img class="rounded-circle" src="/assets/img/jj.jpg" width="24" alt="error-image">
+          <img class="rounded-circle" src="/file/images/icon.png" width="24" alt="error-image">
           <span class="status online"></span>
         </span>
         <?php

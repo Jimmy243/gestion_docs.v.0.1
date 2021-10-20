@@ -2,9 +2,12 @@ const vue = new Vue({
     el:"#app",
     data(){
         return {
-            tabFacture:[],
+            tabFacture:{
+              treated: [],
+              notTreated: []
+            },
             facture:"",
-            IdF:"",
+            // IdF:"",
             Motif:"",
         }
     },
@@ -17,37 +20,32 @@ const vue = new Vue({
                 type: "GET",
                 url: "/factures_traitement/get",
                 contentType: "application/json", 
-                // dataType: "JSON",
                 success: this.getFactureResult,
                 error: function(req, err){ console.log('message: ' + err); }
             });
-
         },
         getFactureResult(response){ 
-            //    console.log(response);
             if (response.error) {
                 console.log(response.error);
               } else {
-                console.log(response);  
-                this.tabFacture = response;
+                this.tabFacture.treated = response.treated
+                this.tabFacture.notTreated = response.notTreated
               }
         },
         setTraitement(id){
-            this.facture = this.tabFacture.find(element=>element.IdF==id)   
+            this.facture = this.tabFacture.notTreated.find(element=>element.IdF==id)   
         },
     //    setFacture_traitee
 
     setFactureTrait(IdF) {
         const facture_traitee = {
-          IdF:this.IdF,
+          IdF: IdF,
           Motif: this.Motif,
         };
-        // console.log(facture_traitee);
         $.ajax({
           type: "POST",
-          url: "/facture_traitee/set",
+          url: "/traitement_facture/set",
           data: JSON.stringify(facture_traitee),
-        //   dataType: "JSON",
           contentType: "application/json",
           success: this.setFactureTraitResult,
           error: function (req, err) {
@@ -56,12 +54,13 @@ const vue = new Vue({
         });
       },
       setFactureTraitResult(response){
-          if(response.error){
-           console.log(response.error)
-          }else{
-           console.log(response)
-          }
-
+        if (response.error) Swal.fire("Erreur de traitement!", response.error, "error");
+        else if (response.login) document.location.assign("/login");
+        else if (response.auth) Swal.fire("Erreur de l'authentification!", response.auth, "error");
+        else if (response.message) {
+          Swal.fire("Traitement reussi!", response.message, "success");
+          this.getFacture()
+        }
       } 
 
     }

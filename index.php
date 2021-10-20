@@ -125,8 +125,7 @@ $router->map('GET','/factures_traitement/get',function($url){
 },'factures-get');
 //Factures_traitement set
 $router->map('POST','/traitement_facture/set',function($url){
-  echo 66666;
-  //require "controllers/personnel/facture_t.php";
+  require "controllers/personnel/facture_t.php";
 },'factures_t_set');
 
 //Invoice admin
