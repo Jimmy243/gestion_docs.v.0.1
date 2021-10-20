@@ -29,7 +29,7 @@ function getColor($_url,$url){
           <!-- Admin only -->
           <?php if($payload['role'] === "Admin"){ ?>
         <li>
-          <a href=""><i class="fa fa-file-text"></i> <span>Docs & Factures</span></a>
+          <a href="/invoice" <?= getColor("invoice",$url) ?>><i class="fa fa-file-text"></i> <span>Docs & Factures</span></a>
         </li>
         <li>
           <a href=""><i class="fa fa-calendar-check-o"></i> <span>Performances</span></a>

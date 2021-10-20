@@ -22,9 +22,16 @@ if (!empty($_COOKIE['gestion_doc'])) {
 ?>
 <div class="header">
   <div class="header-left">
-    <a href="index.html" class="logo">
+    <?php if($payload['role']==='Admin'){ ?>
+    <a href="/" class="logo">
       <span><i class="fa fa-file"></i> Gestion-Docs</span>
     </a>
+    <?php } ?>
+    <?php if($payload['role']!='Admin'){ ?>
+    <a href="/profile" class="logo">
+      <span><i class="fa fa-file"></i> Gestion-Docs</span>
+    </a>
+    <?php } ?>
   </div>
   <a id="toggle_btn" href="javascript:void(0);"><i class="fa fa-bars"></i></a>
   <a id="mobile_btn" class="mobile_btn float-left" href="#sidebar"><i class="fa fa-bars"></i></a>
