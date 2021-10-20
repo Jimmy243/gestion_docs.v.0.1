@@ -1,3 +1,10 @@
+<?php
+function getColor($_url,$url){
+  if($_url === $url)
+  return 'style="color: #009efb!important;"';
+}
+?>
+
 <div class="sidebar" id="sidebar">
   <div class="sidebar-inner slimscroll">
     <div id="sidebar-menu" class="sidebar-menu">
@@ -12,20 +19,17 @@
 
         <?php if($payload['role'] === "Admin" OR $payload['role'] === "Receptioniste"){ ?>
         <li>
-          <a href="/personnel"><i class="fa fa-user-md"></i> <span>Personnels</span></a>
+          <a href="/personnel" <?= getColor("personnel",$url) ?> ><i class="fa fa-user-md"></i> <span>Personnels</span></a>
         </li>
         <li>
-          <a href="/department"><i class="fa fa-wheelchair"></i> <span>Départements</span></a>
+          <a href="/department" <?= getColor("department",$url) ?>><i class="fa fa-wheelchair"></i> <span>Départements</span></a>
         </li>
           <?php } ?> 
 
           <!-- Admin only -->
           <?php if($payload['role'] === "Admin"){ ?>
         <li>
-          <a href=""><i class="fa fa-calendar"></i> <span>Documents</span></a>
-        </li>
-        <li>
-          <a href="/invoice"><i class="fa fa-calendar"></i> <span>Factures</span></a>
+          <a href="/invoice" <?= getColor("invoice",$url) ?>><i class="fa fa-file-text"></i> <span>Docs & Factures</span></a>
         </li>
         <li>
           <a href=""><i class="fa fa-calendar-check-o"></i> <span>Performances</span></a>
@@ -37,24 +41,24 @@
         <!-- Receptioniste  -->
         <?php if($payload['role'] === "Receptioniste"){ ?>
         <li>
-          <a href="/facture"><i class="fa fa-calendar-check-o"></i> <span>Factures</span></a>
+          <a href="/facture" <?= getColor("facture",$url) ?> ><i class="fa fa-file-text"></i> <span>Factures</span></a>
         </li>
         <li>
-          <a href=""><i class="fa fa-calendar-check-o"></i> <span>Documents</span></a>
+          <a href=""><i class="fa fa-file-text"></i> <span>Documents</span></a>
         </li>
         <?php } ?> 
         <!-- Pour le personnel -->
         <?php if($payload['role'] === "User"){ ?>
         <li>
-          <a href="/factures"><i class="fa fa-calendar-check-o"></i> <span>Factures</span></a>
+          <a href="/factures" <?= getColor("factures",$url) ?> ><i class="fa fa-file-text"></i> <span>Factures</span></a>
         </li> 
         <li>
-          <a href=""><i class="fa fa-calendar-check-o"></i> <span>Documents</span></a>
+          <a href=""><i class="fa fa-file-text"></i> <span>Documents</span></a>
         </li>
         <?php } ?> 
           <!-- Tout le monde -->
         <li>
-          <a href=""><i class="fa fa-calendar-check-o"></i> <span>Messageries</span></a>
+          <a href=""><i class="fa fa-commenting-o "></i> <span>Messageries</span></a>
         </li>
         <li>
           <a href=""><i class="fa fa-calendar-check-o"></i> <span>Rendez-vous</span></a>
