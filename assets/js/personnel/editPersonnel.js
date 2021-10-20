@@ -43,7 +43,7 @@ const vue = new Vue({
       });
     },
     getOnePersonnelResult(response){ 
-      if (response.error) Swal.fire("Erreur de la recuperation de donnees de ce personnel!", error, "error");
+      if (response.error) Swal.fire("Erreur de recuperation de donnees de ce personnel!", error, "error");
       else if(response.login) document.location.assign("/login");
       else if(response.auth) Swal.fire("Erreur de l'authentification!", response.auth, "error");
       else {

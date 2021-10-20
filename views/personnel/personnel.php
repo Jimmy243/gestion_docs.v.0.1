@@ -54,7 +54,7 @@
                           <div class="dropdown-menu dropdown-menu-right">
                             <a class="dropdown-item" :href="'/personnel/edit/'+item.Id"><i class="fa fa-pencil m-r-5"></i> Editer</a>
                             <a class="dropdown-item"  href="#" v-on:click="deletePersonnel(item.Id)" ><i class="fa fa-trash-o m-r-5"></i> Supprimer</a>
-                            <a class="dropdown-item" :href="'/personnel/'+item.Id"><i class="fa fa-trash-o m-r-5"></i> Voir</a>
+                            <a class="dropdown-item" :href="'/personnel/'+item.Id"><i class="fa fa-eye"></i> Voir</a>
                           </div>
                         </div>
                         <?php } ?>
