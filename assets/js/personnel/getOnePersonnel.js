@@ -3,7 +3,9 @@ const vue = new Vue({
     data(){
       return {
         personnel: '',
-        tabDepartment: []
+        tabDepartment: [],
+        tabInvoice: [],
+        tabDoc: []
       }
     },
     computed: {
@@ -11,11 +13,15 @@ const vue = new Vue({
         if(this.personnel.Gander == "Homme") return `Monsieur ${this.personnel.Fullname}`
         else if (this.personnel.Gander == "Femme") return `Madame ${this.personnel.Fullname}`
         else return this.personnel.Fullname
+      },
+      getInvoiceFilter(){
+        return this.tabInvoice.filter( element => element.state == "Traitee")
       }
     },
     mounted(){
       this.getOnePersonnel()
       this.getDepartment()
+      this.getPerformance()
     },
     methods: {
       getOnePersonnel(){
@@ -28,7 +34,7 @@ const vue = new Vue({
           error: function(req, err){ console.log('message: ' + err); }
         });
       },
-      getOnePersonnelResult(response){ console.log(response);
+      getOnePersonnelResult(response){ 
         if (response.error || response.auth) this.message_error = response.error
         else if(response.login) document.location.assign("/login");
         else {
@@ -52,7 +58,25 @@ const vue = new Vue({
         else if(response.login) document.location.assign("/login");
         else this.tabDepartment = response;
       },
-     
+      getPerformance(){
+        $.ajax({
+          type: "GET",
+          url: "/invoice/get/"+idPersonnel,
+          success: this.getPerformanceResult,
+          error: function (req, err) {
+            console.log("message: " + err);
+          }
+        });
+      },
+      getPerformanceResult(response){ console.log(response);
+        if (response.error) Swal.fire("Erreur de recuperation de donnees", error, "error");
+        else if(response.login) document.location.assign("/login");
+        else if(response.auth) Swal.fire("Erreur de l'authentification!", response.auth, "error");
+        else {
+          this.tabInvoice = response.invoice
+          this.tabDoc = response.doc
+        }
+      }
      
     }
   })
