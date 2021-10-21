@@ -14,6 +14,9 @@ function invoice($url)
       array_push($tab1,$data1);
     }
     $invoice = [];
+    // var_dump($tab1);
+    // var_dump(empty(NULL));
+    // exit;
     foreach ($tab1 as $key => $value) {
       if(empty($value['DateT'])) {
         $date = new DateTime($value["DateEnreg"]);

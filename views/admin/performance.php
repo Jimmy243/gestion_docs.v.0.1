@@ -22,7 +22,7 @@
           </div>
           <!-- Performance -->
           <div class="row">
-          <div class="col-12 col-md-8 col-lg-8 col-xl-8">
+          <div class="col-12 col-md-10 col-lg-10 col-xl-10">
             <div class="card">
               <div class="card-body">
                 <div class="chart-title">
@@ -34,7 +34,7 @@
                     </ul>
                   </div>
                 </div>  
-                <canvas id="bargraph"></canvas>
+                <canvas id="performance"></canvas>
               </div>
             </div>
           </div>
@@ -45,6 +45,7 @@
  </div>
   <?php include "includes/js/js.php"; ?>
   <script type="text/javascript" src="/assets/js/sweetAlert.js" defer></script>
+  <script src="/assets/js/invoice/performance.js"></script>
 </body>
 
 </html>

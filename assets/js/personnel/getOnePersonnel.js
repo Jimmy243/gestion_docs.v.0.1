@@ -15,7 +15,10 @@ const vue = new Vue({
         else return this.personnel.Fullname
       },
       getInvoiceFilter(){
-        return this.tabInvoice.filter( element => element.state == "Traitee")
+        return this.tabInvoice.map( element => {
+          if(!element.Pourcentage) element.Pourcentage = 0
+          return element
+        })
       }
     },
     mounted(){
