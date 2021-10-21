@@ -97,11 +97,11 @@
                    </li>
                    <li>
                     <span class="title">Statut</span>
-                    <span class="text"><a href="#">{{personnel.Statuss}}</a></span>
+                    <span class="text"><a href="#">En activite</a></span>
                    </li>
                    <li>
                     <span class="title">Role</span>
-                    <span class="text"><a href="#">{{personnel.Roles}}</a></span>
+                    <span class="text"><a href="#">Personnel</a></span>
                    </li>
                   </ul>
                   </div>
@@ -113,8 +113,7 @@
                   <table class="table table-strited">
                      <thead>
                          <th><center>#</center></th>
-                         <th><center>Reference</center></th>
-                         <th><center>Montant</center></th>
+                         <th><center>Type de document</center></th>
                          <th><center>Date de depot</center></th>
                          <th><center>Date de traitement</center></th>
                          <th><center>Performance</center></th>

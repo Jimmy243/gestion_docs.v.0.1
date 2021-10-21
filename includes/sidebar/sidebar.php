@@ -27,7 +27,10 @@ function getColor($_url,$url){
           <?php } ?> 
 
           <!-- Admin only -->
-          <?php if($payload['role'] === "Admin"){ ?>
+        <?php if($payload['role'] === "Admin"){ ?>
+        <li>
+          <a href="/" <?= getColor("home",$url) ?>><i class="fa fa-file-text"></i> <span>Statistique</span></a>
+        </li>
         <li>
           <a href="/invoice" <?= getColor("invoice",$url) ?>><i class="fa fa-file-text"></i> <span>Docs & Factures</span></a>
         </li>

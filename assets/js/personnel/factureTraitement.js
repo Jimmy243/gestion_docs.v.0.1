@@ -64,7 +64,7 @@ const vue = new Vue({
       else if (response.auth)
         Swal.fire("Erreur de l'authentification!", response.auth, "error");
       else if (response.message) {
-        Swal.fire("Traitement reussi!", response.message, "success");
+        Swal.fire("Traitement reussi!", response.message, "succèss");
         this.getFacture()
         $('#tab2').tab('show')
         this.Motif = ""

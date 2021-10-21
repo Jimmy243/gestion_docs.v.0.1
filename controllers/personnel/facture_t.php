@@ -49,7 +49,7 @@ function setFactureTrait($url)
   $req2->execute(array($IdF));
   $data2 = $req2->fetch();
   if(!empty($data2)){
-    echo json_encode([ "error" => "Cette Facture a ete deja traite"]);
+    echo json_encode([ "error" => "La Facture est déjà traitée"]);
     exit;
   }
 
@@ -57,7 +57,7 @@ function setFactureTrait($url)
   try{
     $req3=$db->prepare($sql3);
     $data3=$req3->execute(array($IdF,$Motif,$Pourcentage));
-    $trait = !$data3? ["error" => 'Echec du traitement de facture !']:["message" => "La facture a ete traite avec succes"];
+    $trait = !$data3? ["error" => 'Echec du traitement de facture !']:["message" => "La facture a été traitée avec succès"];
     echo json_encode($trait);
   }catch(Exception $th){
       echo json_encode(["auth" => $th]);

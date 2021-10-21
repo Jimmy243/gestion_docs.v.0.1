@@ -125,6 +125,9 @@
                           <center>Devise</center>
                         </th>
                         <th>
+                          <center>Date de dépot</center>
+                        </th>
+                        <th>
                           <center>traitement de Facture</center>
                         </th>
                       </tr>
@@ -145,6 +148,9 @@
                         </td>
                         <td>
                           <center>{{item.Devise}}</center>
+                        </td>
+                        <td>
+                          <center>{{item.DateEnreg}}</center>
                         </td>
                         <td>
                           <center>
@@ -232,5 +238,4 @@
     <script src="assets/js/sweetAlert.js" defer></script>
     <script src="assets/js/personnel/factureTraitement.js" defer></script>
 </body>
-
 </html>
