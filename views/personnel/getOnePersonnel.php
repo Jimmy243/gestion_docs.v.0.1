@@ -118,6 +118,16 @@
                          <th><center>Date de traitement</center></th>
                          <th><center>Performance</center></th>
                      </thead>
+                     <tbody>
+                       <tr v-for="(item,id) in getInvoiceFilter" :key="item.id">
+                          <td><center>{{id+1}}</center></td>
+                          <td><center>{{item.Reference}}</center></td>
+                          <td><center>{{item.MontantF}}</center></td>
+                          <td><center>{{item.DateEnreg}}</center></td>
+                          <td><center>{{item.DateT}}</center></td>
+                          <td><center>{{item.Pourcentage}}%</center></td>
+                       </tr>
+                     </tbody>
                   </table>
               </div>
             </div>

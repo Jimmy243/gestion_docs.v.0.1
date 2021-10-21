@@ -130,6 +130,10 @@ $router->map('GET','/invoice/get',function($url){
   require "controllers/admin/invoice.php";
 },'invoice_get');
 
+$router->map('GET','/invoice/get/[i:id]',function($id,$url){
+  require "controllers/admin/invoiceOnePersonnel.php";
+},'invoice_get_one_invoice');
+
 $router->map('GET','/invoice',function($url){
   require "views/admin/invoice.php";
 },'invoice');
