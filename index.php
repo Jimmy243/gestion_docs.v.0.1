@@ -146,6 +146,12 @@ $router->map('GET','/performance/get',function($url){
   require "controllers/admin/performance.php";
 },'performance_get');
 
+// generation de password
+$router->map('GET','/generate_password/[i:id]',function($id,$url){
+  require "controllers/admin/generatePassword.php";
+},'generate_password');
+
+
 
 
 // echo '<br>';

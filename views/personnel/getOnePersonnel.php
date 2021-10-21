@@ -17,7 +17,7 @@
     <div class="content"> 
     <div class="row">
      <div class="col-sm-7 col-6">
-     <h4 class="page-title">Le Profil de {{getInfoUser}}</h4>
+      <h4 class="page-title">Le Profil de {{getInfoUser}}</h4>
      </div>
      <div class="col-sm-5 col-6 text-right m-b-30">
      <a :href="'/personnel/edit/'+personnel.Id" class="btn btn-primary btn-rounded"><i class="fa fa-plus"></i>Editer</a>

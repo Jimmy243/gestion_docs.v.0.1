@@ -36,6 +36,7 @@ const vue = new Vue({
         Swal.fire("Erreur de l'authentification!", response.auth, "error");
       else {
         this.tabPerformance = response;
+        console.log(response);
         this.desplaysDiagram();
       }
     },
