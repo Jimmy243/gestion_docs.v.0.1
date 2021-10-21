@@ -142,6 +142,12 @@ $router->map('GET','/performance',function($url){
   require "views/admin/performance.php";
 },'performance');
 
+$router->map('GET','/performance/get',function($url){
+  require "controllers/admin/performance.php";
+},'performance_get');
+
+
+
 // echo '<br>';
 // use Firebase\JWT\JWT;
 // $payload = [

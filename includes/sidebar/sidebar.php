@@ -35,7 +35,7 @@ function getColor($_url,$url){
           <a href="/invoice" <?= getColor("invoice",$url) ?>><i class="fa fa-file-text"></i> <span>Docs & Factures</span></a>
         </li>
         <li>
-          <a href="/performance" <?= getColor("invoice",$url) ?>><i class="fa fa-calendar-check-o"></i> <span>Performances</span></a>
+          <a href="/performance" <?= getColor("performance",$url) ?>><i class="fa fa-calendar-check-o"></i> <span>Performances</span></a>
         </li>
         <?php } ?>   
 

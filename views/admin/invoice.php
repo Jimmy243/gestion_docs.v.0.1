@@ -84,15 +84,14 @@
                                     <td><center>{{item.DateEnreg}}</center></td>
                                     <td><center>
                                       <span v-if="item.state=='Traitee'">{{item.DateT}}</span>
-                                      <span v-else>------</span>
+                                      <span v-else>-----</span>
                                     </center></td>
-                                    <td><center>
-                                      <button v-if="item.state=='Traitee'" class="btn btn-success">
-                                      {{item.state}} </button>
-                                      <button v-else class="btn btn-danger">
-                                      {{item.state}}</button> 
-                                    </center></td>
-                                    
+                                    <td  >
+                                      <center>
+                                      <button class="btn btn-success" v-if="item.state=='Traitee'">{{item.state}}</button> 
+                                      <button class="btn btn-danger" v-else >{{item.state}}</button> 
+                                    </center>
+                                  </td>
                                     </tr>
                                   </tbody>
                                 </table>
