@@ -22,7 +22,7 @@ if (!empty($_COOKIE['gestion_doc'])) {
 ?>
 <div class="header">
   <div class="header-left">
-    <a href="/profile" class="logo">
+    <a href="/" class="logo">
       <span><i class="fa fa-file"></i> Gestion-Docs</span>
     </a>
   </div>

@@ -114,6 +114,7 @@
                      <thead>
                          <th><center>#</center></th>
                          <th><center>Type de document</center></th>
+                         <th><center>Montant</center></th>
                          <th><center>Date de depot</center></th>
                          <th><center>Date de traitement</center></th>
                          <th><center>Performance</center></th>
@@ -121,11 +122,11 @@
                      <tbody>
                        <tr v-for="(item,id) in getInvoiceFilter" :key="item.id">
                           <td><center>{{id+1}}</center></td>
-                          <td><center>{{item.Reference}}</center></td>
+                          <td><center>Facture</center></td>
                           <td><center>{{item.MontantF}}</center></td>
                           <td><center>{{item.DateEnreg}}</center></td>
                           <td><center>{{item.DateT}}</center></td>
-                          <td><center>{{item.Pourcentage}}%</center></td>
+                          <td><center class="btn btn-warning btn-block">{{item.Pourcentage}}%</center></td>
                        </tr>
                      </tbody>
                   </table>

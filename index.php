@@ -4,7 +4,7 @@
 require 'vendor/autoload.php'; 
 
 $router = new AltoRouter();
-$router->map('GET','/',function($url){
+$router->map('GET','/home',function($url){
     require "views/admin/home.php";
 },'home');
 
@@ -107,7 +107,7 @@ $router->map('POST','/facture/set',function($url){
 },'facture_set');
 
 // profile
-$router->map('GET','/profile',function($url){
+$router->map('GET','/',function($url){
   require "views/personnel/profile.php";
 },'profile');
 

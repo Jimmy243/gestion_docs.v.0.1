@@ -23,7 +23,7 @@ const vue = new Vue({
     validerresult(response){
       if(response.error){
         console.log(response.error);
-      }else document.location.assign('/profile')
+      }else document.location.assign('/')
     }
   }
 })

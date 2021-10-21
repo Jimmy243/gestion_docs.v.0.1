@@ -12,7 +12,7 @@ function getColor($_url,$url){
         <!-- Tout le monde -->
         <?php if($payload['role'] === "Admin" OR $payload['role'] === "Receptioniste" OR $payload['role'] === "User"){ ?>
         <li class="active">
-          <a href="/profile"><i class="fa fa-dashboard"></i> <span>Tableau de board</span></a>
+          <a href="/"><i class="fa fa-dashboard"></i> <span>Tableau de board</span></a>
         </li>
         <?php } ?> 
         <!-- Admin ET Receptioniste -->
@@ -29,7 +29,7 @@ function getColor($_url,$url){
           <!-- Admin only -->
         <?php if($payload['role'] === "Admin"){ ?>
         <li>
-          <a href="/" <?= getColor("home",$url) ?>><i class="fa fa-file-text"></i> <span>Statistique</span></a>
+          <a href="/home" <?= getColor("home",$url) ?>><i class="fa fa-file-text"></i> <span>Statistique</span></a>
         </li>
         <li>
           <a href="/invoice" <?= getColor("invoice",$url) ?>><i class="fa fa-file-text"></i> <span>Docs & Factures</span></a>
