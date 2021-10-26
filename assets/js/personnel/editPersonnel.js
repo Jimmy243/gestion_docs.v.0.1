@@ -96,6 +96,19 @@ const vue = new Vue({
         Swal.fire("Modification reussi!", response.message, "success");
         document.getElementById('setformp').reset();
       } 
+    },
+    generatePassword(){
+      $.ajax({
+        type: "GET",
+        url: `/generate_password/${this.personnel.Id}`,
+        success: this.generatePasswordResult
+      });
+    },
+    generatePasswordResult(response){
+      if (response.error) Swal.fire("Erreur de la generation de mot de passe!", response.error, "error");
+      else if (response.login) document.location.assign("/login");
+      else if (response.auth) Swal.fire("Erreur de l'authentification!", response.auth, "error");
+      else Swal.fire("La generation reussi!",`Le nouveau mot de passe est: <span style="font-weight: bold;">${response.password}</span>`, "success");
     }
   }
 })

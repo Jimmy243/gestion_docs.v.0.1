@@ -10,7 +10,7 @@ function authentification($url)
 
 
     $tab1 = ["personnel_get", "department_get"]; // Admin et Receptionniste
-    $tab2 = ["facture", "facture_set", "reception"]; // Receptionniste
+    $tab2 = ["facture", "facture_set", "reception","get_document"]; // Receptionniste
     $tab3 = ["home","department_set", "department_edit", "department_delete", "personnel_set", "personnel_edit", "personnel_edit_post", "personnel_one_delete","invoice"];
     $tab4 = ["factures-get"];
 

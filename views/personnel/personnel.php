@@ -36,7 +36,7 @@
             <div class="col-md-12">
               <div class="card card-transparent">
                 <div class="card-header">
-                  <center>Liste de personnels deja enregistres</center>
+                  <center>Liste du personnel deja enregistre</center>
                 </div>
               <div class="card">
                 <div id="message"></div> 
@@ -79,7 +79,7 @@
           <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title">Ajout personnel</h5>
+                <h5 class="modal-title">Ajout</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>

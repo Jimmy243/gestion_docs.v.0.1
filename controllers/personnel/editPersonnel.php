@@ -96,7 +96,7 @@ if(!empty($_FILES["Images"])){
 $sql3="UPDATE  users SET Fullname=?, Functions=?, IdD=?, DateB=?,Images=?,Addresss=?,NumberM=?,States=?,Gander=?,Mobile=?,Email=? WHERE Id=?";
 try {
   $req3=$db->prepare($sql3);
-  $data3=$req3->execute(array($Fullname,$Functions,$IdD,$DateB,$Images,$Addresss,$NumberM,$States,$Gander,$Mobile,$Email,$id));
+  $data3 = $req3->execute(array($Fullname,$Functions,$IdD,$DateB,$Images,$Addresss,$NumberM,$States,$Gander,$Mobile,$Email,$id));
   if(!$data3) echo json_encode([ "error" => 'Le personnel n\'est pas modifie.']);
   else{
     move_uploaded_file($_FILES['Images']['tmp_name'], $Images);
@@ -110,7 +110,7 @@ try {
     echo json_encode(['message' => 'Le personnel a ete modifie avec succes']);
   }
 } catch (Exception $th) {
-  echo json_encode([ "error" => $th ]);
+  echo json_encode(['error' => 'Le personnel n\'a pas ete modifie avec succes']);
 }
 
 }

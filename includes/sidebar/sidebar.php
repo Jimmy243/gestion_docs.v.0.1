@@ -47,7 +47,7 @@ function getColor($_url,$url){
           <a href="/facture" <?= getColor("facture",$url) ?> ><i class="fa fa-file-text"></i> <span>Factures</span></a>
         </li>
         <li>
-          <a href=""><i class="fa fa-file-text"></i> <span>Documents</span></a>
+          <a href="/document" <?php getColor("document",$url) ?>><i class="fa fa-file-text"></i> <span>Documents</span></a>
         </li>
         <?php } ?> 
         <!-- Pour le personnel -->
@@ -56,7 +56,7 @@ function getColor($_url,$url){
           <a href="/factures" <?= getColor("factures",$url) ?> ><i class="fa fa-file-text"></i> <span>Factures</span></a>
         </li> 
         <li>
-          <a href=""><i class="fa fa-file-text"></i> <span>Documents</span></a>
+          <a href="/documents" <?php getColor("documents",$url) ?> ><i class="fa fa-file-text"></i> <span>Documents</span></a>
         </li>
         <?php } ?> 
           <!-- Tout le monde -->

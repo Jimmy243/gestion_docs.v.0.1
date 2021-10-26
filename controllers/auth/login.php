@@ -22,8 +22,10 @@ function setDepartment(){
   $data = $req->fetch(PDO::FETCH_ASSOC);
 // admin  admin@gmail.com
 // receptioniste:  b5fecd20 jean@gmail.com
-// user: b65be901 jule@gmail.com   
-// base64_decode()
+// user: 5a6b22c9 jule@gmail.com
+// 9ad601e1 mark@gmail.com
+// jule1@gmail.com
+
   if(!empty($data))
   {
     if(password_verify($password,$data['Pwd']))

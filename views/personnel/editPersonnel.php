@@ -17,7 +17,10 @@
       <div class="content">
         <div class="row">
           <div class="col-sm-12">
-            <h4 class="page-title">Edition du profil de {{personnel.Fullname}}</h4>
+            <div class="row">
+              <div class="col-6"><h4 class="page-title">Edition du profil de {{personnel.Fullname}}</h4></div>
+              <div class="col-6"><button type="button" class="btn btn-primary float-right" v-on:click="generatePassword">Generer un nouveau mot de passe</button></div>
+            </div>
           </div>
         </div>
         <div class="alert alert-danger alert-dismissible fade show" role="alert" v-if="!personnel && message_error">

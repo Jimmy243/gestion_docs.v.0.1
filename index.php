@@ -146,7 +146,23 @@ $router->map('GET','/performance/get',function($url){
   require "controllers/admin/performance.php";
 },'performance_get');
 
+// generation de password
+$router->map('GET','/generate_password/[i:id]',function($id,$url){
+  require "controllers/admin/generatePassword.php";
+},'generate_password');
 
+
+//Documents administratifs Receptionniste
+$router->map('GET','/document',function($url){
+  require "views/reception/document.php";
+},'get_document');
+
+
+
+//Documents administratifs a traiter par le personnel concerne
+$router->map('GET','/documents',function($url){
+  require "views/personnel/documents.php";
+},'get_documents');
 
 // echo '<br>';
 // use Firebase\JWT\JWT;

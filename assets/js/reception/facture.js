@@ -80,7 +80,11 @@ const vue = new Vue({
       }else if(response.login) document.location.assign("/login")
       else if(response.auth) Swal.fire("Erreur de l'authentification!", response.auth, "error");
       else{
+<<<<<<< HEAD
         Swal.fire("La facture a été envoyée avec succès !");
+=======
+        Swal.fire('L\'envoi reussi!','Le facture a ete envoye avec succes','success');
+>>>>>>> 51c7578808510b677246f67aea4df3d6eb1a3585
         document.getElementById('setformf').reset(); 
       }
     }

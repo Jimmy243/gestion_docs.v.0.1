@@ -18,7 +18,7 @@
       <div class="content">
         <div class="row">
           <div class="col-sm-5 col-5">
-            <h4 class="page-title">TRAITEMENT DE FACTURES</h4>
+            <h4 class="page-title">TRAITEMENT DE DOCUMENTS</h4>
           </div>
           <div class="col-sm-7 col-7 text-right m-b-30">
             <!-- <b class="btn btn-primary btn-rounded">Gestion de Facture</b> -->
@@ -28,9 +28,9 @@
           <!-- Tableau collapse -->
           <div class="profile-tabs">
             <ul class="nav nav-tabs nav-tabs-bottom">
-              <li class="nav-item"><a class="nav-link " href="#about-cont" data-toggle="tab" id="tab1">Les Factures en cours de traitement </a></li>
-              <li class="nav-item"><a class="nav-link active" href="#bottom-tab2" data-toggle="tab" id="tab2">Les Factures non traitées <span class="badge badge-pill bg-danger float-right" style="color:white">{{tabFacture.notTreated.length}}</span></a></li>
-              <li class="nav-item"><a class="nav-link" href="#bottom-tab3" data-toggle="tab" id="tab3">Les Factures déja traitées <span class="badge badge-pill bg-success float-right" style="color:white">{{tabFacture.treated.length}}</span></a></li>
+              <li class="nav-item"><a class="nav-link " href="#about-cont" data-toggle="tab" id="tab1">Les Documents en cours de traitement </a></li>
+              <li class="nav-item"><a class="nav-link active" href="#bottom-tab2" data-toggle="tab" id="tab2">Les Documents non traités <span class="badge badge-pill bg-danger float-right" style="color:white">{{2}}</span></a></li>
+              <li class="nav-item"><a class="nav-link" href="#bottom-tab3" data-toggle="tab" id="tab3">Les Documents déja traités <span class="badge badge-pill bg-success float-right" style="color:white">{{4}}</span></a></li>
             </ul>
             <div class="tab-content">
               <div class="tab-pane" id="about-cont">
@@ -97,7 +97,7 @@
                       </div>
                       <div class="container" v-else>
                         <p v-if="tabFacture.notTreated.length > 0">Veuillez selectionner une facture pour la traiter</p>
-                        <p v-else>A present vous n'avez pas de factures a traiter</p>
+                        <p v-else>A present vous n'avez pas de Document a traiter</p>
                       </div>
                     </div>
                   </div>
@@ -116,19 +116,10 @@
                           <center>Nom du depositaire</center>
                         </th>
                         <th>
-                          <center>Reférence</center>
-                        </th>
-                        <th>
-                          <center>Montant</center>
-                        </th>
-                        <th>
-                          <center>Devise</center>
-                        </th>
-                        <th>
                           <center>Date de dépot</center>
                         </th>
                         <th>
-                          <center>traitement de Facture</center>
+                          <center>traitement de Document</center>
                         </th>
                       </tr>
                     </thead>
@@ -139,15 +130,6 @@
                         </td>
                         <td>
                           <center>{{item.NameR}}</center>
-                        </td>
-                        <td>
-                          <center>{{item.Reference}}</center>
-                        </td>
-                        <td>
-                          <center>{{item.MontantF}}</center>
-                        </td>
-                        <td>
-                          <center>{{item.Devise}}</center>
                         </td>
                         <td>
                           <center>{{item.DateEnreg}}</center>
@@ -177,15 +159,6 @@
                           <center>Nom du depositaire</center>
                         </th>
                         <th>
-                          <center>Reférence</center>
-                        </th>
-                        <th>
-                          <center>Montant</center>
-                        </th>
-                        <th>
-                          <center>Devise</center>
-                        </th>
-                        <th>
                           <center>Date de traitement</center>
                         </th>
                       </tr>
@@ -197,15 +170,6 @@
                         </td>
                         <td>
                           <center>{{item.NameR}}</center>
-                        </td>
-                        <td>
-                          <center>{{item.Reference}}</center>
-                        </td>
-                        <td>
-                          <center>{{item.MontantF}}</center>
-                        </td>
-                        <td>
-                          <center>{{item.Devise}}</center>
                         </td>
                         <td>
                           <center>{{item.DateT}}</center>
