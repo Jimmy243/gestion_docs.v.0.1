@@ -60,9 +60,11 @@ const vue = new Vue({
     },
     valider(){
       const formData = new FormData(document.getElementById('setformf'))
+      formData.forEach((value,key) => console.log(`${key} : ${value}`))
+      // return
       $.ajax({
         type: "POST",
-        url: "/facture/set",
+        url: "/document/set",
         data: formData,
         contentType : false,
         processData : false,
@@ -70,7 +72,7 @@ const vue = new Vue({
         error: (req,err) => console.log(err)
       });
     },
-    validerResult(response){
+    validerResult(response){ console.log(response)
       let error = ""
       if(response.error){
       if(!Array.isArray(response.error))
@@ -80,10 +82,9 @@ const vue = new Vue({
       }else if(response.login) document.location.assign("/login")
       else if(response.auth) Swal.fire("Erreur de l'authentification!", response.auth, "error");
       else{
-        Swal.fire('L\'envoi reussi!','Le facture a ete envoye avec succes','success');
+        Swal.fire('L\'envoi reussi!','Le document a été envoyé avec succes','success');
         document.getElementById('setformf').reset(); 
       }
     }
   }
 })
-

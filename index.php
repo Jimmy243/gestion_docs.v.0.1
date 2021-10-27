@@ -151,18 +151,34 @@ $router->map('GET','/generate_password/[i:id]',function($id,$url){
   require "controllers/admin/generatePassword.php";
 },'generate_password');
 
+/** DOCUMENT */
 
 //Documents administratifs Receptionniste
 $router->map('GET','/document',function($url){
   require "views/reception/document.php";
 },'get_document');
 
-
+// set Documents
+$router->map('POST','/document/set',function($url){
+  require "controllers/reception/setDocument.php";
+},'document_set');
 
 //Documents administratifs a traiter par le personnel concerne
 $router->map('GET','/documents',function($url){
   require "views/personnel/documents.php";
 },'get_documents');
+
+// Get Doc for personnel user
+// $router->map('GET','/documents_traitement/get',function($url){
+//   require "controllers/personnel/documents.php";
+// },'documents_get');
+// Set Doc
+$router->map('POST','/documents_traitement/set',function($url){
+  require "controllers/personnel/document_t.php";
+},'document_t_set');
+
+
+
 
 // echo '<br>';
 // use Firebase\JWT\JWT;

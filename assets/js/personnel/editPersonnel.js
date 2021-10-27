@@ -82,7 +82,6 @@ const vue = new Vue({
       }); 
     },
     validerResult(response){ 
-      // console.log(response);
       let error = ""
       if (response.error){
         if(!Array.isArray(response.error)) error = response.error

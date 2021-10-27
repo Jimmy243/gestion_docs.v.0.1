@@ -11,7 +11,7 @@ function setDepartment(){
   if(empty($data['password'])) array_push($tab,'Veuillez entrer votre mot de passe SVP');
 
   $email = htmlspecialchars(trim($data['email']));
-  $password = htmlspecialchars(trim($data['password']));
+  $password = $data['password'];
   
 
   $souvenez_vous = $data['souvenez_vous']??false;

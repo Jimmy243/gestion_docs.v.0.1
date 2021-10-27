@@ -201,5 +201,6 @@
     <?php require "includes/js/js.php"; ?>
     <script src="assets/js/sweetAlert.js" defer></script>
     <script src="assets/js/personnel/factureTraitement.js" defer></script>
+    <!-- <script src="assets/js/personnel/fdocumentTraitement.js" defer></script> -->
 </body>
 </html>

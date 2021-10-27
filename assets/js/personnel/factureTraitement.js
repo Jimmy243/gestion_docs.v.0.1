@@ -8,7 +8,7 @@ const vue = new Vue({
       },
       facture: "",
       Motif: "",
-    };
+    }
   },
   mounted() {
     this.getFacture();
@@ -27,7 +27,7 @@ const vue = new Vue({
     },
     getFactureResult(response) {
       if (response.error) {
-        console.log(response.error);
+        console.log(response.error)
       } else {
         this.tabFacture.treated = response.invoice.treated;
         this.tabFacture.notTreated = response.invoice.notTreated;

@@ -22,7 +22,7 @@
       <div class="col-sm-7 col-7 text-right m-b-30">
         <a href="#" class="btn btn-primary btn-rounded"
            data-toggle="modal" 
-           data-target="#ajoutdepart" ><!-- <i class="fa fa-plus"></i> --> Gestion de Facture</a>
+           data-target="#ajoutdepart" > Gestion de Facture</a>
       </div>
     </div>
                 

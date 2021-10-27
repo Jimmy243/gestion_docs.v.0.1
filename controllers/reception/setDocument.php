@@ -1,17 +1,17 @@
 <?php
 include dirname(__DIR__).DIRECTORY_SEPARATOR."connection.php";
 include dirname(__DIR__).DIRECTORY_SEPARATOR."auth".DIRECTORY_SEPARATOR."authentification.php";
-function setFacture($url){ 
+function setDocument($url){ 
   authentification($url);
   $db = Connecter();
   $tabErrors = []; 
 
   if(empty($_POST['NameR'])) array_push($tabErrors,'Completer le nom du deposant.');
-  if(empty($_POST['Reference'])) array_push($tabErrors,'Veuillez indiquer la reference du document.');
+  // if(empty($_POST['Reference'])) array_push($tabErrors,'Veuillez indiquer la reference du document.');
   if(empty($_POST['IdD'])) array_push($tabErrors,'Veuillez selectionner le departement.');
   if(empty($_POST['Id'])) array_push($tabErrors,'Veuillez selectionner le personnel.');
-  if(empty($_POST['Devise'])) array_push($tabErrors,'Completer selectionner la device.');
-  if(empty($_POST['MontantF'])) array_push($tabErrors,'Veuillez indiquer le montant du facture.');
+  // if(empty($_POST['Devise'])) array_push($tabErrors,'Completer selectionner la device.');
+  // if(empty($_POST['MontantF'])) array_push($tabErrors,'Veuillez indiquer le montant du facture.');
 
 
   if(count($tabErrors) > 0){ 
@@ -21,15 +21,15 @@ function setFacture($url){
     exit;
   }
 
-  if(!in_array($_POST['Devise'],["FBU","USD"])) 
-  {
-    $tab = [ "error" => 'Veuillez selectionner une bonne device "FBU" ou "USD".' ];
-    echo json_encode($tab);
-    exit;
-  }
+  // if(!in_array($_POST['Devise'],["FBU","USD"])) 
+  // {
+  //   $tab = [ "error" => 'Veuillez selectionner une bonne device "FBU" ou "USD".' ];
+  //   echo json_encode($tab);
+  //   exit;
+  // }
   
-  if(empty($_FILES["Facture"]) || $_FILES["Facture"]['error'] != 0) {
-    if($_FILES["Facture"]['error'] == 1 || $_FILES["Facture"]['error'] == 2)
+  if(empty($_FILES["Docs"]) || $_FILES["Docs"]['error'] != 0) {
+    if($_FILES["Docs"]['error'] == 1 || $_FILES["Docs"]['error'] == 2)
     {
       $tab = [ "error" => 'Le document que vous choisissez a une grande taille.' ];
       echo json_encode($tab);
@@ -43,7 +43,7 @@ function setFacture($url){
   }
 
   $ext = ["doc","docx","pdf","jpg","jpeg","png"];
-  $doc = pathinfo($_FILES['Facture']['name']);
+  $doc = pathinfo($_FILES['Docs']['name']);
   if(!in_array(strtolower($doc['extension']),$ext)) 
   {
     $tab = [ "error" => "Veuillez inserer le document word ou pdf." ];
@@ -53,12 +53,12 @@ function setFacture($url){
 
   // recuperation de donnees
   $NameR=htmlspecialchars(trim($_POST['NameR']));
-  $Reference=htmlspecialchars(trim($_POST['Reference']));
+  // $Reference=htmlspecialchars(trim($_POST['Reference']));
   $IdD=htmlspecialchars(trim($_POST['IdD']));
-  $MontantF=htmlspecialchars(trim(($_POST['MontantF'])));
+  // $MontantF=htmlspecialchars(trim(($_POST['MontantF'])));
   $Id=htmlspecialchars(trim(($_POST['Id'])));
-  $Devise=htmlentities(trim(($_POST['Devise'])));
-  $MontantF=htmlspecialchars(trim(($_POST['MontantF'])));
+  // $Devise=htmlentities(trim(($_POST['Devise'])));
+  // $MontantF=htmlspecialchars(trim(($_POST['MontantF'])));
 
   // test if department existe
   $sql1 = "SELECT IdD FROM department WHERE IdD=?";
@@ -94,29 +94,29 @@ function setFacture($url){
   }
 
   // test if la facture existe deja
-  $sql4 = "SELECT IdF FROM facture WHERE Reference=?";
-  $req4 = $db->prepare($sql4);
-  $req4->execute(array($Reference));
-  $data4 = $req4->fetch();
-  if(!empty($data4)) {
-    echo json_encode([ "error" => 'Une autre facture de cette reference exite deja.']);
-    exit;
-  }
+  // $sql4 = "SELECT IdF FROM facture WHERE Reference=?";
+  // $req4 = $db->prepare($sql4);
+  // $req4->execute(array($Reference));
+  // $data4 = $req4->fetch();
+  // if(!empty($data4)) {
+  //   echo json_encode([ "error" => 'Une autre facture de cette reference exite deja.']);
+  //   exit;
+  // }
 
-  $Facture = "file".DIRECTORY_SEPARATOR."factures".DIRECTORY_SEPARATOR.date_timestamp_get(date_create())."_".$_FILES['Facture']['name'];
+  $Docs  = "file".DIRECTORY_SEPARATOR."docs".DIRECTORY_SEPARATOR.date_timestamp_get(date_create())."_".$_FILES['Docs']['name'];
 
-  $sql5="INSERT INTO facture (NameR,Reference,IdD,Id,Devise,MontantF,Facture) VALUES(?,?,?,?,?,?,?)";
+  $sql4="INSERT INTO documents (NameR,IdD,Id,Docs) VALUES(?,?,?,?)";
   try {
-    $req5= $db->prepare($sql5);
-    $data5= $req5->execute(array($NameR,$Reference,$IdD,$Id,$Devise,$MontantF,$Facture));
-    if(!$data5) echo json_encode([ "error" => 'La facture n\' a pas ete enregistre.']);
+    $req4= $db->prepare($sql4);
+    $data4= $req4->execute(array($NameR,$IdD,$Id,$Docs));
+    if(!$data4) echo json_encode([ "error" => 'La document n\' a pas ete enregistre.']);
     else{
-      move_uploaded_file($_FILES['Facture']['tmp_name'], $Facture);
-      echo json_encode(["message" => "La facture a ete bien enregistre"]);
+      move_uploaded_file($_FILES['Docs']['tmp_name'], $Docs );
+      echo json_encode(["message" => "La document a ete bien enregistre"]);
     } 
   } catch (Exception $th) {   
     echo json_encode([ "error" => $th ]);
   }
 }
 
-setFacture($url);
+setDocument($url);

@@ -20,11 +20,11 @@
           <div class="col-sm-5 col-5">
             <h4 class="page-title">FACTURE</h4>
           </div>
-          <div class="col-sm-7 col-7 text-right m-b-30">
+          <!-- <div class="col-sm-7 col-7 text-right m-b-30">
             <a href="#" class="btn btn-primary btn-rounded" data-toggle="modal" data-target="#ajoutdepart">
-              <!-- <i class="fa fa-plus"></i> --> Gestion de Facture
+              Gestion de Facture
             </a>
-          </div>
+          </div> -->
         </div>
 
         <div class="row">
