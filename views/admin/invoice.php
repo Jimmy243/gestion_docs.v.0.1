@@ -48,6 +48,21 @@
                           <div class="card">
                             <!-- <div class="card-header">Listes de factures</div> -->
                             <div class="card-body">
+                              <div class="row">
+                                <div class="form-group row col-sm-8">
+                                  <label for="trie" class="col-sm-4 col-form-label">Trier par: </label> 
+                                  <select class="form-control col-sm-8" name="tri" id="tri" v-on:click.stop="getTri" v-model="by">
+                                    <!-- <option value="date_t">Date de traitement {{getIcon("date_t")}} </option> -->
+                                    <option value="date_d">Date du depot {{getIcon("date_d")}} </option>
+                                    <option value="depart">Departement {{getIcon("depart")}} </option>
+                                    <option value="montant">Montant {{getIcon("montant")}} </option>
+                                    <option value ="name_p">Nom du personnel {{getIcon("name_p")}} </option>
+                                  </select>
+                                </div>
+                                <div class="col-4 clear-fix">
+                                 <button type="button" class="btn btn-primary float-right">Filtre avance</button>
+                                </div>
+                              </div>
                               <div class="responsive">
                                 <table class="table table-strited">
                                   <thead>
@@ -77,24 +92,42 @@
                                   </thead>
                                   <tbody>
                                     <tr v-for="(item,id) in tabInvoice" :key="item.id">
-                                    <td><center>{{id+1}}</center></td>
-                                    <td><center>{{item.NameD}}</center></td>
-                                    <td><center>{{item.Fullname}}</center></td>
-                                    <td><center>{{item.MontantF}}FBU</center></td>
-                                    <td><center>{{item.DateEnreg}}</center></td>
-                                    <td><center>
-                                      <span v-if="item.state=='Traitee'">{{item.DateT}}</span>
-                                      <span v-else>-----</span>
-                                    </center></td>
-                                    <td  >
-                                      <center>
-                                      <button class="btn btn-success" v-if="item.state=='Traitee'">{{item.state}}</button> 
-                                      <button class="btn btn-danger" v-else >{{item.state}}</button> 
-                                    </center>
-                                  </td>
+                                      <td>
+                                        <center>{{id+1}}</center>
+                                      </td>
+                                      <td>
+                                        <center>{{item.NameD}}</center>
+                                      </td>
+                                      <td>
+                                        <center>{{item.Fullname}}</center>
+                                      </td>
+                                      <td>
+                                        <center>{{item.MontantF}}FBU</center>
+                                      </td>
+                                      <td>
+                                        <center>{{item.DateEnreg}}</center>
+                                      </td>
+                                      <td>
+                                        <center>
+                                          <span v-if="item.state=='Traitee'">{{item.DateT}}</span>
+                                          <span v-else>-----</span>
+                                        </center>
+                                      </td>
+                                      <td>
+                                        <center>
+                                          <button class="btn btn-success" v-if="item.state=='Traitee'">{{item.state}}</button>
+                                          <button class="btn btn-danger" v-else>{{item.state}}</button>
+                                        </center>
+                                      </td>
                                     </tr>
                                   </tbody>
                                 </table>
+                              </div>
+                              <div class="clear-fix">
+                                <div class="float-right">
+                                  <button type="button" class="btn btn-primary" v-on:click="getInvoiceByPagination('back')" v-bind:disabled="back == 0">Back</button>
+                                  <button type="button" class="btn btn-primary" v-on:click="getInvoiceByPagination('next')" v-bind:disabled="next == 0">Next</button>
+                                </div>
                               </div>
                             </div>
                           </div>

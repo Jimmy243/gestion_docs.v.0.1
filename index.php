@@ -126,7 +126,7 @@ $router->map('POST','/traitement_facture/set',function($url){
 },'factures_t_set');
 
 /** ADMIN ROUTE */
-$router->map('GET','/invoice/get',function($url){
+$router->map('GET|POST','/invoice/get',function($url){
   require "controllers/admin/invoice.php";
 },'invoice_get');
 

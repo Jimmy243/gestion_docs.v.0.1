@@ -1,17 +1,16 @@
 <?php
 include __DIR__ . DIRECTORY_SEPARATOR . "verifyToken.php";
 
-function authentification($url)  
+function authentification($url)
 {
   header('Content-Type:application/json');
   if (!empty($_COOKIE['gestion_doc'])) {
     $token = $_COOKIE['gestion_doc'];
     $payload = verifyToken($token);
 
-
     $tab1 = ["personnel_get", "department_get"]; // Admin et Receptionniste
-    $tab2 = ["facture", "facture_set", "reception","get_document"]; // Receptionniste
-    $tab3 = ["home","department_set", "department_edit", "department_delete", "personnel_set", "personnel_edit", "personnel_edit_post", "personnel_one_delete","invoice"];
+    $tab2 = ["facture", "facture_set", "reception", "get_document"]; // Receptionniste
+    $tab3 = ["home", "department_set", "department_edit", "department_delete", "personnel_set", "personnel_edit", "personnel_edit_post", "personnel_one_delete", "invoice", "invoice_get"]; // admin 
     $tab4 = ["factures-get"];
 
     if (in_array($url, $tab1)) {
